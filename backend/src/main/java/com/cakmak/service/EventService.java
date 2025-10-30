@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class EventService {
 
-    private EventRepository eventRepository;
+    private final EventRepository eventRepository;
 
     public EventService(EventRepository eventRepository) {
         this.eventRepository = eventRepository;

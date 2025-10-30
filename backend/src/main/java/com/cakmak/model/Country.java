@@ -23,10 +23,10 @@ public class Country {
     private List<Team> teams;
 
     @OneToMany(mappedBy = "country", fetch = FetchType.LAZY)
-    private List<Team> players;
+    private List<Player> players;
 
     @OneToMany(mappedBy = "country", fetch = FetchType.LAZY)
-    private List<Team> venues;
+    private List<Venue> venues;
 
     public Long getId() {
         return id;
@@ -48,19 +48,19 @@ public class Country {
         this.teams = teams;
     }
 
-    public List<Team> getPlayers() {
+    public List<Player> getPlayers() {
         return players;
     }
 
-    public void setPlayers(List<Team> players) {
+    public void setPlayers(List<Player> players) {
         this.players = players;
     }
 
-    public List<Team> getVenues() {
+    public List<Venue> getVenues() {
         return venues;
     }
 
-    public void setVenues(List<Team> venues) {
+    public void setVenues(List<Venue> venues) {
         this.venues = venues;
     }
 }

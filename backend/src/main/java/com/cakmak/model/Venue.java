@@ -14,14 +14,14 @@ public class Venue {
     @OneToMany(mappedBy = "venue", fetch = FetchType.LAZY)
     private List<Event> events;
 
-    @OneToMany(mappedBy = "venue", fetch = FetchType.LAZY)
-    private List<Country> countries;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Country country;
 
     public Venue() {}
 
-    public Venue(List<Event> events, List<Country> countries) {
+    public Venue(List<Event> events, Country countries) {
         this.events = events;
-        this.countries = countries;
+        this.country = countries;
     }
 
     public String getId() {
@@ -36,11 +36,11 @@ public class Venue {
         this.events = events;
     }
 
-    public List<Country> getCountries() {
-        return countries;
+    public Country getCountry() {
+        return country;
     }
 
-    public void setCountries(List<Country> countries) {
-        this.countries = countries;
+    public void setCountry(Country country) {
+        this.country = country;
     }
 }

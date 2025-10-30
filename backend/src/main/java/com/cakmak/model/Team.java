@@ -20,14 +20,19 @@ public class Team {
     @OneToMany(mappedBy = "team")
     private List<Score> scores;
 
+    @ManyToOne
+    private Country country;
+
     public Team() {}
 
     public Team(List<TeamPlayer> teamPlayers,
                 List<EventTeam> eventTeams,
-                List<Score> scores) {
+                List<Score> scores,
+                Country country) {
         this.teamPlayers = teamPlayers;
         this.eventTeams = eventTeams;
         this.scores = scores;
+        this.country = country;
     }
 
     public String getId() {
@@ -56,5 +61,13 @@ public class Team {
 
     public void setScores(List<Score> scores) {
         this.scores = scores;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
     }
 }
