@@ -1,8 +1,8 @@
 package com.cakmak.model;
 
-import com.sun.tools.javac.util.List;
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -17,12 +17,17 @@ public class Team {
     @OneToMany(mappedBy = "team", fetch = FetchType.LAZY)
     private List<EventTeam> eventTeams;
 
+    @OneToMany(mappedBy = "team")
+    private List<Score> scores;
+
     public Team() {}
 
     public Team(List<TeamPlayer> teamPlayers,
-                List<EventTeam> eventTeams) {
+                List<EventTeam> eventTeams,
+                List<Score> scores) {
         this.teamPlayers = teamPlayers;
         this.eventTeams = eventTeams;
+        this.scores = scores;
     }
 
     public String getId() {
@@ -43,5 +48,13 @@ public class Team {
 
     public void setEventTeams(List<EventTeam> eventTeams) {
         this.eventTeams = eventTeams;
+    }
+
+    public List<Score> getScores() {
+        return scores;
+    }
+
+    public void setScores(List<Score> scores) {
+        this.scores = scores;
     }
 }

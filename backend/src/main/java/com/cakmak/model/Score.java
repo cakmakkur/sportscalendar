@@ -20,14 +20,24 @@ public class Score {
     @Column(name = "scored_at")
     private OffsetDateTime scoredAt;
 
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    private Player player;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    private Team team;
+
     public Score() {}
 
     public Score(Event event,
                  String score,
-                 OffsetDateTime scoredAt) {
+                 OffsetDateTime scoredAt,
+                 Player player,
+                 Team team) {
         this.event = event;
         this.score = score;
         this.scoredAt = scoredAt;
+        this.player = player;
+        this.team = team;
     }
 
     public String getId() {
@@ -52,5 +62,25 @@ public class Score {
 
     public OffsetDateTime getScoredAt() {
         return scoredAt;
+    }
+
+    public void setScoredAt(OffsetDateTime scoredAt) {
+        this.scoredAt = scoredAt;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
     }
 }
