@@ -40,8 +40,9 @@ public class EventService {
     }
 
     public void create(EventDto eventDto) {
-        Event event = Mapper.toEvent(eventDto);
-        eventRepository.save(event);
+/*        Event event = Mapper.toEvent(eventDto);
+        eventRepository.save(event);*/
+
     }
 
     public EventDto delete(String id) {
