@@ -19,4 +19,38 @@ public class Score {
 
     @Column(name = "scored_at")
     private OffsetDateTime scoredAt;
+
+    public Score() {}
+
+    public Score(Event event,
+                 String score,
+                 OffsetDateTime scoredAt) {
+        this.event = event;
+        this.score = score;
+        this.scoredAt = scoredAt;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public Event getEvent() {
+        return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
+    }
+
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
+    }
+
+    public OffsetDateTime getScoredAt() {
+        return scoredAt;
+    }
 }

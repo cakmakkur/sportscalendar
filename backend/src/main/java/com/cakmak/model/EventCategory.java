@@ -13,12 +13,16 @@ public class EventCategory {
 
     private String description;
 
-    public Long getId() {
-        return id;
+    public EventCategory() {}
+
+    public EventCategory(String name,
+                         String description) {
+        this.name = name;
+        this.description = description;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Long getId() {
+        return id;
     }
 
     public String getName() {

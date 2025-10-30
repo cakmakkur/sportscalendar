@@ -2,6 +2,8 @@ package com.cakmak.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "competition_types")
 public class CompetitionType {
@@ -12,12 +14,19 @@ public class CompetitionType {
 
     private String type;
 
-    public Long getId() {
-        return id;
+    @OneToMany(mappedBy = "competitionType", fetch = FetchType.LAZY)
+    private List<EventType> eventTypes;
+
+    public CompetitionType() {}
+
+    public CompetitionType(String type,
+                           List<EventType> eventTypes) {
+        this.type = type;
+        this.eventTypes = eventTypes;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Long getId() {
+        return id;
     }
 
     public String getType() {
@@ -26,5 +35,13 @@ public class CompetitionType {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public List<EventType> getEventTypes() {
+        return eventTypes;
+    }
+
+    public void setEventTypes(List<EventType> eventTypes) {
+        this.eventTypes = eventTypes;
     }
 }
