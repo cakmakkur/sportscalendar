@@ -1,8 +1,8 @@
 package com.cakmak.dtos;
 
 public record EventTeamDto(
-        String id,
-        TeamDto team,
-        EventDto event
+        Long id,
+        String teamId,
+        String eventId
 ) {
 }

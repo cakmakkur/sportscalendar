@@ -1,8 +1,8 @@
 package com.cakmak.dtos;
 
 public record EventPlayerDto(
-        String id,
-        EventDto event,
+        Long id,
+        String eventId,
         PlayerDto player
 ) {
 }

@@ -6,9 +6,9 @@ import java.time.OffsetDateTime;
 
 public record ScoreDto(
         String id,
-        EventDto eventDto,
-        PlayerDto playerDto,
-        TeamDto teamDto,
+        String eventId,
+        String playerId,
+        String teamId,
         @Length(min = 1, max =255)
         String score,
         OffsetDateTime scoredAt

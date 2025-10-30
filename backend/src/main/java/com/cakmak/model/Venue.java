@@ -11,6 +11,8 @@ public class Venue {
     @Id
     private String id = UUID.randomUUID().toString();
 
+    private String name;
+
     @OneToMany(mappedBy = "venue", fetch = FetchType.LAZY)
     private List<Event> events;
 
@@ -20,9 +22,10 @@ public class Venue {
 
     public Venue() {}
 
-    public Venue(List<Event> events, Country countries) {
+    public Venue(List<Event> events, Country countries, String name) {
         this.events = events;
         this.country = countries;
+        this.name = name;
     }
 
     public String getId() {
@@ -43,5 +46,13 @@ public class Venue {
 
     public void setCountry(Country country) {
         this.country = country;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

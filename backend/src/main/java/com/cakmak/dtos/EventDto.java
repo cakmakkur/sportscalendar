@@ -12,14 +12,14 @@ public record EventDto (
         String id,
         @NotNull OffsetDateTime date,
         OffsetDateTime createdAt,
-        EventCategory category,
+        EventCategoryDto category,
         @NotNull EventStatus status,
-        @NotNull EventType eventType,
+        @NotNull EventTypeDto eventType,
         @Length(min = 1, max =255)
         String description,
-        List<EventPlayer> eventPlayers,
-        List<EventTeam> eventTeams,
-        Livestream livestream,
-        List<Score> scores,
-        @NotNull Venue venue
+        List<EventPlayerDto> eventPlayers,
+        List<EventTeamDto> eventTeams,
+        LivestreamDto livestream,
+        List<ScoreDto> scores,
+        @NotNull VenueDto venue
 ) {}
