@@ -19,14 +19,19 @@ public class EventType {
     @ManyToOne
     private CompetitionType competitionType;
 
+    @ManyToOne
+    private EventCategory eventCategory;
+
     public EventType() {}
 
     public EventType(Long id,
                      String name,
-                     CompetitionType competitionType) {
+                     CompetitionType competitionType,
+                     EventCategory eventCategory) {
         this.id = id;
         this.name = name;
         this.competitionType = competitionType;
+        this.eventCategory = eventCategory;
     }
 
     public Long getId() {
@@ -55,5 +60,13 @@ public class EventType {
 
     public void setCompetitionType(CompetitionType competitionType) {
         this.competitionType = competitionType;
+    }
+
+    public EventCategory getEventCategory() {
+        return eventCategory;
+    }
+
+    public void setEventCategory(EventCategory eventCategory) {
+        this.eventCategory = eventCategory;
     }
 }

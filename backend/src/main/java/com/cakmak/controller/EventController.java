@@ -31,8 +31,8 @@ public class EventController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Void> create (@PathVariable String id) {
-        eventService.create(id);
+    public ResponseEntity<Void> create (@RequestBody EventDto eventDto) {
+        eventService.create(eventDto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 

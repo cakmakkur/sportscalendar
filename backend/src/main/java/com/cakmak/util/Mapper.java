@@ -1,7 +1,8 @@
 package com.cakmak.util;
 
 import com.cakmak.dtos.EventDto;
-import com.cakmak.model.Event;
+import com.cakmak.model.*;
+
 
 public class Mapper {
 
@@ -10,6 +11,7 @@ public class Mapper {
                 e.getId(),
                 e.getDate(),
                 e.getCreatedAt(),
+                e.getEventType().getEventCategory(),
                 e.getStatus(),
                 e.getEventType(),
                 e.getDescription(),
@@ -25,7 +27,6 @@ public class Mapper {
         Event event = new Event();
 
         event.setDate(dto.date());
-        event.setCreatedAt(dto.createdAt());
         event.setStatus(dto.status());
         event.setEventType(dto.eventType());
         event.setDescription(dto.description());

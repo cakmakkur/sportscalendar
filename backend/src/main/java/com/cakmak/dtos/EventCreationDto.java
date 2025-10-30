@@ -7,11 +7,8 @@ import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
 import java.util.List;
 
-public record EventDto (
-        String id,
+public record EventCreationDto (
         @NotNull OffsetDateTime date,
-        OffsetDateTime createdAt,
-        EventCategory category,
         @NotNull EventStatus status,
         @NotNull EventType eventType,
         String description,
