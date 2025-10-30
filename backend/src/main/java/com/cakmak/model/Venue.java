@@ -1,9 +1,8 @@
 package com.cakmak.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -11,4 +10,7 @@ import java.util.UUID;
 public class Venue {
     @Id
     private String id = UUID.randomUUID().toString();
+
+    @OneToMany(mappedBy = "venue", fetch = FetchType.LAZY)
+    private List<Event> events;
 }

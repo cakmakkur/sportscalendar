@@ -1,8 +1,7 @@
 package com.cakmak.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.sun.tools.javac.util.List;
+import jakarta.persistence.*;
 
 import java.util.UUID;
 
@@ -11,4 +10,14 @@ import java.util.UUID;
 public class Player {
     @Id
     private String id = UUID.randomUUID().toString();
+
+    private String firstname;
+
+    private String lastname;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Country country;
+
+    @OneToMany(mappedBy = "player")
+    private List<EventPlayer> eventPlayers;
 }
