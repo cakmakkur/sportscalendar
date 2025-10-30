@@ -102,16 +102,16 @@ public class Mapper {
 
     public static EventDto toEventDto (Event e) {
 
-        List<EventPlayerDto> eventPlayerDtos = new ArrayList<>();
-        List<EventTeamDto> eventTeamDtos = new ArrayList<>();
+        List<String> playerIds = new ArrayList<>();
+        List<String> teamIds = new ArrayList<>();
         List<ScoreDto> scoreDtos = new ArrayList<>();
 
         for(EventPlayer ep : e.getEventPlayers()) {
-            eventPlayerDtos.add(toEventPlayerDto(ep));
+            playerIds.add(ep.getEvent().getId());
         }
 
         for(EventTeam et : e.getEventTeams()) {
-            eventTeamDtos.add(toEventTeamDto(et));
+            teamIds.add(et.getTeam().getId());
         }
 
         for(Score s : e.getScores()) {
@@ -127,8 +127,8 @@ public class Mapper {
                 EventStatus.fromString(e.getStatus().toString()),
                 toEventTypeDto(e.getEventType()),
                 e.getDescription(),
-                eventPlayerDtos,
-                eventTeamDtos,
+                playerIds,
+                teamIds,
                 toLivestreamDto(e.getLivestream()),
                 scoreDtos,
                 toVenueDto(e.getVenue())

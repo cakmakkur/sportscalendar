@@ -22,22 +22,13 @@ public class Venue {
 
     public Venue() {}
 
-    public Venue(List<Event> events, Country countries, String name) {
-        this.events = events;
+    public Venue(Country countries, String name) {
         this.country = countries;
         this.name = name;
     }
 
     public String getId() {
         return id;
-    }
-
-    public List<Event> getEvents() {
-        return events;
-    }
-
-    public void setEvents(List<Event> events) {
-        this.events = events;
     }
 
     public Country getCountry() {
