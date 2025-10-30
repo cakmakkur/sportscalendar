@@ -1,6 +1,7 @@
 package com.cakmak.model;
 
 import com.cakmak.enums.EventStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -21,6 +22,7 @@ public class Event {
     @CreationTimestamp
     private OffsetDateTime createdAt;
 
+    @Enumerated(EnumType.STRING)
     private EventStatus status;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -30,6 +32,7 @@ public class Event {
     private String description;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "venue")
     private Venue venue;
 
     @OneToMany(mappedBy = "event", fetch = FetchType.EAGER)

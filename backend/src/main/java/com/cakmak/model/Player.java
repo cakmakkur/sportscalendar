@@ -16,6 +16,7 @@ public class Player {
     private String lastname;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "country")
     private Country country;
 
     @OneToMany(mappedBy = "player")

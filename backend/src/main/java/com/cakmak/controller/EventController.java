@@ -25,7 +25,7 @@ public class EventController {
     }
 
     @GetMapping("/get-all")
-    public ResponseEntity<List<EventDto>> getAll (@PathVariable String id) {
+    public ResponseEntity<List<EventDto>> getAll () {
         List<EventDto> dtos = eventService.getAll();
         return ResponseEntity.ok(dtos);
     }

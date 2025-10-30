@@ -15,6 +15,7 @@ public class Venue {
     private List<Event> events;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "country")
     private Country country;
 
     public Venue() {}

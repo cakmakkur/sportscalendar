@@ -1,5 +1,6 @@
 package com.cakmak.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -12,15 +13,19 @@ public class Team {
     private String id = UUID.randomUUID().toString();
 
     @OneToMany(mappedBy = "team", fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<TeamPlayer> teamPlayers;
 
     @OneToMany(mappedBy = "team", fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<EventTeam> eventTeams;
 
     @OneToMany(mappedBy = "team")
+    @JsonIgnore
     private List<Score> scores;
 
     @ManyToOne
+    @JoinColumn(name = "country")
     private Country country;
 
     public Team() {}

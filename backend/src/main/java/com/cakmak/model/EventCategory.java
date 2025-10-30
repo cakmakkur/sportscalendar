@@ -2,6 +2,8 @@ package com.cakmak.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "event_categories")
 public class EventCategory {
@@ -12,6 +14,9 @@ public class EventCategory {
     private String name;
 
     private String description;
+
+    @OneToMany(mappedBy = "eventCategory", fetch = FetchType.LAZY)
+    private List<EventType> eventTypes;
 
     public EventCategory() {}
 

@@ -17,9 +17,11 @@ public class EventType {
     private List<Event> events;
 
     @ManyToOne
+    @JoinColumn(name = "country")
     private CompetitionType competitionType;
 
     @ManyToOne
+    @JoinColumn(name = "event_category")
     private EventCategory eventCategory;
 
     public EventType() {}

@@ -1,6 +1,7 @@
 package com.cakmak.util;
 
 import com.cakmak.dtos.EventDto;
+import com.cakmak.enums.EventStatus;
 import com.cakmak.model.*;
 
 
@@ -12,7 +13,7 @@ public class Mapper {
                 e.getDate(),
                 e.getCreatedAt(),
                 e.getEventType().getEventCategory(),
-                e.getStatus(),
+                EventStatus.fromString(e.getStatus().toString()),
                 e.getEventType(),
                 e.getDescription(),
                 e.getEventPlayers(),
@@ -23,19 +24,4 @@ public class Mapper {
         );
     }
 
-    public static Event toEvent (EventDto dto) {
-        Event event = new Event();
-
-        event.setDate(dto.date());
-        event.setStatus(dto.status());
-        event.setEventType(dto.eventType());
-        event.setDescription(dto.description());
-        event.setEventPlayers(dto.eventPlayers());
-        event.setEventTeams(dto.eventTeams());
-        event.setLivestream(dto.livestream());
-        event.setScores(dto.scores());
-        event.setVenue(dto.venue());
-
-        return event;
-    }
 }

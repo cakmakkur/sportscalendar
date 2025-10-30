@@ -21,9 +21,11 @@ public class Score {
     private OffsetDateTime scoredAt;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "player")
     private Player player;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "team")
     private Team team;
 
     public Score() {}

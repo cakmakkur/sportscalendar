@@ -83,10 +83,10 @@ CREATE TABLE IF NOT EXISTS events (
 );
 
 CREATE TABLE IF NOT EXISTS event_player (
-    id BIGSERIAL PRIMARY KEY,
-    event TEXT,
-    player TEXT,
-    CONSTRAINT _player_id FOREIGN KEY (player) REFERENCES players(id),
+                                                  id BIGSERIAL PRIMARY KEY,
+                                                  event TEXT,
+                                                  player TEXT,
+                                                  CONSTRAINT _player_id FOREIGN KEY (player) REFERENCES players(id),
     CONSTRAINT _event_id FOREIGN KEY (event) REFERENCES events(id)
     );
 
