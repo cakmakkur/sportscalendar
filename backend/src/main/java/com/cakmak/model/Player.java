@@ -19,13 +19,13 @@ public class Player {
     @JoinColumn(name = "country")
     private Country country;
 
-    @OneToMany(mappedBy = "player")
+    @OneToMany(mappedBy = "player", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<EventPlayer> eventPlayers;
 
-    @OneToMany(mappedBy = "player", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "player", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<TeamPlayer> teamPlayers;
 
-    @OneToMany(mappedBy = "player")
+    @OneToMany(mappedBy = "player", cascade = CascadeType.ALL)
     private List<Score> scores;
 
     public Player() {}
@@ -79,6 +79,10 @@ public class Player {
 
     public List<EventPlayer> getEventPlayers() {
         return eventPlayers;
+    }
+
+    public void addEventPlayer(EventPlayer eventPlayer) {
+        this.eventPlayers.add(eventPlayer);
     }
 
     public void setEventPlayers(List<EventPlayer> eventPlayers) {

@@ -10,5 +10,5 @@ public interface PlayerRepository extends JpaRepository<Player, String> {
 
     @Query(value = "SELECT * FROM players " +
             "WHERE id = :playerId", nativeQuery = true)
-    Player getById(String playerId);
+    Player findPlayerById(String playerId);
 }

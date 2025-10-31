@@ -9,7 +9,8 @@ import java.util.UUID;
 public class Livestream {
 
     @Id
-    private String id = UUID.randomUUID().toString();
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
 
     private String url;
 

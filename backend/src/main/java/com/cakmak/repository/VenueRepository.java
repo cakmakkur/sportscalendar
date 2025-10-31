@@ -10,5 +10,5 @@ public interface VenueRepository extends JpaRepository<Venue, String> {
 
     @Query(value = "SELECT * FROM venues " +
             "WHERE id = :id", nativeQuery = true)
-    Venue getById(String id);
+    Venue findVenueById(String id);
 }

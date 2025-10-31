@@ -18,21 +18,18 @@ public class EventService {
     private final EventTypeRepository eventTypeRepository;
     private final PlayerRepository playerRepository;
     private final TeamRepository teamRepository;
-    private final LivestreamRepository livestreamRepository;
     private final VenueRepository venueRepository;
 
     public EventService(EventRepository eventRepository,
                         EventTypeRepository eventTypeRepository,
                         PlayerRepository playerRepository,
                         TeamRepository teamRepository,
-                        LivestreamRepository livestreamRepository,
                         VenueRepository venueRepository) {
 
         this.eventRepository = eventRepository;
         this.eventTypeRepository = eventTypeRepository;
         this.playerRepository = playerRepository;
         this.teamRepository = teamRepository;
-        this.livestreamRepository = livestreamRepository;
         this.venueRepository = venueRepository;
     }
 
@@ -73,44 +70,50 @@ public class EventService {
 
         List<EventPlayer> eventPlayers = new ArrayList<>();
         for(String pid : eventDto.playerIds()) {
+            Player p = playerRepository.findPlayerById(pid);
+
             EventPlayer eventPlayer = new EventPlayer();
             eventPlayer.setEvent(event);
-            eventPlayer.setPlayer(playerRepository.getById(pid));
+            eventPlayer.setPlayer(p);
             eventPlayers.add(eventPlayer);
+            p.addEventPlayer(eventPlayer);
         }
         event.setEventPlayers(eventPlayers);
 
         List<EventTeam> eventTeams = new ArrayList<>();
         for(String teamId : eventDto.teamIds()) {
+            Team t = teamRepository.findTeamById(teamId);
+
             EventTeam eventTeam = new EventTeam();
             eventTeam.setEvent(event);
-            eventTeam.setTeam(teamRepository.getById(teamId));
+            eventTeam.setTeam(teamRepository.findTeamById(teamId));
             eventTeams.add(eventTeam);
+            t.addEventTeam(eventTeam);
         }
         event.setEventTeams(eventTeams);
 
-        Livestream livestream = new Livestream();
-        if (event.getLivestream() != null) {
+        if (eventDto.livestream() != null) {
+            Livestream livestream = new Livestream();
             livestream.setEvent(event);
             livestream.setMembershipRequired(eventDto.livestream().membershipRequired());
             livestream.setPrice(eventDto.livestream().price());
             livestream.setUrl(eventDto.livestream().url());
-            livestreamRepository.save(livestream);
+            event.setLivestream(livestream);
         }
-        event.setLivestream(livestream);
 
         List<Score> scores = new ArrayList<>();
         for(ScoreDto s : eventDto.scores()) {
             Score score = new Score();
             score.setEvent(event);
             score.setScore(s.score());
-            score.setPlayer(playerRepository.getById(s.playerId()));
-            score.setTeam(teamRepository.getById(s.teamId()));
+            score.setPlayer(playerRepository.findPlayerById(s.playerId()));
+            score.setTeam(teamRepository.findTeamById(s.teamId()));
             scores.add(score);
         }
         event.setScores(scores);
 
-        Venue venue = venueRepository.getById(eventDto.venue().id());
+        Venue venue = venueRepository.findVenueById(eventDto.venue().id());
+        venue.addEvent(event);
         event.setVenue(venue);
 
         eventRepository.save(event);

@@ -35,16 +35,16 @@ public class Event {
     @JoinColumn(name = "venue")
     private Venue venue;
 
-    @OneToMany(mappedBy = "event", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "event", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Score> scores;
 
-    @OneToOne(mappedBy = "event")
+    @OneToOne(mappedBy = "event", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Livestream livestream;
 
-    @OneToMany(mappedBy = "event", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "event", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<EventPlayer> eventPlayers;
 
-    @OneToMany(mappedBy = "event", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "event", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<EventTeam> eventTeams;
 
     public Event() {}
@@ -146,6 +146,10 @@ public class Event {
 
     public void setEventPlayers(List<EventPlayer> eventPlayers) {
         this.eventPlayers = eventPlayers;
+    }
+
+    public void addEventPlayer(EventPlayer eventPlayer) {
+        this.eventPlayers.add(eventPlayer);
     }
 
     public List<EventTeam> getEventTeams() {

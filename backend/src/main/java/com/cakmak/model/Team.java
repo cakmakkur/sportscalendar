@@ -11,13 +11,13 @@ public class Team {
     @Id
     private String id = UUID.randomUUID().toString();
 
-    @OneToMany(mappedBy = "team", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "team", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<TeamPlayer> teamPlayers;
 
-    @OneToMany(mappedBy = "team", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "team", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<EventTeam> eventTeams;
 
-    @OneToMany(mappedBy = "team")
+    @OneToMany(mappedBy = "team", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Score> scores;
 
     private String name;
@@ -58,6 +58,10 @@ public class Team {
 
     public void setEventTeams(List<EventTeam> eventTeams) {
         this.eventTeams = eventTeams;
+    }
+
+    public void addEventTeam(EventTeam eventTeam) {
+        this.eventTeams.add(eventTeam);
     }
 
     public List<Score> getScores() {

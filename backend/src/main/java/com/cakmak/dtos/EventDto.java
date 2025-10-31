@@ -1,7 +1,6 @@
 package com.cakmak.dtos;
 
 import com.cakmak.enums.EventStatus;
-import com.cakmak.model.*;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
