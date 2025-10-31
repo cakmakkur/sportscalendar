@@ -2,7 +2,10 @@ import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <menu className="navbar-main-div" style={{ padding: "3vh 0px" }}>
+    <menu
+      className="navbar-main-div"
+      style={{ padding: "3vh 0px", height: "10vh" }}
+    >
       <ul
         style={{
           display: "flex",
