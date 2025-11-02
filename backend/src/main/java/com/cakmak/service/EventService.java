@@ -1,9 +1,6 @@
 package com.cakmak.service;
 
-import com.cakmak.dtos.EventDto;
-import com.cakmak.dtos.EventTypeDto;
-import com.cakmak.dtos.ScoreDto;
-import com.cakmak.dtos.VenueDto;
+import com.cakmak.dtos.*;
 import com.cakmak.model.*;
 import com.cakmak.repository.*;
 import com.cakmak.util.Mapper;
@@ -102,8 +99,8 @@ public class EventService {
         event.setDescription(eventDto.description());
 
         List<EventPlayer> eventPlayers = new ArrayList<>();
-        for(String pid : eventDto.playerIds()) {
-            Player p = playerRepository.findPlayerById(pid);
+        for(PlayerDto dto : eventDto.players()) {
+            Player p = playerRepository.findPlayerById(dto.id());
 
             EventPlayer eventPlayer = new EventPlayer();
             eventPlayer.setEvent(event);
@@ -114,12 +111,12 @@ public class EventService {
         event.setEventPlayers(eventPlayers);
 
         List<EventTeam> eventTeams = new ArrayList<>();
-        for(String teamId : eventDto.teamIds()) {
-            Team t = teamRepository.findTeamById(teamId);
+        for(TeamDto dto : eventDto.teams()) {
+            Team t = teamRepository.findTeamById(dto.id());
 
             EventTeam eventTeam = new EventTeam();
             eventTeam.setEvent(event);
-            eventTeam.setTeam(teamRepository.findTeamById(teamId));
+            eventTeam.setTeam(teamRepository.findTeamById(dto.id()));
             eventTeams.add(eventTeam);
             t.addEventTeam(eventTeam);
         }

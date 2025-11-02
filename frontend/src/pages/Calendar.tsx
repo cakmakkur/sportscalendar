@@ -7,8 +7,8 @@ import EventCreator from "../components/EventCreator";
 type DisplayMode = "show" | "add";
 
 export default function Calendar() {
-  const [displayMode, setDisplayMode] = useState<DisplayMode>("add");
-  const [currentDate, setCurrentDate] = useState(new Date());
+  const [displayMode, setDisplayMode] = useState<DisplayMode>("show");
+  const [currentDate, setCurrentDate] = useState(new Date("2025-08-30"));
 
   const onDateChange = (d: Date) => {
     setCurrentDate(d);

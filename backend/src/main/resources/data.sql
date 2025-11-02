@@ -527,6 +527,278 @@ INSERT INTO events (id, date, created_at, status, event_type, description, venue
       ('EVENT099', '2025-02-08 14:35:00+00', '2025-01-20 08:15:00+00', 'FINISHED', 5, 'Baseball World Series Game 5', 'VENUE009'),
       ('EVENT100', '2025-03-17 16:45:00+00', '2025-02-15 09:15:00+00', 'FINISHED', 20, 'High Jump Diamond League Final', 'VENUE003');
 
+-- Fill 2025-01-10 (already has some events, add to reach 15)
+INSERT INTO events (id, date, created_at, status, event_type, description, venue) VALUES
+                                                                                      ('EVENT101', '2025-01-10 16:00:00+00', '2024-12-01 09:10:00+00', 'FINISHED', 7, 'Volleyball: Evening Match', 'VENUE007'),
+                                                                                      ('EVENT102', '2025-01-10 16:45:00+00', '2024-12-01 09:15:00+00', 'FINISHED', 8, 'Rugby: Local Cup', 'VENUE008'),
+                                                                                      ('EVENT103', '2025-01-10 17:30:00+00', '2024-12-01 09:20:00+00', 'FINISHED', 9, 'Handball: Semi-Finals', 'VENUE009'),
+                                                                                      ('EVENT104', '2025-01-10 18:15:00+00', '2024-12-01 09:25:00+00', 'FINISHED', 10, 'Table Tennis: Open Match', 'VENUE010'),
+                                                                                      ('EVENT105', '2025-01-10 19:00:00+00', '2024-12-01 09:30:00+00', 'FINISHED', 11, 'Boxing: Night Fight', 'VENUE011');
+
+-- Fill 2025-01-15 (NBA event exists, add more to reach 15)
+INSERT INTO events (id, date, created_at, status, event_type, description, venue) VALUES
+                                                                                      ('EVENT106', '2025-01-15 17:00:00+00', '2024-12-05 10:10:00+00', 'FINISHED', 12, 'Basketball: Evening Game', 'VENUE001'),
+                                                                                      ('EVENT107', '2025-01-15 18:30:00+00', '2024-12-05 10:15:00+00', 'FINISHED', 13, 'Basketball: Local League', 'VENUE002'),
+                                                                                      ('EVENT108', '2025-01-15 19:15:00+00', '2024-12-05 10:20:00+00', 'FINISHED', 14, 'Basketball: Friendly Match', 'VENUE003'),
+                                                                                      ('EVENT109', '2025-01-15 20:00:00+00', '2024-12-05 10:25:00+00', 'FINISHED', 15, 'Basketball: Night Session', 'VENUE004'),
+                                                                                      ('EVENT110', '2025-01-15 20:45:00+00', '2024-12-05 10:30:00+00', 'FINISHED', 16, 'Basketball: Championship', 'VENUE005'),
+                                                                                      ('EVENT111', '2025-01-15 21:30:00+00', '2024-12-05 10:35:00+00', 'FINISHED', 17, 'Basketball: Local Game', 'VENUE006'),
+                                                                                      ('EVENT112', '2025-01-15 22:15:00+00', '2024-12-05 10:40:00+00', 'FINISHED', 18, 'Basketball: Open League', 'VENUE007'),
+                                                                                      ('EVENT113', '2025-01-15 23:00:00+00', '2024-12-05 10:45:00+00', 'FINISHED', 19, 'Basketball: Night Finals', 'VENUE008'),
+                                                                                      ('EVENT114', '2025-01-15 23:45:00+00', '2024-12-05 10:50:00+00', 'FINISHED', 20, 'Basketball: Evening Match', 'VENUE009'),
+                                                                                      ('EVENT115', '2025-01-15 23:59:00+00', '2024-12-05 10:55:00+00', 'FINISHED', 21, 'Basketball: Final Game', 'VENUE010');
+
+-- Fill 2025-01-22 (Volleyball final exists, add more)
+INSERT INTO events (id, date, created_at, status, event_type, description, venue) VALUES
+      ('EVENT116', '2025-01-22 17:00:00+00', '2024-12-10 11:10:00+00', 'FINISHED', 22, 'Volleyball: Semi-Finals', 'VENUE006'),
+      ('EVENT117', '2025-01-22 18:00:00+00', '2024-12-10 11:15:00+00', 'FINISHED', 23, 'Volleyball: Evening Match', 'VENUE007'),
+      ('EVENT118', '2025-01-22 19:00:00+00', '2024-12-10 11:20:00+00', 'FINISHED', 24, 'Volleyball: Local League', 'VENUE008'),
+      ('EVENT119', '2025-01-22 20:00:00+00', '2024-12-10 11:25:00+00', 'FINISHED', 25, 'Volleyball: Friendly Match', 'VENUE009'),
+      ('EVENT120', '2025-01-22 21:00:00+00', '2024-12-10 11:30:00+00', 'FINISHED', 26, 'Volleyball: Night Session', 'VENUE010'),
+      ('EVENT121', '2025-01-22 22:00:00+00', '2024-12-10 11:35:00+00', 'FINISHED', 27, 'Volleyball: Championship', 'VENUE011'),
+      ('EVENT122', '2025-01-22 22:30:00+00', '2024-12-10 11:40:00+00', 'FINISHED', 28, 'Volleyball: Open League', 'VENUE012'),
+      ('EVENT123', '2025-01-22 23:00:00+00', '2024-12-10 11:45:00+00', 'FINISHED', 29, 'Volleyball: Night Finals', 'VENUE013'),
+      ('EVENT124', '2025-01-22 23:30:00+00', '2024-12-10 11:50:00+00', 'FINISHED', 30, 'Volleyball: Evening Match', 'VENUE014'),
+      ('EVENT125', '2025-01-22 23:59:00+00', '2024-12-10 11:55:00+00', 'FINISHED', 1, 'Volleyball: Final Game', 'VENUE015');
+
+-- Fill 2025-02-05 (MLB Spring Training Opening Game exists)
+INSERT INTO events (id, date, created_at, status, event_type, description, venue) VALUES
+                                                                                      ('EVENT126', '2025-02-05 14:00:00+00', '2024-12-20 13:10:00+00', 'FINISHED', 2, 'Baseball: Afternoon Game', 'VENUE010'),
+                                                                                      ('EVENT127', '2025-02-05 15:00:00+00', '2024-12-20 13:15:00+00', 'FINISHED', 3, 'Baseball: Local League', 'VENUE011'),
+                                                                                      ('EVENT128', '2025-02-05 16:00:00+00', '2024-12-20 13:20:00+00', 'FINISHED', 4, 'Baseball: Friendly Match', 'VENUE012'),
+                                                                                      ('EVENT129', '2025-02-05 17:00:00+00', '2024-12-20 13:25:00+00', 'FINISHED', 5, 'Baseball: Evening Game', 'VENUE013'),
+                                                                                      ('EVENT130', '2025-02-05 18:00:00+00', '2024-12-20 13:30:00+00', 'FINISHED', 6, 'Baseball: Night Session', 'VENUE014'),
+                                                                                      ('EVENT131', '2025-02-05 18:45:00+00', '2024-12-20 13:35:00+00', 'FINISHED', 7, 'Baseball: Championship', 'VENUE015'),
+                                                                                      ('EVENT132', '2025-02-05 19:30:00+00', '2024-12-20 13:40:00+00', 'FINISHED', 8, 'Baseball: Open League', 'VENUE001'),
+                                                                                      ('EVENT133', '2025-02-05 20:15:00+00', '2024-12-20 13:45:00+00', 'FINISHED', 9, 'Baseball: Night Finals', 'VENUE002'),
+                                                                                      ('EVENT134', '2025-02-05 21:00:00+00', '2024-12-20 13:50:00+00', 'FINISHED', 10, 'Baseball: Evening Match', 'VENUE003'),
+                                                                                      ('EVENT135', '2025-02-05 21:45:00+00', '2024-12-20 13:55:00+00', 'FINISHED', 11, 'Baseball: Final Game', 'VENUE004');
+
+-- Fill 2025-02-12 (Cricket World Cup Group Stage exists)
+INSERT INTO events (id, date, created_at, status, event_type, description, venue) VALUES
+                                                                                      ('EVENT136', '2025-02-12 11:00:00+00', '2024-12-25 14:10:00+00', 'FINISHED', 12, 'Cricket: Group Stage Match 1', 'VENUE001'),
+                                                                                      ('EVENT137', '2025-02-12 12:30:00+00', '2024-12-25 14:15:00+00', 'FINISHED', 13, 'Cricket: Group Stage Match 2', 'VENUE002'),
+                                                                                      ('EVENT138', '2025-02-12 14:00:00+00', '2024-12-25 14:20:00+00', 'FINISHED', 14, 'Cricket: Local Match', 'VENUE003'),
+                                                                                      ('EVENT139', '2025-02-12 15:30:00+00', '2024-12-25 14:25:00+00', 'FINISHED', 15, 'Cricket: Friendly Match', 'VENUE004'),
+                                                                                      ('EVENT140', '2025-02-12 17:00:00+00', '2024-12-25 14:30:00+00', 'FINISHED', 16, 'Cricket: Evening Game', 'VENUE005'),
+                                                                                      ('EVENT141', '2025-02-12 18:30:00+00', '2024-12-25 14:35:00+00', 'FINISHED', 17, 'Cricket: Night Session', 'VENUE006'),
+                                                                                      ('EVENT142', '2025-02-12 20:00:00+00', '2024-12-25 14:40:00+00', 'FINISHED', 18, 'Cricket: Championship', 'VENUE007'),
+                                                                                      ('EVENT143', '2025-02-12 21:30:00+00', '2024-12-25 14:45:00+00', 'FINISHED', 19, 'Cricket: Open League', 'VENUE008'),
+                                                                                      ('EVENT144', '2025-02-12 22:15:00+00', '2024-12-25 14:50:00+00', 'FINISHED', 20, 'Cricket: Night Finals', 'VENUE009'),
+                                                                                      ('EVENT145', '2025-02-12 23:00:00+00', '2024-12-25 14:55:00+00', 'FINISHED', 21, 'Cricket: Final Game', 'VENUE010');
+
+-- Fill 2025-02-18 (PGA Tour Championship Final Round exists)
+INSERT INTO events (id, date, created_at, status, event_type, description, venue) VALUES
+                                                                                      ('EVENT146', '2025-02-18 12:00:00+00', '2024-12-30 15:10:00+00', 'FINISHED', 22, 'Golf: Morning Round', 'VENUE003'),
+                                                                                      ('EVENT147', '2025-02-18 13:30:00+00', '2024-12-30 15:15:00+00', 'FINISHED', 23, 'Golf: Midday Round', 'VENUE004'),
+                                                                                      ('EVENT148', '2025-02-18 15:00:00+00', '2024-12-30 15:20:00+00', 'FINISHED', 24, 'Golf: Afternoon Round', 'VENUE005'),
+                                                                                      ('EVENT149', '2025-02-18 16:30:00+00', '2024-12-30 15:25:00+00', 'FINISHED', 25, 'Golf: Evening Round', 'VENUE006'),
+                                                                                      ('EVENT150', '2025-02-18 18:00:00+00', '2024-12-30 15:30:00+00', 'FINISHED', 26, 'Golf: Night Round', 'VENUE007'),
+                                                                                      ('EVENT151', '2025-02-18 19:30:00+00', '2024-12-30 15:35:00+00', 'FINISHED', 27, 'Golf: Championship', 'VENUE008'),
+                                                                                      ('EVENT152', '2025-02-18 21:00:00+00', '2024-12-30 15:40:00+00', 'FINISHED', 28, 'Golf: Open League', 'VENUE009'),
+                                                                                      ('EVENT153', '2025-02-18 22:30:00+00', '2024-12-30 15:45:00+00', 'FINISHED', 29, 'Golf: Night Finals', 'VENUE010'),
+                                                                                      ('EVENT154', '2025-02-18 23:00:00+00', '2024-12-30 15:50:00+00', 'FINISHED', 30, 'Golf: Evening Match', 'VENUE011'),
+                                                                                      ('EVENT155', '2025-02-18 23:30:00+00', '2024-12-30 15:55:00+00', 'FINISHED', 1, 'Golf: Final Round', 'VENUE012');
+
+
+-- August 25, 2025 (15 events)
+INSERT INTO events (id, date, created_at, status, event_type, description, venue) VALUES
+                                                                                      ('EVENT156', '2025-08-25 10:00:00+00', '2025-07-20 08:00:00+00', 'FINISHED', 3, 'Beach Volleyball Championship Finals', 'VENUE007'),
+                                                                                      ('EVENT157', '2025-08-25 11:30:00+00', '2025-07-20 09:00:00+00', 'FINISHED', 7, 'Golf Pro-Am Tournament', 'VENUE003'),
+                                                                                      ('EVENT158', '2025-08-25 13:15:00+00', '2025-07-20 10:00:00+00', 'FINISHED', 12, 'Freestyle Wrestling National Finals', 'VENUE005'),
+                                                                                      ('EVENT159', '2025-08-25 14:45:00+00', '2025-07-20 11:00:00+00', 'FINISHED', 18, '200m Sprint National Qualifiers', 'VENUE003'),
+                                                                                      ('EVENT160', '2025-08-25 16:20:00+00', '2025-07-20 12:00:00+00', 'FINISHED', 22, 'Discus Throw Regional Championship', 'VENUE013'),
+                                                                                      ('EVENT161', '2025-08-25 18:00:00+00', '2025-07-20 13:00:00+00', 'FINISHED', 27, 'Water Polo National League', 'VENUE014'),
+                                                                                      ('EVENT162', '2025-08-25 19:30:00+00', '2025-07-20 14:00:00+00', 'FINISHED', 33, 'Slalom Skiing Summer Cup', 'VENUE004'),
+                                                                                      ('EVENT163', '2025-08-25 20:15:00+00', '2025-07-20 15:00:00+00', 'FINISHED', 38, 'Skeleton World Cup Training', 'VENUE007'),
+                                                                                      ('EVENT164', '2025-08-25 21:45:00+00', '2025-07-20 16:00:00+00', 'FINISHED', 44, 'NASCAR Practice Session', 'VENUE003'),
+                                                                                      ('EVENT165', '2025-08-25 22:30:00+00', '2025-07-20 17:00:00+00', 'FINISHED', 49, 'Snooker Masters Quarter Finals', 'VENUE005'),
+                                                                                      ('EVENT166', '2025-08-25 23:15:00+00', '2025-07-21 08:00:00+00', 'FINISHED', 2, 'Basketball Summer League Finals', 'VENUE001'),
+                                                                                      ('EVENT167', '2025-08-25 09:00:00+00', '2025-07-21 09:00:00+00', 'FINISHED', 8, 'Rugby Sevens Tournament', 'VENUE010'),
+                                                                                      ('EVENT168', '2025-08-25 12:00:00+00', '2025-07-21 10:00:00+00', 'FINISHED', 15, 'Taekwondo Demonstration Match', 'VENUE012'),
+                                                                                      ('EVENT169', '2025-08-25 15:30:00+00', '2025-07-21 11:00:00+00', 'FINISHED', 21, 'Triple Jump National Finals', 'VENUE009'),
+                                                                                      ('EVENT170', '2025-08-25 17:00:00+00', '2025-07-21 12:00:00+00', 'FINISHED', 29, 'Sailing Regatta Qualifiers', 'VENUE001');
+
+-- August 26, 2025 (15 events)
+INSERT INTO events (id, date, created_at, status, event_type, description, venue) VALUES
+                                                                                      ('EVENT171', '2025-08-26 10:30:00+00', '2025-07-22 08:00:00+00', 'FINISHED', 4, 'Tennis Hard Court Championship', 'VENUE001'),
+                                                                                      ('EVENT172', '2025-08-26 12:00:00+00', '2025-07-22 09:00:00+00', 'FINISHED', 9, 'Handball Youth Tournament', 'VENUE007'),
+                                                                                      ('EVENT173', '2025-08-26 13:45:00+00', '2025-07-22 10:00:00+00', 'FINISHED', 14, 'Karate Kata World Cup', 'VENUE006'),
+                                                                                      ('EVENT174', '2025-08-26 15:20:00+00', '2025-07-22 11:00:00+00', 'FINISHED', 19, 'Half Marathon City Run', 'VENUE007'),
+                                                                                      ('EVENT175', '2025-08-26 17:00:00+00', '2025-07-22 12:00:00+00', 'FINISHED', 24, 'Pentathlon National Championship', 'VENUE002'),
+                                                                                      ('EVENT176', '2025-08-26 18:30:00+00', '2025-07-22 13:00:00+00', 'FINISHED', 30, 'Rowing Sprint Finals', 'VENUE010'),
+                                                                                      ('EVENT177', '2025-08-26 20:15:00+00', '2025-07-22 14:00:00+00', 'FINISHED', 35, 'Ice Hockey Pre-season Game', 'VENUE002'),
+                                                                                      ('EVENT178', '2025-08-26 21:45:00+00', '2025-07-22 15:00:00+00', 'FINISHED', 41, 'MotoGP Testing Session', 'VENUE006'),
+                                                                                      ('EVENT179', '2025-08-26 22:30:00+00', '2025-07-22 16:00:00+00', 'FINISHED', 46, 'Archery Indoor Championship', 'VENUE010'),
+                                                                                      ('EVENT180', '2025-08-26 23:15:00+00', '2025-07-23 08:00:00+00', 'FINISHED', 51, 'Paragliding Acrobatics Show', 'VENUE015'),
+                                                                                      ('EVENT181', '2025-08-26 09:15:00+00', '2025-07-23 09:00:00+00', 'FINISHED', 5, 'Baseball Minor League Finals', 'VENUE009'),
+                                                                                      ('EVENT182', '2025-08-26 11:00:00+00', '2025-07-23 10:00:00+00', 'FINISHED', 11, 'Boxing Amateur Tournament', 'VENUE002'),
+                                                                                      ('EVENT183', '2025-08-26 14:00:00+00', '2025-07-23 11:00:00+00', 'FINISHED', 17, 'Fencing Sabre National Cup', 'VENUE008'),
+                                                                                      ('EVENT184', '2025-08-26 16:30:00+00', '2025-07-23 12:00:00+00', 'FINISHED', 23, 'Hammer Throw Regional Finals', 'VENUE004'),
+                                                                                      ('EVENT185', '2025-08-26 19:00:00+00', '2025-07-23 13:00:00+00', 'FINISHED', 28, 'Surfing Junior Championship', 'VENUE008');
+
+-- August 27, 2025 (15 events)
+INSERT INTO events (id, date, created_at, status, event_type, description, venue) VALUES
+                                                                                      ('EVENT186', '2025-08-27 10:00:00+00', '2025-07-24 08:00:00+00', 'FINISHED', 6, 'Cricket T20 League Finals', 'VENUE008'),
+                                                                                      ('EVENT187', '2025-08-27 11:45:00+00', '2025-07-24 09:00:00+00', 'FINISHED', 13, 'Judo National Championship', 'VENUE011'),
+                                                                                      ('EVENT188', '2025-08-27 13:30:00+00', '2025-07-24 10:00:00+00', 'FINISHED', 20, 'Pole Vault Diamond League', 'VENUE005'),
+                                                                                      ('EVENT189', '2025-08-27 15:15:00+00', '2025-07-24 11:00:00+00', 'FINISHED', 26, 'Diving Springboard Finals', 'VENUE007'),
+                                                                                      ('EVENT190', '2025-08-27 17:00:00+00', '2025-07-24 12:00:00+00', 'FINISHED', 32, 'Windsurfing Freestyle Competition', 'VENUE015'),
+                                                                                      ('EVENT191', '2025-08-27 18:45:00+00', '2025-07-24 13:00:00+00', 'FINISHED', 37, 'Speed Skating National Trials', 'VENUE013'),
+                                                                                      ('EVENT192', '2025-08-27 20:30:00+00', '2025-07-24 14:00:00+00', 'FINISHED', 43, 'Karting Sprint Race', 'VENUE012'),
+                                                                                      ('EVENT193', '2025-08-27 22:15:00+00', '2025-07-24 15:00:00+00', 'FINISHED', 48, 'Bowling League Championship', 'VENUE009'),
+                                                                                      ('EVENT194', '2025-08-27 23:00:00+00', '2025-07-25 08:00:00+00', 'FINISHED', 53, 'Skateboarding Bowl Competition', 'VENUE005'),
+                                                                                      ('EVENT195', '2025-08-27 09:30:00+00', '2025-07-25 09:00:00+00', 'FINISHED', 1, 'Football Pre-season Friendly', 'VENUE005'),
+                                                                                      ('EVENT196', '2025-08-27 12:15:00+00', '2025-07-25 10:00:00+00', 'FINISHED', 7, 'Golf Match Play Championship', 'VENUE003'),
+                                                                                      ('EVENT197', '2025-08-27 14:45:00+00', '2025-07-25 11:00:00+00', 'FINISHED', 16, 'MMA Featherweight Bout', 'VENUE011'),
+                                                                                      ('EVENT198', '2025-08-27 16:30:00+00', '2025-07-25 12:00:00+00', 'FINISHED', 25, 'Swimming Relay Nationals', 'VENUE015'),
+                                                                                      ('EVENT199', '2025-08-27 19:15:00+00', '2025-07-25 13:00:00+00', 'FINISHED', 31, 'Canoeing Slalom World Cup', 'VENUE011'),
+                                                                                      ('EVENT200', '2025-08-27 21:00:00+00', '2025-07-25 14:00:00+00', 'FINISHED', 39, 'Curling Mixed National Finals', 'VENUE005');
+
+-- August 28, 2025 (15 events - includes existing EVENT038)
+INSERT INTO events (id, date, created_at, status, event_type, description, venue) VALUES
+                                                                                      ('EVENT201', '2025-08-28 09:00:00+00', '2025-07-26 08:00:00+00', 'FINISHED', 2, 'Basketball 3x3 World Tour', 'VENUE001'),
+                                                                                      ('EVENT202', '2025-08-28 10:45:00+00', '2025-07-26 09:00:00+00', 'FINISHED', 8, 'Rugby Union Championship', 'VENUE010'),
+                                                                                      ('EVENT203', '2025-08-28 12:30:00+00', '2025-07-26 10:00:00+00', 'FINISHED', 15, 'Taekwondo Team Championship', 'VENUE012'),
+                                                                                      ('EVENT204', '2025-08-28 14:15:00+00', '2025-07-26 11:00:00+00', 'FINISHED', 21, 'Long Jump Regional Qualifiers', 'VENUE009'),
+                                                                                      ('EVENT205', '2025-08-28 16:00:00+00', '2025-07-26 12:00:00+00', 'FINISHED', 27, 'Water Polo International Cup', 'VENUE014'),
+                                                                                      ('EVENT206', '2025-08-28 17:45:00+00', '2025-07-26 13:00:00+00', 'FINISHED', 34, 'Snowboarding Big Air Finals', 'VENUE006'),
+                                                                                      ('EVENT207', '2025-08-28 19:30:00+00', '2025-07-26 14:00:00+00', 'FINISHED', 40, 'Formula 1 Testing Session', 'VENUE001'),
+                                                                                      ('EVENT208', '2025-08-28 21:15:00+00', '2025-07-26 15:00:00+00', 'FINISHED', 45, 'Archery Field Championship', 'VENUE010'),
+                                                                                      ('EVENT209', '2025-08-28 22:45:00+00', '2025-07-27 08:00:00+00', 'FINISHED', 50, 'Rock Climbing Bouldering Cup', 'VENUE011'),
+                                                                                      ('EVENT210', '2025-08-28 11:15:00+00', '2025-07-27 09:00:00+00', 'FINISHED', 4, 'Tennis Doubles Masters', 'VENUE001'),
+                                                                                      ('EVENT211', '2025-08-28 13:00:00+00', '2025-07-27 10:00:00+00', 'FINISHED', 12, 'Wrestling Greco-Roman Nationals', 'VENUE005'),
+                                                                                      ('EVENT212', '2025-08-28 15:30:00+00', '2025-07-27 11:00:00+00', 'FINISHED', 18, 'Hurdles National Championship', 'VENUE003'),
+                                                                                      ('EVENT213', '2025-08-28 18:15:00+00', '2025-07-27 12:00:00+00', 'FINISHED', 24, 'Decathlon Regional Finals', 'VENUE002'),
+                                                                                      ('EVENT214', '2025-08-28 20:00:00+00', '2025-07-27 13:00:00+00', 'FINISHED', 33, 'Ski Jumping Summer Grand Prix', 'VENUE004'),
+                                                                                      ('EVENT215', '2025-08-28 23:30:00+00', '2025-07-27 14:00:00+00', 'FINISHED', 42, 'Rally Cross Championship', 'VENUE008');
+
+-- August 29, 2025 (15 events)
+INSERT INTO events (id, date, created_at, status, event_type, description, venue) VALUES
+                                                                                      ('EVENT216', '2025-08-29 10:00:00+00', '2025-07-28 08:00:00+00', 'FINISHED', 3, 'Volleyball Super League Finals', 'VENUE006'),
+                                                                                      ('EVENT217', '2025-08-29 11:30:00+00', '2025-07-28 09:00:00+00', 'FINISHED', 9, 'Handball Cup Quarter Finals', 'VENUE007'),
+                                                                                      ('EVENT218', '2025-08-29 13:15:00+00', '2025-07-28 10:00:00+00', 'FINISHED', 14, 'Karate Team Kumite Finals', 'VENUE006'),
+                                                                                      ('EVENT219', '2025-08-29 15:00:00+00', '2025-07-28 11:00:00+00', 'FINISHED', 20, 'High Jump Summer Meeting', 'VENUE005'),
+                                                                                      ('EVENT220', '2025-08-29 16:45:00+00', '2025-07-28 12:00:00+00', 'FINISHED', 26, 'Diving Synchronized Finals', 'VENUE007'),
+                                                                                      ('EVENT221', '2025-08-29 18:30:00+00', '2025-07-28 13:00:00+00', 'FINISHED', 32, 'Windsurfing Race Series', 'VENUE015'),
+                                                                                      ('EVENT222', '2025-08-29 20:15:00+00', '2025-07-28 14:00:00+00', 'FINISHED', 38, 'Bobsleigh Push Championship', 'VENUE007'),
+                                                                                      ('EVENT223', '2025-08-29 22:00:00+00', '2025-07-28 15:00:00+00', 'FINISHED', 44, 'NASCAR Qualifying Session', 'VENUE003'),
+                                                                                      ('EVENT224', '2025-08-29 23:30:00+00', '2025-07-29 08:00:00+00', 'FINISHED', 49, 'Snooker Six-red Championship', 'VENUE005'),
+                                                                                      ('EVENT225', '2025-08-29 09:15:00+00', '2025-07-29 09:00:00+00', 'FINISHED', 1, 'Football Community Shield', 'VENUE005'),
+                                                                                      ('EVENT226', '2025-08-29 12:00:00+00', '2025-07-29 10:00:00+00', 'FINISHED', 7, 'Golf Ryder Cup Practice', 'VENUE003'),
+                                                                                      ('EVENT227', '2025-08-29 14:30:00+00', '2025-07-29 11:00:00+00', 'FINISHED', 16, 'MMA Welterweight Contender', 'VENUE011'),
+                                                                                      ('EVENT228', '2025-08-29 17:15:00+00', '2025-07-29 12:00:00+00', 'FINISHED', 25, 'Swimming Open Water Race', 'VENUE015'),
+                                                                                      ('EVENT229', '2025-08-29 19:45:00+00', '2025-07-29 13:00:00+00', 'FINISHED', 31, 'Canoeing Marathon Nationals', 'VENUE011'),
+                                                                                      ('EVENT230', '2025-08-29 21:20:00+00', '2025-07-29 14:00:00+00', 'FINISHED', 39, 'Curling National Playoffs', 'VENUE005');
+
+-- August 30, 2025 (15 events)
+INSERT INTO events (id, date, created_at, status, event_type, description, venue) VALUES
+                                                                                      ('EVENT231', '2025-08-30 10:30:00+00', '2025-07-30 08:00:00+00', 'FINISHED', 2, 'Basketball All-Star Game', 'VENUE001'),
+                                                                                      ('EVENT232', '2025-08-30 12:15:00+00', '2025-07-30 09:00:00+00', 'FINISHED', 8, 'Rugby League Grand Final', 'VENUE010'),
+                                                                                      ('EVENT233', '2025-08-30 14:00:00+00', '2025-07-30 10:00:00+00', 'FINISHED', 15, 'Taekwondo Poomsae World Cup', 'VENUE012'),
+                                                                                      ('EVENT234', '2025-08-30 15:45:00+00', '2025-07-30 11:00:00+00', 'FINISHED', 21, 'Triple Jump Diamond League', 'VENUE009'),
+                                                                                      ('EVENT235', '2025-08-30 17:30:00+00', '2025-07-30 12:00:00+00', 'FINISHED', 27, 'Water Polo Champions League', 'VENUE014'),
+                                                                                      ('EVENT236', '2025-08-30 19:15:00+00', '2025-07-30 13:00:00+00', 'FINISHED', 34, 'Snowboarding Rail Jam', 'VENUE006'),
+                                                                                      ('EVENT237', '2025-08-30 21:00:00+00', '2025-07-30 14:00:00+00', 'FINISHED', 40, 'Formula 1 Sprint Race', 'VENUE001'),
+                                                                                      ('EVENT238', '2025-08-30 22:45:00+00', '2025-07-31 08:00:00+00', 'FINISHED', 45, 'Archery 3D Championship', 'VENUE010'),
+                                                                                      ('EVENT239', '2025-08-30 09:00:00+00', '2025-07-31 09:00:00+00', 'FINISHED', 3, 'Beach Volleyball World Tour', 'VENUE007'),
+                                                                                      ('EVENT240', '2025-08-30 11:30:00+00', '2025-07-31 10:00:00+00', 'FINISHED', 10, 'Table Tennis Team Finals', 'VENUE004'),
+                                                                                      ('EVENT241', '2025-08-30 13:45:00+00', '2025-07-31 11:00:00+00', 'FINISHED', 17, 'Fencing Foil World Cup', 'VENUE008'),
+                                                                                      ('EVENT242', '2025-08-30 16:20:00+00', '2025-07-31 12:00:00+00', 'FINISHED', 23, 'Javelin National Championship', 'VENUE004'),
+                                                                                      ('EVENT243', '2025-08-30 18:30:00+00', '2025-07-31 13:00:00+00', 'FINISHED', 29, 'Sailing Match Racing', 'VENUE001'),
+                                                                                      ('EVENT244', '2025-08-30 20:15:00+00', '2025-07-31 14:00:00+00', 'FINISHED', 36, 'Figure Skating Gala Exhibition', 'VENUE009'),
+                                                                                      ('EVENT245', '2025-08-30 23:00:00+00', '2025-08-01 08:00:00+00', 'FINISHED', 42, 'Rally Sprint Championship', 'VENUE008');
+
+-- August 31, 2025 (15 events)
+INSERT INTO events (id, date, created_at, status, event_type, description, venue) VALUES
+                                                                                      ('EVENT246', '2025-08-31 10:00:00+00', '2025-08-01 09:00:00+00', 'FINISHED', 4, 'Tennis Mixed Doubles Final', 'VENUE001'),
+                                                                                      ('EVENT247', '2025-08-31 11:45:00+00', '2025-08-01 10:00:00+00', 'FINISHED', 11, 'Boxing Lightweight Tournament', 'VENUE002'),
+                                                                                      ('EVENT248', '2025-08-31 13:30:00+00', '2025-08-01 11:00:00+00', 'FINISHED', 18, '400m National Championships', 'VENUE003'),
+                                                                                      ('EVENT249', '2025-08-31 15:15:00+00', '2025-08-01 12:00:00+00', 'FINISHED', 24, 'Heptathlon Summer Games', 'VENUE002'),
+                                                                                      ('EVENT250', '2025-08-31 17:00:00+00', '2025-08-01 13:00:00+00', 'FINISHED', 30, 'Rowing Head of the River', 'VENUE010'),
+                                                                                      ('EVENT251', '2025-08-31 18:45:00+00', '2025-08-01 14:00:00+00', 'FINISHED', 35, 'Ice Hockey Charity Match', 'VENUE002'),
+                                                                                      ('EVENT252', '2025-08-31 20:30:00+00', '2025-08-02 08:00:00+00', 'FINISHED', 41, 'MotoGP Qualifying Practice', 'VENUE006'),
+                                                                                      ('EVENT253', '2025-08-31 22:15:00+00', '2025-08-02 09:00:00+00', 'FINISHED', 46, 'Shooting Pistol Championship', 'VENUE014'),
+                                                                                      ('EVENT254', '2025-08-31 09:30:00+00', '2025-08-02 10:00:00+00', 'FINISHED', 1, 'Football Charity Shield', 'VENUE005'),
+                                                                                      ('EVENT255', '2025-08-31 12:20:00+00', '2025-08-02 11:00:00+00', 'FINISHED', 9, 'Handball All-Star Game', 'VENUE007'),
+                                                                                      ('EVENT256', '2025-08-31 14:50:00+00', '2025-08-02 12:00:00+00', 'FINISHED', 16, 'MMA Bantamweight Finals', 'VENUE011'),
+                                                                                      ('EVENT257', '2025-08-31 16:35:00+00', '2025-08-02 13:00:00+00', 'FINISHED', 22, 'Shot Put Summer Classic', 'VENUE013'),
+                                                                                      ('EVENT258', '2025-08-31 19:10:00+00', '2025-08-02 14:00:00+00', 'FINISHED', 28, 'Surfing Longboard Pro', 'VENUE008'),
+                                                                                      ('EVENT259', '2025-08-31 21:25:00+00', '2025-08-03 08:00:00+00', 'FINISHED', 33, 'Moguls Skiing Summer Cup', 'VENUE004'),
+                                                                                      ('EVENT260', '2025-08-31 23:00:00+00', '2025-08-03 09:00:00+00', 'FINISHED', 39, 'Curling Doubles National', 'VENUE005');
+
+-- September 1, 2025 (15 events)
+INSERT INTO events (id, date, created_at, status, event_type, description, venue) VALUES
+                                                                                      ('EVENT261', '2025-09-01 10:15:00+00', '2025-08-03 10:00:00+00', 'FINISHED', 5, 'Baseball Home Run Derby', 'VENUE009'),
+                                                                                      ('EVENT262', '2025-09-01 12:00:00+00', '2025-08-03 11:00:00+00', 'FINISHED', 12, 'Wrestling Freestyle Open', 'VENUE005'),
+                                                                                      ('EVENT263', '2025-09-01 13:45:00+00', '2025-08-03 12:00:00+00', 'FINISHED', 19, '10K Road Race Championship', 'VENUE007'),
+                                                                                      ('EVENT264', '2025-09-01 15:30:00+00', '2025-08-03 13:00:00+00', 'FINISHED', 25, 'Swimming Butterfly Finals', 'VENUE015'),
+                                                                                      ('EVENT265', '2025-09-01 17:15:00+00', '2025-08-03 14:00:00+00', 'FINISHED', 31, 'Canoeing Wildwater Race', 'VENUE011'),
+                                                                                      ('EVENT266', '2025-09-01 19:00:00+00', '2025-08-04 08:00:00+00', 'FINISHED', 37, 'Speed Skating Team Pursuit', 'VENUE013'),
+                                                                                      ('EVENT267', '2025-09-01 20:45:00+00', '2025-08-04 09:00:00+00', 'FINISHED', 43, 'Karting Enduro Race', 'VENUE012'),
+                                                                                      ('EVENT268', '2025-09-01 22:30:00+00', '2025-08-04 10:00:00+00', 'FINISHED', 48, 'Bowling Masters Tournament', 'VENUE009'),
+                                                                                      ('EVENT269', '2025-09-01 09:00:00+00', '2025-08-04 11:00:00+00', 'FINISHED', 2, 'Basketball Slam Dunk Contest', 'VENUE001'),
+                                                                                      ('EVENT270', '2025-09-01 11:30:00+00', '2025-08-04 12:00:00+00', 'FINISHED', 8, 'Rugby 7s World Series', 'VENUE010'),
+                                                                                      ('EVENT271', '2025-09-01 14:15:00+00', '2025-08-04 13:00:00+00', 'FINISHED', 15, 'Taekwondo Sparring Open', 'VENUE012'),
+                                                                                      ('EVENT272', '2025-09-01 16:50:00+00', '2025-08-05 08:00:00+00', 'FINISHED', 21, 'Long Jump National Finals', 'VENUE009'),
+                                                                                      ('EVENT273', '2025-09-01 18:35:00+00', '2025-08-05 09:00:00+00', 'FINISHED', 27, 'Water Polo National Cup', 'VENUE014'),
+                                                                                      ('EVENT274', '2025-09-01 20:20:00+00', '2025-08-05 10:00:00+00', 'FINISHED', 34, 'Snowboarding Boardercross', 'VENUE006'),
+                                                                                      ('EVENT275', '2025-09-01 22:05:00+00', '2025-08-05 11:00:00+00', 'FINISHED', 40, 'Formula 1 Pit Stop Challenge', 'VENUE001');
+
+-- September 2, 2025 (15 events)
+INSERT INTO events (id, date, created_at, status, event_type, description, venue) VALUES
+                                                                                      ('EVENT276', '2025-09-02 10:30:00+00', '2025-08-05 12:00:00+00', 'FINISHED', 6, 'Cricket One Day International', 'VENUE008'),
+                                                                                      ('EVENT277', '2025-09-02 12:15:00+00', '2025-08-05 13:00:00+00', 'FINISHED', 13, 'Judo Grand Prix', 'VENUE011'),
+                                                                                      ('EVENT278', '2025-09-02 14:00:00+00', '2025-08-06 08:00:00+00', 'FINISHED', 20, 'Pole Vault Summer Classic', 'VENUE005'),
+                                                                                      ('EVENT279', '2025-09-02 15:45:00+00', '2025-08-06 09:00:00+00', 'FINISHED', 26, 'Diving Platform Finals', 'VENUE007'),
+                                                                                      ('EVENT280', '2025-09-02 17:30:00+00', '2025-08-06 10:00:00+00', 'FINISHED', 32, 'Windsurfing Wave Competition', 'VENUE015'),
+                                                                                      ('EVENT281', '2025-09-02 19:15:00+00', '2025-08-06 11:00:00+00', 'FINISHED', 38, 'Bobsleigh National Trials', 'VENUE007'),
+                                                                                      ('EVENT282', '2025-09-02 21:00:00+00', '2025-08-06 12:00:00+00', 'FINISHED', 44, 'NASCAR Truck Series', 'VENUE003'),
+                                                                                      ('EVENT283', '2025-09-02 22:45:00+00', '2025-08-06 13:00:00+00', 'FINISHED', 50, 'Rock Climbing Speed Finals', 'VENUE011'),
+                                                                                      ('EVENT284', '2025-09-02 09:15:00+00', '2025-08-07 08:00:00+00', 'FINISHED', 3, 'Volleyball Nations Cup', 'VENUE006'),
+                                                                                      ('EVENT285', '2025-09-02 11:50:00+00', '2025-08-07 09:00:00+00', 'FINISHED', 10, 'Table Tennis Doubles Open', 'VENUE004'),
+                                                                                      ('EVENT286', '2025-09-02 13:35:00+00', '2025-08-07 10:00:00+00', 'FINISHED', 17, 'Fencing Team Championship', 'VENUE008'),
+                                                                                      ('EVENT287', '2025-09-02 16:10:00+00', '2025-08-07 11:00:00+00', 'FINISHED', 23, 'Javelin Throw Summer Meet', 'VENUE004'),
+                                                                                      ('EVENT288', '2025-09-02 18:25:00+00', '2025-08-07 12:00:00+00', 'FINISHED', 29, 'Sailing Fleet Racing', 'VENUE001'),
+                                                                                      ('EVENT289', '2025-09-02 20:40:00+00', '2025-08-07 13:00:00+00', 'FINISHED', 36, 'Figure Skating Singles Final', 'VENUE009'),
+                                                                                      ('EVENT290', '2025-09-02 23:00:00+00', '2025-08-08 08:00:00+00', 'FINISHED', 42, 'Rally Cross-Country Stage', 'VENUE008');
+
+-- September 3, 2025 (15 events - includes existing EVENT039)
+INSERT INTO events (id, date, created_at, status, event_type, description, venue) VALUES
+                                                                                      ('EVENT291', '2025-09-03 10:00:00+00', '2025-08-08 09:00:00+00', 'FINISHED', 7, 'Golf Championship Final Round', 'VENUE003'),
+                                                                                      ('EVENT292', '2025-09-03 11:45:00+00', '2025-08-08 10:00:00+00', 'FINISHED', 14, 'Karate Open Tournament', 'VENUE006'),
+                                                                                      ('EVENT293', '2025-09-03 13:30:00+00', '2025-08-08 11:00:00+00', 'FINISHED', 21, 'Triple Jump Regional Finals', 'VENUE009'),
+                                                                                      ('EVENT294', '2025-09-03 15:15:00+00', '2025-08-08 12:00:00+00', 'FINISHED', 28, 'Surfing Big Wave Invitational', 'VENUE008'),
+                                                                                      ('EVENT295', '2025-09-03 17:00:00+00', '2025-08-08 13:00:00+00', 'FINISHED', 35, 'Ice Hockey Pre-season Classic', 'VENUE002'),
+                                                                                      ('EVENT296', '2025-09-03 18:45:00+00', '2025-08-09 08:00:00+00', 'FINISHED', 41, 'MotoGP Warm-up Session', 'VENUE006'),
+                                                                                      ('EVENT297', '2025-09-03 20:30:00+00', '2025-08-09 09:00:00+00', 'FINISHED', 47, 'Darts World Matchplay', 'VENUE002'),
+                                                                                      ('EVENT298', '2025-09-03 22:15:00+00', '2025-08-09 10:00:00+00', 'FINISHED', 52, 'Skydiving Accuracy Competition', 'VENUE007'),
+                                                                                      ('EVENT299', '2025-09-03 09:30:00+00', '2025-08-09 11:00:00+00', 'FINISHED', 4, 'Tennis Junior Championship', 'VENUE001'),
+                                                                                      ('EVENT300', '2025-09-03 12:20:00+00', '2025-08-09 12:00:00+00', 'FINISHED', 11, 'Boxing Heavyweight Eliminator', 'VENUE002'),
+                                                                                      ('EVENT301', '2025-09-03 14:50:00+00', '2025-08-10 08:00:00+00', 'FINISHED', 18, 'Sprint Hurdles Diamond League', 'VENUE003'),
+                                                                                      ('EVENT302', '2025-09-03 16:35:00+00', '2025-08-10 09:00:00+00', 'FINISHED', 25, 'Swimming Breaststroke Finals', 'VENUE015'),
+                                                                                      ('EVENT303', '2025-09-03 19:10:00+00', '2025-08-10 10:00:00+00', 'FINISHED', 32, 'Windsurfing Slalom Race', 'VENUE015'),
+                                                                                      ('EVENT304', '2025-09-03 21:25:00+00', '2025-08-10 11:00:00+00', 'FINISHED', 39, 'Curling Club Championship', 'VENUE005'),
+                                                                                      ('EVENT305', '2025-09-03 23:00:00+00', '2025-08-10 12:00:00+00', 'FINISHED', 46, 'Shooting Rifle Championship', 'VENUE014');
+
+-- September 4, 2025 (15 events)
+INSERT INTO events (id, date, created_at, status, event_type, description, venue) VALUES
+                                                                                      ('EVENT306', '2025-09-04 10:15:00+00', '2025-08-10 13:00:00+00', 'FINISHED', 1, 'Football Super Cup Final', 'VENUE005'),
+                                                                                      ('EVENT307', '2025-09-04 12:00:00+00', '2025-08-11 08:00:00+00', 'FINISHED', 8, 'Rugby World Cup Warm-up', 'VENUE010'),
+                                                                                      ('EVENT308', '2025-09-04 13:45:00+00', '2025-08-11 09:00:00+00', 'FINISHED', 15, 'Taekwondo National Trials', 'VENUE012'),
+                                                                                      ('EVENT309', '2025-09-04 15:30:00+00', '2025-08-11 10:00:00+00', 'FINISHED', 22, 'Shot Put Diamond League', 'VENUE013'),
+                                                                                      ('EVENT310', '2025-09-04 17:15:00+00', '2025-08-11 11:00:00+00', 'FINISHED', 29, 'Sailing Team Racing', 'VENUE001'),
+                                                                                      ('EVENT311', '2025-09-04 19:00:00+00', '2025-08-11 12:00:00+00', 'FINISHED', 36, 'Figure Skating Pairs Final', 'VENUE009'),
+                                                                                      ('EVENT312', '2025-09-04 20:45:00+00', '2025-08-11 13:00:00+00', 'FINISHED', 43, 'Karting Super Cup', 'VENUE012'),
+                                                                                      ('EVENT313', '2025-09-04 22:30:00+00', '2025-08-12 08:00:00+00', 'FINISHED', 50, 'Rock Climbing Lead Finals', 'VENUE011'),
+                                                                                      ('EVENT314', '2025-09-04 09:00:00+00', '2025-08-12 09:00:00+00', 'FINISHED', 5, 'Baseball World Classic', 'VENUE009'),
+                                                                                      ('EVENT315', '2025-09-04 11:30:00+00', '2025-08-12 10:00:00+00', 'FINISHED', 12, 'Wrestling National Open', 'VENUE005'),
+                                                                                      ('EVENT316', '2025-09-04 14:15:00+00', '2025-08-12 11:00:00+00', 'FINISHED', 19, 'Marathon National Qualifier', 'VENUE007'),
+                                                                                      ('EVENT317', '2025-09-04 16:50:00+00', '2025-08-12 12:00:00+00', 'FINISHED', 26, 'Diving Mixed Synchro', 'VENUE007'),
+                                                                                      ('EVENT318', '2025-09-04 18:35:00+00', '2025-08-13 08:00:00+00', 'FINISHED', 33, 'Alpine Combined World Cup', 'VENUE004'),
+                                                                                      ('EVENT319', '2025-09-04 20:20:00+00', '2025-08-13 09:00:00+00', 'FINISHED', 40, 'Formula 1 Grand Prix', 'VENUE001'),
+                                                                                      ('EVENT320', '2025-09-04 22:05:00+00', '2025-08-13 10:00:00+00', 'FINISHED', 47, 'Darts Premier League', 'VENUE002');
+
 -- Football scores (multiple scores per game showing progression)
 INSERT INTO scores (id, event, player, team, score, scored_at) VALUES
 -- EVENT001: Champions League Quarter Final
@@ -1327,3 +1599,216 @@ INSERT INTO event_player (event, player) VALUES
 ('EVENT089', 'PLAYER007'), ('EVENT089', 'PLAYER008'), ('EVENT089', 'PLAYER009'), -- Skateboarding Vert
 ('EVENT090', 'PLAYER010'), ('EVENT090', 'PLAYER011'), ('EVENT090', 'PLAYER012'), -- Mountain Bike Enduro
 ('EVENT098', 'PLAYER013'), ('EVENT098', 'PLAYER014'), ('EVENT098', 'PLAYER015'); -- Formation Skydiving
+
+-- TEAM EVENTS (82 events)
+INSERT INTO event_teams (team, event) VALUES
+-- August 25 team events
+('TEAM001', 'EVENT156'), ('TEAM002', 'EVENT156'),  -- Beach Volleyball
+('TEAM003', 'EVENT158'), ('TEAM004', 'EVENT158'),  -- Wrestling
+('TEAM005', 'EVENT161'), ('TEAM006', 'EVENT161'),  -- Water Polo
+('TEAM007', 'EVENT166'), ('TEAM008', 'EVENT166'),  -- Basketball
+('TEAM009', 'EVENT167'), ('TEAM010', 'EVENT167'),  -- Rugby Sevens
+
+-- August 26 team events
+('TEAM011', 'EVENT171'), ('TEAM012', 'EVENT171'),  -- Tennis
+('TEAM013', 'EVENT172'), ('TEAM014', 'EVENT172'),  -- Handball
+('TEAM015', 'EVENT175'), ('TEAM001', 'EVENT175'),  -- Pentathlon
+('TEAM002', 'EVENT177'), ('TEAM003', 'EVENT177'),  -- Ice Hockey
+('TEAM004', 'EVENT181'), ('TEAM005', 'EVENT181'),  -- Baseball
+
+-- August 27 team events
+('TEAM006', 'EVENT186'), ('TEAM007', 'EVENT186'),  -- Cricket
+('TEAM008', 'EVENT195'), ('TEAM009', 'EVENT195'),  -- Football
+('TEAM010', 'EVENT199'), ('TEAM011', 'EVENT199'),  -- Canoeing Team
+('TEAM012', 'EVENT200'), ('TEAM013', 'EVENT200'),  -- Curling
+
+-- August 28 team events
+('TEAM014', 'EVENT201'), ('TEAM015', 'EVENT201'),  -- Basketball 3x3
+('TEAM001', 'EVENT202'), ('TEAM002', 'EVENT202'),  -- Rugby Union
+('TEAM003', 'EVENT205'), ('TEAM004', 'EVENT205'),  -- Water Polo
+('TEAM005', 'EVENT207'), ('TEAM006', 'EVENT207'),  -- Formula 1 Teams
+('TEAM007', 'EVENT210'), ('TEAM008', 'EVENT210'),  -- Tennis Doubles
+
+-- August 29 team events
+('TEAM009', 'EVENT216'), ('TEAM010', 'EVENT216'),  -- Volleyball
+('TEAM011', 'EVENT217'), ('TEAM012', 'EVENT217'),  -- Handball
+('TEAM013', 'EVENT225'), ('TEAM014', 'EVENT225'),  -- Football
+('TEAM015', 'EVENT227'), ('TEAM001', 'EVENT227'),  -- MMA Teams
+('TEAM002', 'EVENT229'), ('TEAM003', 'EVENT229'),  -- Canoeing Team
+
+-- August 30 team events
+('TEAM004', 'EVENT231'), ('TEAM005', 'EVENT231'),  -- Basketball All-Star
+('TEAM006', 'EVENT232'), ('TEAM007', 'EVENT232'),  -- Rugby League
+('TEAM008', 'EVENT235'), ('TEAM009', 'EVENT235'),  -- Water Polo
+('TEAM010', 'EVENT237'), ('TEAM011', 'EVENT237'),  -- Formula 1
+('TEAM012', 'EVENT239'), ('TEAM013', 'EVENT239'),  -- Beach Volleyball
+
+-- August 31 team events
+('TEAM014', 'EVENT246'), ('TEAM015', 'EVENT246'),  -- Tennis Mixed
+('TEAM001', 'EVENT251'), ('TEAM002', 'EVENT251'),  -- Ice Hockey
+('TEAM003', 'EVENT252'), ('TEAM004', 'EVENT252'),  -- MotoGP Teams
+('TEAM005', 'EVENT254'), ('TEAM006', 'EVENT254'),  -- Football
+('TEAM007', 'EVENT255'), ('TEAM008', 'EVENT255'),  -- Handball All-Star
+
+-- September 1 team events
+('TEAM009', 'EVENT261'), ('TEAM010', 'EVENT261'),  -- Baseball
+('TEAM011', 'EVENT266'), ('TEAM012', 'EVENT266'),  -- Speed Skating Team
+('TEAM013', 'EVENT269'), ('TEAM014', 'EVENT269'),  -- Basketball
+('TEAM015', 'EVENT270'), ('TEAM001', 'EVENT270'),  -- Rugby 7s
+('TEAM002', 'EVENT273'), ('TEAM003', 'EVENT273'),  -- Water Polo
+
+-- September 2 team events
+('TEAM004', 'EVENT276'), ('TEAM005', 'EVENT276'),  -- Cricket
+('TEAM006', 'EVENT281'), ('TEAM007', 'EVENT281'),  -- Bobsleigh Team
+('TEAM008', 'EVENT284'), ('TEAM009', 'EVENT284'),  -- Volleyball
+('TEAM010', 'EVENT288'), ('TEAM011', 'EVENT288'),  -- Sailing Team
+('TEAM012', 'EVENT289'), ('TEAM013', 'EVENT289'),  -- Figure Skating Pairs
+
+-- September 3 team events
+('TEAM014', 'EVENT295'), ('TEAM015', 'EVENT295'),  -- Ice Hockey
+('TEAM001', 'EVENT296'), ('TEAM002', 'EVENT296'),  -- MotoGP
+('TEAM003', 'EVENT299'), ('TEAM004', 'EVENT299'),  -- Tennis Junior
+('TEAM005', 'EVENT304'), ('TEAM006', 'EVENT304'),  -- Curling
+
+-- September 4 team events
+('TEAM007', 'EVENT306'), ('TEAM008', 'EVENT306'),  -- Football
+('TEAM009', 'EVENT307'), ('TEAM010', 'EVENT307'),  -- Rugby
+('TEAM011', 'EVENT311'), ('TEAM012', 'EVENT311'),  -- Figure Skating Pairs
+('TEAM013', 'EVENT314'), ('TEAM014', 'EVENT314'),  -- Baseball
+('TEAM015', 'EVENT319'), ('TEAM001', 'EVENT319');  -- Formula 1
+
+-- PLAYER EVENTS (83 events)
+INSERT INTO event_player (event, player) VALUES
+-- August 25 player events
+('EVENT157', 'PLAYER001'), ('EVENT157', 'PLAYER002'), ('EVENT157', 'PLAYER003'),  -- Golf
+('EVENT159', 'PLAYER004'), ('EVENT159', 'PLAYER005'), ('EVENT159', 'PLAYER006'),  -- Sprint
+('EVENT160', 'PLAYER007'), ('EVENT160', 'PLAYER008'), ('EVENT160', 'PLAYER009'),  -- Discus
+('EVENT162', 'PLAYER010'), ('EVENT162', 'PLAYER011'), ('EVENT162', 'PLAYER012'),  -- Skiing
+('EVENT163', 'PLAYER013'), ('EVENT163', 'PLAYER014'), ('EVENT163', 'PLAYER015'),  -- Skeleton
+('EVENT164', 'PLAYER016'), ('EVENT164', 'PLAYER017'), ('EVENT164', 'PLAYER018'),  -- NASCAR
+('EVENT165', 'PLAYER019'), ('EVENT165', 'PLAYER020'), ('EVENT165', 'PLAYER021'),  -- Snooker
+('EVENT168', 'PLAYER022'), ('EVENT168', 'PLAYER023'), ('EVENT168', 'PLAYER024'),  -- Taekwondo
+('EVENT169', 'PLAYER025'), ('EVENT169', 'PLAYER026'), ('EVENT169', 'PLAYER027'),  -- Triple Jump
+('EVENT170', 'PLAYER028'), ('EVENT170', 'PLAYER029'), ('EVENT170', 'PLAYER030'),  -- Sailing
+
+-- August 26 player events
+('EVENT173', 'PLAYER031'), ('EVENT173', 'PLAYER032'), ('EVENT173', 'PLAYER033'),  -- Karate
+('EVENT174', 'PLAYER034'), ('EVENT174', 'PLAYER035'), ('EVENT174', 'PLAYER036'),  -- Marathon
+('EVENT176', 'PLAYER037'), ('EVENT176', 'PLAYER038'), ('EVENT176', 'PLAYER039'),  -- Rowing
+('EVENT178', 'PLAYER040'), ('EVENT178', 'PLAYER041'), ('EVENT178', 'PLAYER042'),  -- MotoGP
+('EVENT179', 'PLAYER043'), ('EVENT179', 'PLAYER044'), ('EVENT179', 'PLAYER045'),  -- Archery
+('EVENT180', 'PLAYER046'), ('EVENT180', 'PLAYER047'), ('EVENT180', 'PLAYER048'),  -- Paragliding
+('EVENT182', 'PLAYER049'), ('EVENT182', 'PLAYER050'), ('EVENT182', 'PLAYER001'),  -- Boxing
+('EVENT183', 'PLAYER002'), ('EVENT183', 'PLAYER003'), ('EVENT183', 'PLAYER004'),  -- Fencing
+('EVENT184', 'PLAYER005'), ('EVENT184', 'PLAYER006'), ('EVENT184', 'PLAYER007'),  -- Hammer
+('EVENT185', 'PLAYER008'), ('EVENT185', 'PLAYER009'), ('EVENT185', 'PLAYER010'),  -- Surfing
+
+-- August 27 player events
+('EVENT187', 'PLAYER011'), ('EVENT187', 'PLAYER012'), ('EVENT187', 'PLAYER013'),  -- Judo
+('EVENT188', 'PLAYER014'), ('EVENT188', 'PLAYER015'), ('EVENT188', 'PLAYER016'),  -- Pole Vault
+('EVENT189', 'PLAYER017'), ('EVENT189', 'PLAYER018'), ('EVENT189', 'PLAYER019'),  -- Diving
+('EVENT190', 'PLAYER020'), ('EVENT190', 'PLAYER021'), ('EVENT190', 'PLAYER022'),  -- Windsurfing
+('EVENT191', 'PLAYER023'), ('EVENT191', 'PLAYER024'), ('EVENT191', 'PLAYER025'),  -- Speed Skating
+('EVENT192', 'PLAYER026'), ('EVENT192', 'PLAYER027'), ('EVENT192', 'PLAYER028'),  -- Karting
+('EVENT193', 'PLAYER029'), ('EVENT193', 'PLAYER030'), ('EVENT193', 'PLAYER031'),  -- Bowling
+('EVENT194', 'PLAYER032'), ('EVENT194', 'PLAYER033'), ('EVENT194', 'PLAYER034'),  -- Skateboarding
+('EVENT196', 'PLAYER035'), ('EVENT196', 'PLAYER036'), ('EVENT196', 'PLAYER037'),  -- Golf
+('EVENT197', 'PLAYER038'), ('EVENT197', 'PLAYER039'), ('EVENT197', 'PLAYER040'),  -- MMA
+('EVENT198', 'PLAYER041'), ('EVENT198', 'PLAYER042'), ('EVENT198', 'PLAYER043'),  -- Swimming
+
+-- August 28 player events
+('EVENT203', 'PLAYER044'), ('EVENT203', 'PLAYER045'), ('EVENT203', 'PLAYER046'),  -- Taekwondo
+('EVENT204', 'PLAYER047'), ('EVENT204', 'PLAYER048'), ('EVENT204', 'PLAYER049'),  -- Long Jump
+('EVENT206', 'PLAYER050'), ('EVENT206', 'PLAYER001'), ('EVENT206', 'PLAYER002'),  -- Snowboarding
+('EVENT208', 'PLAYER003'), ('EVENT208', 'PLAYER004'), ('EVENT208', 'PLAYER005'),  -- Archery
+('EVENT209', 'PLAYER006'), ('EVENT209', 'PLAYER007'), ('EVENT209', 'PLAYER008'),  -- Rock Climbing
+('EVENT211', 'PLAYER009'), ('EVENT211', 'PLAYER010'), ('EVENT211', 'PLAYER011'),  -- Wrestling
+('EVENT212', 'PLAYER012'), ('EVENT212', 'PLAYER013'), ('EVENT212', 'PLAYER014'),  -- Hurdles
+('EVENT213', 'PLAYER015'), ('EVENT213', 'PLAYER016'), ('EVENT213', 'PLAYER017'),  -- Decathlon
+('EVENT214', 'PLAYER018'), ('EVENT214', 'PLAYER019'), ('EVENT214', 'PLAYER020'),  -- Ski Jumping
+('EVENT215', 'PLAYER021'), ('EVENT215', 'PLAYER022'), ('EVENT215', 'PLAYER023'),  -- Rally
+
+-- August 29 player events
+('EVENT218', 'PLAYER024'), ('EVENT218', 'PLAYER025'), ('EVENT218', 'PLAYER026'),  -- Karate
+('EVENT219', 'PLAYER027'), ('EVENT219', 'PLAYER028'), ('EVENT219', 'PLAYER029'),  -- High Jump
+('EVENT220', 'PLAYER030'), ('EVENT220', 'PLAYER031'), ('EVENT220', 'PLAYER032'),  -- Diving
+('EVENT221', 'PLAYER033'), ('EVENT221', 'PLAYER034'), ('EVENT221', 'PLAYER035'),  -- Windsurfing
+('EVENT222', 'PLAYER036'), ('EVENT222', 'PLAYER037'), ('EVENT222', 'PLAYER038'),  -- Bobsleigh
+('EVENT223', 'PLAYER039'), ('EVENT223', 'PLAYER040'), ('EVENT223', 'PLAYER041'),  -- NASCAR
+('EVENT224', 'PLAYER042'), ('EVENT224', 'PLAYER043'), ('EVENT224', 'PLAYER044'),  -- Snooker
+('EVENT226', 'PLAYER045'), ('EVENT226', 'PLAYER046'), ('EVENT226', 'PLAYER047'),  -- Golf
+('EVENT228', 'PLAYER048'), ('EVENT228', 'PLAYER049'), ('EVENT228', 'PLAYER050'),  -- Swimming
+('EVENT230', 'PLAYER001'), ('EVENT230', 'PLAYER002'), ('EVENT230', 'PLAYER003'),  -- Curling
+
+-- August 30 player events
+('EVENT233', 'PLAYER004'), ('EVENT233', 'PLAYER005'), ('EVENT233', 'PLAYER006'),  -- Taekwondo
+('EVENT234', 'PLAYER007'), ('EVENT234', 'PLAYER008'), ('EVENT234', 'PLAYER009'),  -- Triple Jump
+('EVENT236', 'PLAYER010'), ('EVENT236', 'PLAYER011'), ('EVENT236', 'PLAYER012'),  -- Snowboarding
+('EVENT238', 'PLAYER013'), ('EVENT238', 'PLAYER014'), ('EVENT238', 'PLAYER015'),  -- Archery
+('EVENT240', 'PLAYER016'), ('EVENT240', 'PLAYER017'), ('EVENT240', 'PLAYER018'),  -- Table Tennis
+('EVENT241', 'PLAYER019'), ('EVENT241', 'PLAYER020'), ('EVENT241', 'PLAYER021'),  -- Fencing
+('EVENT242', 'PLAYER022'), ('EVENT242', 'PLAYER023'), ('EVENT242', 'PLAYER024'),  -- Javelin
+('EVENT243', 'PLAYER025'), ('EVENT243', 'PLAYER026'), ('EVENT243', 'PLAYER027'),  -- Sailing
+('EVENT244', 'PLAYER028'), ('EVENT244', 'PLAYER029'), ('EVENT244', 'PLAYER030'),  -- Figure Skating
+('EVENT245', 'PLAYER031'), ('EVENT245', 'PLAYER032'), ('EVENT245', 'PLAYER033'),  -- Rally
+
+-- August 31 player events
+('EVENT247', 'PLAYER034'), ('EVENT247', 'PLAYER035'), ('EVENT247', 'PLAYER036'),  -- Boxing
+('EVENT248', 'PLAYER037'), ('EVENT248', 'PLAYER038'), ('EVENT248', 'PLAYER039'),  -- 400m
+('EVENT249', 'PLAYER040'), ('EVENT249', 'PLAYER041'), ('EVENT249', 'PLAYER042'),  -- Heptathlon
+('EVENT250', 'PLAYER043'), ('EVENT250', 'PLAYER044'), ('EVENT250', 'PLAYER045'),  -- Rowing
+('EVENT253', 'PLAYER046'), ('EVENT253', 'PLAYER047'), ('EVENT253', 'PLAYER048'),  -- Shooting
+('EVENT256', 'PLAYER049'), ('EVENT256', 'PLAYER050'), ('EVENT256', 'PLAYER001'),  -- MMA
+('EVENT257', 'PLAYER002'), ('EVENT257', 'PLAYER003'), ('EVENT257', 'PLAYER004'),  -- Shot Put
+('EVENT258', 'PLAYER005'), ('EVENT258', 'PLAYER006'), ('EVENT258', 'PLAYER007'),  -- Surfing
+('EVENT259', 'PLAYER008'), ('EVENT259', 'PLAYER009'), ('EVENT259', 'PLAYER010'),  -- Skiing
+('EVENT260', 'PLAYER011'), ('EVENT260', 'PLAYER012'), ('EVENT260', 'PLAYER013'),  -- Curling
+
+-- September 1 player events
+('EVENT262', 'PLAYER014'), ('EVENT262', 'PLAYER015'), ('EVENT262', 'PLAYER016'),  -- Wrestling
+('EVENT263', 'PLAYER017'), ('EVENT263', 'PLAYER018'), ('EVENT263', 'PLAYER019'),  -- Road Race
+('EVENT264', 'PLAYER020'), ('EVENT264', 'PLAYER021'), ('EVENT264', 'PLAYER022'),  -- Swimming
+('EVENT265', 'PLAYER023'), ('EVENT265', 'PLAYER024'), ('EVENT265', 'PLAYER025'),  -- Canoeing
+('EVENT267', 'PLAYER026'), ('EVENT267', 'PLAYER027'), ('EVENT267', 'PLAYER028'),  -- Karting
+('EVENT268', 'PLAYER029'), ('EVENT268', 'PLAYER030'), ('EVENT268', 'PLAYER031'),  -- Bowling
+('EVENT271', 'PLAYER032'), ('EVENT271', 'PLAYER033'), ('EVENT271', 'PLAYER034'),  -- Taekwondo
+('EVENT272', 'PLAYER035'), ('EVENT272', 'PLAYER036'), ('EVENT272', 'PLAYER037'),  -- Long Jump
+('EVENT274', 'PLAYER038'), ('EVENT274', 'PLAYER039'), ('EVENT274', 'PLAYER040'),  -- Snowboarding
+('EVENT275', 'PLAYER041'), ('EVENT275', 'PLAYER042'), ('EVENT275', 'PLAYER043'),  -- F1 Pit Stop
+
+-- September 2 player events
+('EVENT277', 'PLAYER044'), ('EVENT277', 'PLAYER045'), ('EVENT277', 'PLAYER046'),  -- Judo
+('EVENT278', 'PLAYER047'), ('EVENT278', 'PLAYER048'), ('EVENT278', 'PLAYER049'),  -- Pole Vault
+('EVENT279', 'PLAYER050'), ('EVENT279', 'PLAYER001'), ('EVENT279', 'PLAYER002'),  -- Diving
+('EVENT280', 'PLAYER003'), ('EVENT280', 'PLAYER004'), ('EVENT280', 'PLAYER005'),  -- Windsurfing
+('EVENT282', 'PLAYER006'), ('EVENT282', 'PLAYER007'), ('EVENT282', 'PLAYER008'),  -- NASCAR
+('EVENT283', 'PLAYER009'), ('EVENT283', 'PLAYER010'), ('EVENT283', 'PLAYER011'),  -- Rock Climbing
+('EVENT285', 'PLAYER012'), ('EVENT285', 'PLAYER013'), ('EVENT285', 'PLAYER014'),  -- Table Tennis
+('EVENT286', 'PLAYER015'), ('EVENT286', 'PLAYER016'), ('EVENT286', 'PLAYER017'),  -- Fencing
+('EVENT287', 'PLAYER018'), ('EVENT287', 'PLAYER019'), ('EVENT287', 'PLAYER020'),  -- Javelin
+('EVENT290', 'PLAYER021'), ('EVENT290', 'PLAYER022'), ('EVENT290', 'PLAYER023'),  -- Rally
+
+-- September 3 player events
+('EVENT291', 'PLAYER024'), ('EVENT291', 'PLAYER025'), ('EVENT291', 'PLAYER026'),  -- Golf
+('EVENT292', 'PLAYER027'), ('EVENT292', 'PLAYER028'), ('EVENT292', 'PLAYER029'),  -- Karate
+('EVENT293', 'PLAYER030'), ('EVENT293', 'PLAYER031'), ('EVENT293', 'PLAYER032'),  -- Triple Jump
+('EVENT294', 'PLAYER033'), ('EVENT294', 'PLAYER034'), ('EVENT294', 'PLAYER035'),  -- Surfing
+('EVENT297', 'PLAYER036'), ('EVENT297', 'PLAYER037'), ('EVENT297', 'PLAYER038'),  -- Darts
+('EVENT298', 'PLAYER039'), ('EVENT298', 'PLAYER040'), ('EVENT298', 'PLAYER041'),  -- Skydiving
+('EVENT300', 'PLAYER042'), ('EVENT300', 'PLAYER043'), ('EVENT300', 'PLAYER044'),  -- Boxing
+('EVENT301', 'PLAYER045'), ('EVENT301', 'PLAYER046'), ('EVENT301', 'PLAYER047'),  -- Hurdles
+('EVENT302', 'PLAYER048'), ('EVENT302', 'PLAYER049'), ('EVENT302', 'PLAYER050'),  -- Swimming
+('EVENT303', 'PLAYER001'), ('EVENT303', 'PLAYER002'), ('EVENT303', 'PLAYER003'),  -- Windsurfing
+('EVENT305', 'PLAYER004'), ('EVENT305', 'PLAYER005'), ('EVENT305', 'PLAYER006'),  -- Shooting
+
+-- September 4 player events
+('EVENT308', 'PLAYER007'), ('EVENT308', 'PLAYER008'), ('EVENT308', 'PLAYER009'),  -- Taekwondo
+('EVENT309', 'PLAYER010'), ('EVENT309', 'PLAYER011'), ('EVENT309', 'PLAYER012'),  -- Shot Put
+('EVENT310', 'PLAYER013'), ('EVENT310', 'PLAYER014'), ('EVENT310', 'PLAYER015'),  -- Sailing
+('EVENT312', 'PLAYER016'), ('EVENT312', 'PLAYER017'), ('EVENT312', 'PLAYER018'),  -- Karting
+('EVENT313', 'PLAYER019'), ('EVENT313', 'PLAYER020'), ('EVENT313', 'PLAYER021'),  -- Rock Climbing
+('EVENT315', 'PLAYER022'), ('EVENT315', 'PLAYER023'), ('EVENT315', 'PLAYER024'),  -- Wrestling
+('EVENT316', 'PLAYER025'), ('EVENT316', 'PLAYER026'), ('EVENT316', 'PLAYER027'),  -- Marathon
+('EVENT317', 'PLAYER028'), ('EVENT317', 'PLAYER029'), ('EVENT317', 'PLAYER030'),  -- Diving
+('EVENT318', 'PLAYER031'), ('EVENT318', 'PLAYER032'), ('EVENT318', 'PLAYER033'),  -- Skiing
+('EVENT320', 'PLAYER034'), ('EVENT320', 'PLAYER035'), ('EVENT320', 'PLAYER036');  -- Darts

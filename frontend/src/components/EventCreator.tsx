@@ -71,17 +71,17 @@ export default function EventCreator() {
         </select>
       </label>
 
-      {/* Player IDs */}
+      {/* Player IDs
       <label>
         Players:
-        <input type="text" name="player" value={formEvent.playerIds} />
+        <input type="text" name="player" value={formEvent.players} />
       </label>
 
-      {/* Team IDs */}
+      {/* Team IDs 
       <label>
         Teams:
-        <input type="text" name="team" value={formEvent.teamIds} />
-      </label>
+        <input type="text" name="team" value={formEvent.teams} />
+      </label> */}
 
       {/* Livestream */}
       <fieldset style={{ border: "1px solid #ccc", padding: "8px" }}>

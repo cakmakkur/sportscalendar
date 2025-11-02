@@ -16,8 +16,8 @@ public record EventDto (
         @NotNull EventTypeDto eventType,
         @Length(min = 1, max =255)
         String description,
-        List<String> playerIds,
-        List<String> teamIds,
+        List<PlayerDto> players,
+        List<TeamDto> teams,
         LivestreamDto livestream,
         List<ScoreDto> scores,
         @NotNull VenueDto venue

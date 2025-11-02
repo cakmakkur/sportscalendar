@@ -23,7 +23,7 @@ public class Mapper {
                 et.getId(),
                 et.getName(),
                 toEventCategoryDto(et.getEventCategory()),
-                et.getCompetitionType().toString()
+                et.getCompetitionType().getType()
         );
     }
 
@@ -92,6 +92,7 @@ public class Mapper {
     }
 
     public static LivestreamDto toLivestreamDto(Livestream l) {
+        if (l == null) return null;
         return new LivestreamDto(
                 l.getId(),
                 l.getUrl(),
@@ -102,16 +103,16 @@ public class Mapper {
 
     public static EventDto toEventDto (Event e) {
 
-        List<String> playerIds = new ArrayList<>();
-        List<String> teamIds = new ArrayList<>();
+        List<PlayerDto> playerDtos = new ArrayList<>();
+        List<TeamDto> teamDtos = new ArrayList<>();
         List<ScoreDto> scoreDtos = new ArrayList<>();
 
         for(EventPlayer ep : e.getEventPlayers()) {
-            playerIds.add(ep.getEvent().getId());
+            playerDtos.add(toPlayerDto(ep.getPlayer()));
         }
 
         for(EventTeam et : e.getEventTeams()) {
-            teamIds.add(et.getTeam().getId());
+            teamDtos.add(toTeamDto(et.getTeam()));
         }
 
         for(Score s : e.getScores()) {
@@ -127,8 +128,8 @@ public class Mapper {
                 EventStatus.fromString(e.getStatus().toString()),
                 toEventTypeDto(e.getEventType()),
                 e.getDescription(),
-                playerIds,
-                teamIds,
+                playerDtos,
+                teamDtos,
                 toLivestreamDto(e.getLivestream()),
                 scoreDtos,
                 toVenueDto(e.getVenue())

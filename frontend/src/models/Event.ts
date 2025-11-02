@@ -2,17 +2,20 @@
 
 import type { EventTypeType } from "./EventType";
 import { defaultEventType } from "./EventType";
+import { defaultPlayer, type PlayerType } from "./PlayerType";
+import { defaultTeam, type TeamType } from "./TeamType";
 import { defaultVenue } from "./Venue";
 import type { VenueType } from "./Venue";
 
 export const defaultEvent: EventType = {
+  id: "",
   date: "",
   createdAt: "",
   status: "",
   eventType: defaultEventType,
   description: "placeholder event description",
-  playerIds: [],
-  teamIds: [],
+  players: [defaultPlayer],
+  teams: [defaultTeam],
   livestream: {
     url: "placeholder.kc",
     membershipRequired: false,
@@ -30,13 +33,14 @@ export const defaultEvent: EventType = {
 };
 
 export type EventType = {
+  id: string;
   date: string;
   createdAt: string;
   status: string;
   eventType: EventTypeType;
   description: string;
-  playerIds: string[];
-  teamIds: string[];
+  players: PlayerType[];
+  teams: TeamType[];
   livestream: {
     url: string;
     membershipRequired: boolean;

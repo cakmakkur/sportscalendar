@@ -15,9 +15,13 @@ export const fetchVenues = async () => {
 };
 
 export const fetchEvents = async (ef: EventFilterType) => {
-  const response = await fetch(
-    `${BASE_URL}/event?date=${ef.date}&eventType=${ef.eventType}&country=${ef.country}`
-  );
-  const data = await response.json();
-  return data;
+  try {
+    const response = await fetch(
+      `${BASE_URL}/event?date=${ef.date}&eventType=${ef.eventType}&country=${ef.country}`
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log("todo: implement error handling: " + error);
+  }
 };
