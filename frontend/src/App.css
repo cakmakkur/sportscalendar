@@ -1,12 +1,13 @@
 body {
   background: var(--primary-bg-color);
   color: var(--primary-text-color);
+  padding-bottom: 100px;
 }
 
 .navbar-link {
   font-size: 1.4rem;
   font-weight: 700;
-  color: var(--primary-text-color);
+  color: lightgray;
   transition: 0.1s;
 }
 
