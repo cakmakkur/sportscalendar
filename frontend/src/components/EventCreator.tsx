@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { defaultEvent } from "../models/Event";
 import type { EventType } from "../models/Event";
 
@@ -10,6 +10,7 @@ import type { VenueType } from "../models/Venue";
 export default function EventCreator() {
   const [types, setTypes] = useState<EventTypeType[]>([]);
   const [venues, setVenues] = useState<VenueType[]>([defaultVenue]);
+  const [withLivestream, setWithLivestream] = useState<boolean>(true);
 
   const [formEvent, setFormEvent] = useState<EventType>(defaultEvent);
 
@@ -28,9 +29,51 @@ export default function EventCreator() {
     console.log(formEvent);
   };
 
-  const handleChange = () => {
-    // TODO: impl this
-    setFormEvent(defaultEvent);
+  const handleChange = (e: React.ChangeEvent<any>) => {
+    e.preventDefault();
+    switch (e.target.name) {
+      case "date":
+        setFormEvent({ ...formEvent, date: e.target.value });
+        break;
+      case "eventType":
+        setFormEvent({
+          ...formEvent,
+          eventType: {
+            ...formEvent.eventType,
+            id: Number(e.target.value),
+          },
+        });
+        break;
+      case "membershipRequired":
+        setFormEvent({
+          ...formEvent,
+          livestream: {
+            ...formEvent.livestream,
+            membershipRequired: e.target.checked,
+          },
+        });
+        break;
+      case "venueName":
+        setFormEvent({
+          ...formEvent,
+          venue: {
+            ...formEvent.venue,
+            id: e.target.value,
+          },
+        });
+        break;
+      case "competitionType":
+        setFormEvent({
+          ...formEvent,
+          eventType: {
+            ...formEvent.eventType,
+            competitionType: e.target.value,
+          },
+        });
+        break;
+      default:
+        break;
+    }
   };
 
   // I have used AI to fast-prototype form element
@@ -38,22 +81,25 @@ export default function EventCreator() {
   // template to my logic
   return (
     <form
+      className="add-event-form"
       onSubmit={handleSubmit}
       style={{
         display: "flex",
         flexDirection: "column",
         alignItems: "end",
         gap: "10px",
-        width: "300px",
+        width: "400px",
         fontSize: "1.1rem",
+        rowGap: "20px",
       }}
     >
       <label>
         Date:
         <input
-          type="datetime-local"
+          type="date"
           name="date"
           value={formEvent.date}
+          onChange={(e) => handleChange(e)}
           required
         />
       </label>
@@ -61,7 +107,7 @@ export default function EventCreator() {
       {/* Event Type */}
       <label>
         Event Type:
-        <select name="eventType" value={formEvent.eventType.name}>
+        <select name="eventType" onChange={handleChange}>
           <option value="">Select type</option>
           {types.map((t) => (
             <option key={t.id} value={t.id}>
@@ -71,52 +117,113 @@ export default function EventCreator() {
         </select>
       </label>
 
-      {/* Player IDs
-      <label>
-        Players:
-        <input type="text" name="player" value={formEvent.players} />
-      </label>
-
-      {/* Team IDs 
-      <label>
-        Teams:
-        <input type="text" name="team" value={formEvent.teams} />
-      </label> */}
-
-      {/* Livestream */}
-      <fieldset style={{ border: "1px solid #ccc", padding: "8px" }}>
-        <legend>Livestream</legend>
+      <fieldset
+        style={{
+          borderRadius: "5px",
+          border: "1px solid #ccc",
+          padding: "10px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "end",
+          rowGap: "10px",
+        }}
+      >
+        <legend>Competition</legend>
 
         <label>
-          URL:
-          <input
-            type="url"
-            name="livestreamUrl"
-            value={formEvent.livestream.url}
-          />
-        </label>
-
-        <label>
-          Membership required:
-          <input
-            type="checkbox"
-            name="membershipRequired"
-            checked={formEvent.livestream.membershipRequired}
-          />
-        </label>
-
-        <label>
-          Price:
-          <input
-            type="number"
-            name="price"
-            min="0"
-            step="0.01"
-            value={formEvent.livestream.price}
+          Competition Type:
+          <select
+            value={formEvent.eventType.competitionType}
+            name="competitionType"
             onChange={handleChange}
-          />
+          >
+            <option value="">Select type</option>
+            <option value={"players"}>Player vs player</option>
+            <option value={"teams"}>Teams vs teams</option>
+          </select>
+        </label>
+
+        <label
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "end",
+          }}
+        >
+          {formEvent.eventType.competitionType === "players" ? (
+            <>
+              Add Players:
+              <input type="text" placeholder="Firstname" />
+              <input type="text" placeholder="Lastname" />
+            </>
+          ) : (
+            <>
+              Add Teams:
+              <input type="text" placeholder="Team name" />
+            </>
+          )}
+          <br />
+          <button>Add</button>
         </label>
       </fieldset>
+
+      <label>
+        Livestream:
+        <input
+          style={{ marginLeft: "10px" }}
+          type="checkbox"
+          name="livestream"
+          checked={withLivestream}
+          onChange={() => setWithLivestream(!withLivestream)}
+        />
+      </label>
+
+      {withLivestream && (
+        <fieldset
+          style={{
+            borderRadius: "5px",
+            border: "1px solid #ccc",
+            padding: "10px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "end",
+            rowGap: "10px",
+          }}
+        >
+          <legend>Livestream</legend>
+
+          <label>
+            URL:
+            <input
+              type="url"
+              name="livestreamUrl"
+              value={formEvent.livestream.url}
+            />
+          </label>
+
+          <label>
+            Membership required:
+            <input
+              style={{ marginLeft: "10px" }}
+              type="checkbox"
+              name="membershipRequired"
+              checked={formEvent.livestream.membershipRequired}
+            />
+          </label>
+
+          <label>
+            Price:
+            <input
+              type="number"
+              name="price"
+              min="0"
+              step="0.01"
+              value={formEvent.livestream.price}
+              onChange={handleChange}
+            />
+          </label>
+        </fieldset>
+      )}
 
       {/* Venue */}
       <label>

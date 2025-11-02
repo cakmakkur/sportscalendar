@@ -1,6 +1,5 @@
 body {
-  background: var(--primary-bg-color);
-  color: var(--primary-text-color);
+background: linear-gradient(160deg, var(--primary-bg-color) 0%, black 100%);  color: var(--primary-text-color);
   padding-bottom: 100px;
 }
 
@@ -171,4 +170,17 @@ flex: 1;
     filter: brightness(1.5);
     background-color: rgba(255, 255, 255, 0.054);
   }
+}
+
+.add-event-form > label > input,
+.add-event-form > label > select,
+.add-event-form > fieldset > label > input,
+.add-event-form > fieldset > label > select {
+  background: none;
+  color: white;
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  padding: 5px 10px;
+  font-size: 1.1rem;
+  margin-left: 20px;
 }

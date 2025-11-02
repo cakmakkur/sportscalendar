@@ -3,10 +3,10 @@ export const defaultEventType: EventTypeType = {
   name: "placeholder",
   eventCategory: {
     id: 1,
-    name: "placeholder",
+    name: "placeholder category",
     description: "placeholder",
   },
-  competitionType: "placeholder",
+  competitionType: "players",
 };
 
 export type EventTypeType = {
