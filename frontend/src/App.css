@@ -184,3 +184,18 @@ flex: 1;
   font-size: 1.1rem;
   margin-left: 20px;
 }
+
+.add-event-submit-btn {
+  background: none;
+  color: lightgray;
+  font-size: 1.6rem;
+  padding: 10px 40px;
+  border: 1px solid lightgray;
+  border-radius:5px;
+  background-color: rgba(0, 128, 0, 0.261);
+  transition: 0.1s;
+  &:hover {
+    cursor: pointer;
+    filter: brightness(1.5);
+  }
+}

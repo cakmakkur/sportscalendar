@@ -93,6 +93,17 @@ export default function EventCreator() {
         rowGap: "20px",
       }}
     >
+      <h1
+        style={{
+          color: "white",
+          borderBottom: "1px solid darkgray",
+          width: "100%",
+          textAlign: "end",
+          marginBottom: "15px",
+        }}
+      >
+        Add an event
+      </h1>
       <label>
         Date:
         <input
@@ -108,7 +119,6 @@ export default function EventCreator() {
       <label>
         Event Type:
         <select name="eventType" onChange={handleChange}>
-          <option value="">Select type</option>
           {types.map((t) => (
             <option key={t.id} value={t.id}>
               {t.name}
@@ -137,7 +147,6 @@ export default function EventCreator() {
             name="competitionType"
             onChange={handleChange}
           >
-            <option value="">Select type</option>
             <option value={"players"}>Player vs player</option>
             <option value={"teams"}>Teams vs teams</option>
           </select>
@@ -152,18 +161,22 @@ export default function EventCreator() {
         >
           {formEvent.eventType.competitionType === "players" ? (
             <>
-              Add Players:
+              Players:
+              <input type="text" placeholder="Firstname" />
+              <input type="text" placeholder="Lastname" />
+              <span style={{ fontSize: "1.4rem" }}>vs</span> <br />
               <input type="text" placeholder="Firstname" />
               <input type="text" placeholder="Lastname" />
             </>
           ) : (
             <>
-              Add Teams:
+              Teams:
+              <input type="text" placeholder="Team name" />
+              <span style={{ fontSize: "1.4rem" }}>vs</span> <br />
               <input type="text" placeholder="Team name" />
             </>
           )}
           <br />
-          <button>Add</button>
         </label>
       </fieldset>
 
@@ -243,7 +256,9 @@ export default function EventCreator() {
         </select>
       </label>
 
-      <button type="submit">Create Event</button>
+      <button className="add-event-submit-btn" type="submit">
+        Create Event
+      </button>
     </form>
   );
 }
