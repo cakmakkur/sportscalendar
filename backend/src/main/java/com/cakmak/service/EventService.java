@@ -1,7 +1,9 @@
 package com.cakmak.service;
 
 import com.cakmak.dtos.EventDto;
+import com.cakmak.dtos.EventTypeDto;
 import com.cakmak.dtos.ScoreDto;
+import com.cakmak.dtos.VenueDto;
 import com.cakmak.model.*;
 import com.cakmak.repository.*;
 import com.cakmak.util.Mapper;
@@ -138,4 +140,21 @@ public class EventService {
         return null;
     }
 
+    public List<EventTypeDto> getEventTypes() {
+        List<EventType> eventTypes = eventTypeRepository.findAll();
+        List<EventTypeDto> dtos = new ArrayList<>();
+        for(EventType e : eventTypes) {
+            dtos.add(Mapper.toEventTypeDto(e));
+        }
+        return dtos;
+    }
+
+    public List<VenueDto> getVenues() {
+        List<Venue> venues = venueRepository.findAll();
+        List<VenueDto> dtos = new ArrayList<>();
+        for(Venue v : venues) {
+            dtos.add(Mapper.toVenueDto(v));
+        }
+        return dtos;
+    }
 }

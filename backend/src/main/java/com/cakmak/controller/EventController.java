@@ -1,6 +1,8 @@
 package com.cakmak.controller;
 
 import com.cakmak.dtos.EventDto;
+import com.cakmak.dtos.EventTypeDto;
+import com.cakmak.dtos.VenueDto;
 import com.cakmak.service.EventService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -61,4 +63,13 @@ public class EventController {
         // placeholder. not needed in the requirements of the task
         return null;
     }
-}
+
+    @GetMapping("/types")
+    public ResponseEntity<List<EventTypeDto>> getTypes() {
+        return ResponseEntity.ok(eventService.getEventTypes());
+    }
+
+    @GetMapping("/venues")
+    public ResponseEntity<List<VenueDto>> getVenues() {
+        return ResponseEntity.ok(eventService.getVenues());
+    }}
