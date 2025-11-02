@@ -58,9 +58,11 @@ body {
 }
 
 .calendar-main-div {
+  position: relative;
   display: flex;
   flex-direction: row;
   padding: 0px 3vw;
+  min-height: 90vh;
 }
 
 /* for smaller screens */
@@ -71,7 +73,10 @@ body {
 }
 
 .calendar-display--left {
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 100px;
 }
 
 .calendar-image-date {
@@ -95,5 +100,29 @@ body {
   &:hover {
     cursor: pointer;
     transform: scale(1.1);
+  }
+}
+
+.add-event-btn {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 200px;
+  background: none;
+  border: 1px solid whitesmoke;
+  border-radius: 10px;
+  padding: 20px;
+  color: var(--primary-text-color);
+  font-size: 1.5rem;
+  transition: 0.1s;
+  & img {
+    width: 100%;
+    height: 100%
+  }
+  &:hover {
+    filter: brightness(1.5);
+    cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.054);
+
   }
 }
