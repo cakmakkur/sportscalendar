@@ -4,10 +4,13 @@ import com.cakmak.dtos.EventDto;
 import com.cakmak.dtos.EventTypeDto;
 import com.cakmak.dtos.VenueDto;
 import com.cakmak.service.EventService;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -23,9 +26,9 @@ public class EventController {
 
     @GetMapping
     public ResponseEntity<List<EventDto>> getEventsByFilter(
-            @RequestParam Date date,
-            @RequestParam Integer eventType,
-            @RequestParam String country) {
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
+            @RequestParam(required = false) Long eventType,
+            @RequestParam(required = false) Long country) {
         List<EventDto> events = eventService.getEventsByFilter(
                 date,
                 eventType,

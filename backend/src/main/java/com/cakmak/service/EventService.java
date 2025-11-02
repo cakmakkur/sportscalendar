@@ -10,6 +10,9 @@ import com.cakmak.util.Mapper;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -58,11 +61,30 @@ public class EventService {
     }
 
     public List<EventDto> getEventsByFilter (
-            Date date,
-            Integer eventType,
-            String country) {
-        // TODO: implement service methode
-        return null;
+            LocalDate date,
+            Long eventType,
+            Long country) {
+
+        if (country == 0) {
+            country = null;
+        }
+
+        if (eventType == 0) {
+            eventType = null;
+        }
+
+        List<EventDto> dtos = new ArrayList<>();
+
+        OffsetDateTime start = date.atStartOfDay().atOffset(ZoneOffset.UTC);
+        OffsetDateTime end = start.plusDays(1);
+
+        List<Event> events = eventRepository.getEventsByFilter(start, end, eventType, country);
+
+        for(Event e : events) {
+            dtos.add(Mapper.toEventDto(e));
+        }
+
+        return dtos;
     }
 
     @Transactional

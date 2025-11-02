@@ -3,23 +3,21 @@ import { fetchEvents } from "../services/EventService";
 import type { EventFilterType } from "../models/EventFilter";
 import type { EventType } from "../models/Event";
 
-export default function EventDisply() {
+export default function EventDisply({ date }: { date: Date }) {
   const [events, setEvents] = useState([]);
-  const [date, setDate] = useState(new Date());
-
-  const [filter, setFilter] = useState<EventFilterType>({
-    date: date.toISOString(),
-    eventType: undefined,
-    country: undefined,
-  });
 
   useEffect(() => {
     const init = async () => {
+      const filter: EventFilterType = {
+        date: date.toISOString().slice(0, 10),
+        eventType: 0,
+        country: 0,
+      };
       const data = await fetchEvents(filter);
       setEvents(data);
     };
     init();
-  }, [date, filter]);
+  }, [date]);
 
   return (
     <div className="event-display-main">

@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 const extractMonth = (d: Date) => {
   const arr = d.toDateString().split(" ");
   return arr.slice(1, 2);
@@ -10,29 +8,22 @@ const extractDayOfMonth = (d: Date) => {
   return arr.slice(2, 3);
 };
 
-export default function Datepicker() {
-  const placeholderDate = "2025-12-05 19:15:00.000 +0100";
+interface PropTypes {
+  currentDate: Date;
+  onChange: (d: Date) => void;
+}
 
-  const [currentDate, setCurrentDate] = useState(new Date(placeholderDate));
-
-  useEffect(() => {
-    console.log(currentDate.toDateString());
-  }, [currentDate]);
-
+export default function Datepicker({ currentDate, onChange }: PropTypes) {
   const handleNext = () => {
-    setCurrentDate((prev) => {
-      const next = new Date(prev);
-      next.setDate(next.getDate() + 1);
-      return next;
-    });
+    const newDate = new Date(currentDate);
+    newDate.setDate(newDate.getDate() + 1);
+    onChange(newDate);
   };
 
   const handlePrevious = () => {
-    setCurrentDate((prev) => {
-      const next = new Date(prev);
-      next.setDate(next.getDate() - 1);
-      return next;
-    });
+    const newDate = new Date(currentDate);
+    newDate.setDate(newDate.getDate() - 1);
+    onChange(newDate);
   };
 
   return (

@@ -8,12 +8,17 @@ type DisplayMode = "show" | "add";
 
 export default function Calendar() {
   const [displayMode, setDisplayMode] = useState<DisplayMode>("add");
+  const [currentDate, setCurrentDate] = useState(new Date());
+
+  const onDateChange = (d: Date) => {
+    setCurrentDate(d);
+  };
 
   return (
     <div className="calendar-main-div">
       <div className="calendar-display--left">
         <div onClick={() => setDisplayMode("show")}>
-          <Datepicker />
+          <Datepicker currentDate={currentDate} onChange={onDateChange} />
         </div>
         <div onClick={() => setDisplayMode("add")}>
           <AddEventBtn />
@@ -23,7 +28,7 @@ export default function Calendar() {
         {displayMode === "add" ? (
           <EventCreator />
         ) : displayMode === "show" ? (
-          <EventDisply />
+          <EventDisply date={currentDate} />
         ) : null}
       </div>
     </div>
