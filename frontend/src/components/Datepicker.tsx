@@ -47,7 +47,7 @@ export default function Datepicker() {
         alt="datepicker previous button"
       />
 
-      <div>
+      <div className="datepicker-display">
         <img
           style={{ width: "200px", height: "200px" }}
           src="/calendar-page-with-alpha.png"

@@ -103,6 +103,10 @@ body {
   }
 }
 
+.datepicker-display:hover {
+  cursor: pointer;
+}
+
 .add-event-btn {
   display: flex;
   flex-direction: column;

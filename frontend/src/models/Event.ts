@@ -1,7 +1,9 @@
 // status = FUTURE, LIVE, FINISHED
 
-import type { EventTypeType } from "./EventTypeType";
-import { defaultEventType } from "./EventTypeType";
+import type { EventTypeType } from "./EventType";
+import { defaultEventType } from "./EventType";
+import { defaultVenue } from "./Venue";
+import type { VenueType } from "./Venue";
 
 export const defaultEvent: EventType = {
   date: "",
@@ -24,9 +26,7 @@ export const defaultEvent: EventType = {
       scoredAt: "",
     },
   ],
-  venue: {
-    id: "",
-  },
+  venue: defaultVenue,
 };
 
 export type EventType = {
@@ -50,7 +50,5 @@ export type EventType = {
       scoredAt: string;
     }
   ];
-  venue: {
-    id: string;
-  };
+  venue: VenueType;
 };
