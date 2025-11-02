@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -16,6 +17,18 @@ public class EventController {
 
     public EventController(EventService eventService) {
         this.eventService = eventService;
+    }
+
+    @GetMapping
+    public ResponseEntity<List<EventDto>> getEventsByFilter(
+            @RequestParam Date date,
+            @RequestParam Integer eventType,
+            @RequestParam String country) {
+        List<EventDto> events = eventService.getEventsByFilter(
+                date,
+                eventType,
+                country);
+        return ResponseEntity.ok(events);
     }
 
     @GetMapping("/get/{id}")

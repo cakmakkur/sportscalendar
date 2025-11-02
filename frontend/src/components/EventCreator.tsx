@@ -42,8 +42,10 @@ export default function EventCreator() {
       style={{
         display: "flex",
         flexDirection: "column",
+        alignItems: "end",
         gap: "10px",
         width: "300px",
+        fontSize: "1.1rem",
       }}
     >
       <label>

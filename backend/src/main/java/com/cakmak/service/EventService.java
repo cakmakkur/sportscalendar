@@ -9,6 +9,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -52,6 +53,14 @@ public class EventService {
         }
 
         return dtos;
+    }
+
+    public List<EventDto> getEventsByFilter (
+            Date date,
+            Integer eventType,
+            String country) {
+        // TODO: implement service methode
+        return null;
     }
 
     @Transactional

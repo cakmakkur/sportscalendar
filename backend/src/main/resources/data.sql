@@ -197,6 +197,8 @@ INSERT INTO countries (name) VALUES ('Vietnam');
 INSERT INTO countries (name) VALUES ('Yemen');
 INSERT INTO countries (name) VALUES ('Zambia');
 INSERT INTO countries (name) VALUES ('Zimbabwe');
+INSERT INTO countries (name) VALUES ('Online');
+
 
 INSERT INTO players (id, firstname, lastname, country) VALUES
                                                            ('PLAYER001', 'Lionel', 'Messi', 1),
