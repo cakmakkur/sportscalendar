@@ -232,4 +232,13 @@ public class EventService {
         }
         return dtos;
     }
+
+    public List<CountryDto> getCountries() {
+        List<Country> countries = countryRepository.findAll();
+        List<CountryDto> dtos = new ArrayList<>();
+        for(Country c : countries) {
+            dtos.add(Mapper.toCountryDto(c));
+        }
+        return dtos;
+    }
 }

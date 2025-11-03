@@ -4,7 +4,7 @@ export const defaultEventType: EventTypeType = {
   eventCategory: {
     id: 1,
     name: "placeholder category",
-    description: "placeholder",
+    description: "placeholder desc",
   },
   competitionType: "players",
 };

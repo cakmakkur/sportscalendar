@@ -18,6 +18,11 @@ export default function EventDisply({ date }: { date: Date }) {
     }
   };
 
+  // helper function to pass event state setter to the child component (EventFilter)
+  const updateEvents = (newEvents: EventType[]) => {
+    setEvents(newEvents);
+  };
+
   // initiates the filter on mounting the component
   // then fetches the evens of the selected date
   useEffect(() => {
@@ -35,7 +40,7 @@ export default function EventDisply({ date }: { date: Date }) {
 
   return (
     <div className="event-display-main">
-      <EventFilter />
+      <EventFilter date={date} updateEvents={updateEvents} />
       <ul
         style={{
           display: "flex",

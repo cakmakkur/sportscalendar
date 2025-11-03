@@ -6,6 +6,6 @@ export type TeamType = {
 
 export const defaultTeam: TeamType = {
   id: "0",
-  name: "Placeholder team name",
+  name: "",
   country: "Austria",
 };

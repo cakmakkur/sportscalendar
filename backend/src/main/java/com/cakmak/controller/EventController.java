@@ -1,9 +1,12 @@
 package com.cakmak.controller;
 
+import com.cakmak.dtos.CountryDto;
 import com.cakmak.dtos.EventDto;
 import com.cakmak.dtos.EventTypeDto;
 import com.cakmak.dtos.VenueDto;
+import com.cakmak.repository.CountryRepository;
 import com.cakmak.service.EventService;
+import com.cakmak.util.Mapper;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,9 +22,11 @@ import java.util.List;
 public class EventController {
 
     private final EventService eventService;
+    private final CountryRepository countryRepository;
 
-    public EventController(EventService eventService) {
+    public EventController(EventService eventService, CountryRepository countryRepository) {
         this.eventService = eventService;
+        this.countryRepository = countryRepository;
     }
 
     /*
@@ -85,7 +90,7 @@ public class EventController {
     }
 
     /*
-     * returns available event types. uses EventController instead of its own because the app is small-scale
+     * returns available event types. in EventController instead of its own TypesController because the app is small-scale
      * */
     @GetMapping("/types")
     public ResponseEntity<List<EventTypeDto>> getTypes() {
@@ -93,9 +98,19 @@ public class EventController {
     }
 
     /*
-     * returns available venues. uses EventController instead of its own because the app is small-scale
+     * returns available venues. in EventController instead of its own VenueController because the app is small-scale
      * */
     @GetMapping("/venues")
     public ResponseEntity<List<VenueDto>> getVenues() {
         return ResponseEntity.ok(eventService.getVenues());
-    }}
+    }
+
+    /*
+     * returns available venues. in EventController instead of its own CountryController because the app is small-scale
+     * */
+    @GetMapping("/countries")
+    public ResponseEntity<List<CountryDto>> getCountries() {
+        return ResponseEntity.ok(eventService.getCountries());
+    }
+
+}

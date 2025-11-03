@@ -32,6 +32,13 @@ public class Mapper {
         );
     }
 
+    public static CountryDto toCountryDto(Country c) {
+        return new CountryDto(
+                c.getId(),
+                c.getName()
+        );
+    }
+
     public static PlayerDto toPlayerDto(Player p ) {
         return new PlayerDto(
                 p.getId(),
