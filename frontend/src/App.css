@@ -62,7 +62,7 @@ body {
   position: relative;
   display: flex;
   flex-direction: row;
-  padding: 5vh 3vw 0px;
+  padding: 10vh 3vw 0px;
   min-height: 90vh;
   column-gap: 6vw;
 }
