@@ -1,6 +1,6 @@
 body {
-background: linear-gradient(160deg, var(--primary-bg-color) 0%, black 100%);  color: var(--primary-text-color);
-  padding-bottom: 100px;
+  background: linear-gradient(160deg, var(--primary-bg-color) 0%, black 100%);  color: var(--primary-text-color);
+    padding-bottom: 100px;
 }
 
 .navbar-link {
@@ -13,7 +13,6 @@ background: linear-gradient(160deg, var(--primary-bg-color) 0%, black 100%);  co
 .navbar-link:hover {
   cursor: pointer;
   filter: brightness(1.3);
-
 }
 
 .home-main-div {

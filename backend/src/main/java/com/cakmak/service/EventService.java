@@ -39,6 +39,9 @@ public class EventService {
         this.countryRepository = countryRepository;
     }
 
+    /*
+    * Returns dto of the single event by id
+    * */
     public EventDto get(String id) {
         Event event = this.eventRepository.findEventById(id);
 
@@ -49,6 +52,9 @@ public class EventService {
         return Mapper.toEventDto(event);
     }
 
+    /*
+     * Returns dtos of all events
+     * */
     public List<EventDto> getAll() {
         List<Event> events = this.eventRepository.findAllEvents();
 
@@ -87,6 +93,9 @@ public class EventService {
         return dtos;
     }
 
+    /*
+     * Saves a new event into the DB
+     * */
     @Transactional
     public void create(EventDto eventDto) {
         Event event = new Event();
@@ -186,16 +195,23 @@ public class EventService {
         eventRepository.save(event);
     }
 
+    /*
+    * placeholder. not needed in the requirements of the task
+    * */
     public EventDto delete(String id) {
-        // placeholder. not needed in the requirements of the task
         return null;
     }
 
+    /*
+     * placeholder. not needed in the requirements of the task
+     * */
     public EventDto update(String id) {
-        // placeholder. not needed in the requirements of the task
         return null;
     }
 
+    /*
+    * returns dtos of the available event types
+    * */
     public List<EventTypeDto> getEventTypes() {
         List<EventType> eventTypes = eventTypeRepository.findAll();
         List<EventTypeDto> dtos = new ArrayList<>();
@@ -205,6 +221,9 @@ public class EventService {
         return dtos;
     }
 
+    /*
+    * returns dtos of available venues
+    * */
     public List<VenueDto> getVenues() {
         List<Venue> venues = venueRepository.findAll();
         List<VenueDto> dtos = new ArrayList<>();

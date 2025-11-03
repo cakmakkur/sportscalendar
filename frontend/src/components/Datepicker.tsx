@@ -13,6 +13,7 @@ interface PropTypes {
   onChange: (d: Date) => void;
 }
 
+// datepicker UI component.
 export default function Datepicker({ currentDate, onChange }: PropTypes) {
   const handleNext = () => {
     const newDate = new Date(currentDate);

@@ -10,6 +10,11 @@ import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.List;
 
+
+/*
+* Event-Entity repository. Used JPQL to create custom SQL queries
+* Avoided using out-of-the-box methods like 'findById' of JPA...
+* */
 @Repository
 public interface EventRepository extends JpaRepository<Event, String> {
 

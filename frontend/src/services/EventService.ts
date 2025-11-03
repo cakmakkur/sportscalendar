@@ -3,16 +3,26 @@ import type { EventFilterType } from "../models/EventFilter";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
+// HTTP Request functions
+// no user-friedndly error handling is implemented since it is not required by the task. Instead simple console logging is used
 export const fetchEventTypes = async () => {
-  const response = await fetch(`${BASE_URL}/event/types`);
-  const data = await response.json();
-  return data;
+  try {
+    const response = await fetch(`${BASE_URL}/event/types`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log("error : " + error);
+  }
 };
 
 export const fetchVenues = async () => {
-  const response = await fetch(`${BASE_URL}/event/venues`);
-  const data = await response.json();
-  return data;
+  try {
+    const response = await fetch(`${BASE_URL}/event/venues`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log("error : " + error);
+  }
 };
 
 export const fetchEvents = async (ef: EventFilterType) => {
@@ -23,7 +33,7 @@ export const fetchEvents = async (ef: EventFilterType) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log("todo: implement error handling: " + error);
+    console.log("error : " + error);
   }
 };
 
@@ -39,6 +49,6 @@ export const addEvent = async (event: EventType) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log("basic console-debugging :) : " + error);
+    console.log("error : " + error);
   }
 };

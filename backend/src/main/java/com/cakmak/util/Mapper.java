@@ -9,6 +9,10 @@ import java.util.Date;
 import java.util.List;
 
 
+/*
+* Custom-made class for the static mapper methods turn DB-Entities into corresponding Dtos
+* So that frontend receives controlled data
+* */
 public class Mapper {
 
     public static EventCategoryDto toEventCategoryDto(EventCategory ec) {

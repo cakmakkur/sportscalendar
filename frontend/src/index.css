@@ -1,10 +1,10 @@
-/* basic custom variables for bg and text */
+/* basic custom variables for bg and text, Sportsradar color scheme */
 :root {
   --primary-bg-color: rgb(19,21,64);
   --primary-text-color: rgb(227,50,34);
 }
 
-/* basic css resets */
+/* basic css resets to remove margins, adjusting box-sizing, etc... */
 *,
 *::before,
 *::after {

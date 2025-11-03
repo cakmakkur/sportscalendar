@@ -18,6 +18,7 @@ export default function EventCreator() {
 
   const [formEvent, setFormEvent] = useState<EventType>(defaultEvent);
 
+  // fetching event types and venues on mounting the component
   useEffect(() => {
     const init = async () => {
       const types = await fetchEventTypes();
@@ -28,10 +29,9 @@ export default function EventCreator() {
     init();
   }, []);
 
+  // simple placeholder validation function
   const validateForm = () => {
-    // this is a placeholder error handling with quick alert() feedback
-
-    // backend expects price in cents, adjusting it before sending
+    // converts price to cents
     setFormEvent({
       ...formEvent,
       livestream: {
@@ -41,13 +41,13 @@ export default function EventCreator() {
     });
 
     return (
-      // simple/placeholder validation
       formEvent.date !== "" &&
       formEvent.eventType.id !== 0 &&
       formEvent.venue.id !== ""
     );
   };
 
+  // submit function for post request
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     validateForm();
@@ -62,6 +62,7 @@ export default function EventCreator() {
     }
   };
 
+  // user input change handler
   const handleChange = (e: React.ChangeEvent<any>) => {
     e.preventDefault();
 
@@ -189,9 +190,7 @@ export default function EventCreator() {
     }
   };
 
-  // I have used AI to fast-prototype form element
-  // based on my event dto, Then I adapted the
-  // template to my logic
+  // used AI to generate template html, then adjusted it to my needs
   return (
     <form
       className="add-event-form"

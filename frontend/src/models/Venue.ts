@@ -6,6 +6,6 @@ export type VenueType = {
 
 export const defaultVenue = {
   id: "0",
-  name: "placeholder name",
-  country: "placeholder country",
+  name: "Placeholder venue name",
+  country: "Austria",
 };

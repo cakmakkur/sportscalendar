@@ -4,10 +4,12 @@ import type { EventFilterType } from "../models/EventFilter";
 import type { EventType } from "../models/Event";
 import EventFilter from "./EventFilter";
 
+// displays the events according to the filter
 export default function EventDisply({ date }: { date: Date }) {
   const [events, setEvents] = useState<EventType[]>([]);
   const [detailsOpenIds, setDetailsOpenIds] = useState<string[]>([]);
 
+  // toggles the details of an event
   const toggleDetails = (id: string) => {
     if (detailsOpenIds.includes(id)) {
       setDetailsOpenIds(detailsOpenIds.filter((i) => i !== id));
@@ -16,12 +18,14 @@ export default function EventDisply({ date }: { date: Date }) {
     }
   };
 
+  // initiates the filter on mounting the component
+  // then fetches the evens of the selected date
   useEffect(() => {
     const init = async () => {
       const filter: EventFilterType = {
         date: date.toISOString().slice(0, 10),
-        eventType: 0,
-        country: 0,
+        eventType: 0, // 0 equals all in BE implementation
+        country: 0, // 0 equals all in BE implementation
       };
       const data = await fetchEvents(filter);
       setEvents(data);
