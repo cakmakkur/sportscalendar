@@ -23,16 +23,26 @@ export default function Navbar() {
           display: "flex",
           flexDirection: "row",
           justifyContent: "center",
-          columnGap: "2vw",
+          columnGap: "3vw",
         }}
       >
         <li>
-          <Link className="navbar-link" to="/">
+          <Link
+            style={{ display: "flex", alignItems: "start", columnGap: "7px" }}
+            className="navbar-link"
+            to="/"
+          >
+            <img src="/home.svg" alt="home nav button icon" />
             HOME
           </Link>
         </li>
         <li>
-          <Link className="navbar-link" to="/calendar">
+          <Link
+            style={{ display: "flex", alignItems: "start", columnGap: "7px" }}
+            className="navbar-link"
+            to="/calendar"
+          >
+            <img src="/calendar.svg" alt="calendar nav button icon" />
             CALENDAR
           </Link>
         </li>

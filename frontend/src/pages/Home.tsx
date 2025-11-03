@@ -8,9 +8,24 @@ export default function Home() {
         src="/homepage-bg.jpg"
         alt="homepage background image"
       />
-      <Link className="homepage-link" to="/calendar">
-        BROWSE EVENTS
-      </Link>
+      <div
+        style={{
+          marginRight: "10vw",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "end",
+        }}
+      >
+        <h1 style={{ fontSize: "4rem", color: "lightgray" }}>
+          Live Your Passion
+        </h1>
+        <h1 style={{ color: "lightgray", marginBottom: "5vh" }}>
+          Livestreams. Events. Sports.
+        </h1>
+        <Link className="homepage-link" to="/calendar">
+          BROWSE EVENTS
+        </Link>
+      </div>
     </div>
   );
 }
