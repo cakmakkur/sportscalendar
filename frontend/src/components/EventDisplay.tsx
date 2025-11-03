@@ -6,7 +6,7 @@ import EventFilter from "./EventFilter";
 
 export default function EventDisply({ date }: { date: Date }) {
   const [events, setEvents] = useState<EventType[]>([]);
-  const [detailsOpenIds, setDetailsOpenIds] = useState<string[]>(["EVENT063"]);
+  const [detailsOpenIds, setDetailsOpenIds] = useState<string[]>([]);
 
   const toggleDetails = (id: string) => {
     if (detailsOpenIds.includes(id)) {
@@ -106,16 +106,13 @@ export default function EventDisply({ date }: { date: Date }) {
                         {e.livestream.url}
                       </a>
                       <br />
-                      {e.livestream.membershipRequired ? (
-                        <span>
-                          <span style={{ color: "lightgray" }}>
-                            Membership required:{" "}
-                          </span>
-                          <span>Yes</span>
+                      <span>
+                        <span style={{ color: "lightgray" }}>
+                          Membership required:{" "}
                         </span>
-                      ) : (
-                        ""
-                      )}
+                        <span>Yes</span>
+                      </span>
+
                       <br />
                       {e.livestream.price ? (
                         <span>

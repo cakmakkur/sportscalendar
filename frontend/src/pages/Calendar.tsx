@@ -9,6 +9,8 @@ type DisplayMode = "show" | "add";
 export default function Calendar() {
   const [displayMode, setDisplayMode] = useState<DisplayMode>("show");
   const [currentDate, setCurrentDate] = useState(new Date("2025-08-30"));
+  // intentionally starting with a static date
+  // because the db is only static dummy data
 
   const onDateChange = (d: Date) => {
     setCurrentDate(d);

@@ -53,6 +53,10 @@ export default function EventCreator() {
     validateForm();
     try {
       await addEvent(formEvent);
+      // simulating/placeholding success message with the alert
+      // and refreshing back to calendar page
+      alert("Event created successfully");
+      window.location.reload();
     } catch (error) {
       console.log("Couldn't create the event: " + error);
     }
