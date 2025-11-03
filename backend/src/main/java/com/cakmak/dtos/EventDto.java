@@ -5,12 +5,13 @@ import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
 import java.time.OffsetDateTime;
+import java.util.Date;
 import java.util.List;
 
 public record EventDto (
         String id,
-        @NotNull OffsetDateTime date,
-        OffsetDateTime createdAt,
+        @NotNull Date date,
+        Date createdAt,
         EventCategoryDto category,
         @NotNull EventStatus status,
         @NotNull EventTypeDto eventType,

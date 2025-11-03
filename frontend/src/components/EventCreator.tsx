@@ -3,7 +3,11 @@ import { defaultEvent } from "../models/Event";
 import type { EventType } from "../models/Event";
 
 import type { EventTypeType } from "../models/EventType";
-import { fetchEventTypes, fetchVenues } from "../services/EventService";
+import {
+  addEvent,
+  fetchEventTypes,
+  fetchVenues,
+} from "../services/EventService";
 import { defaultVenue } from "../models/Venue";
 import type { VenueType } from "../models/Venue";
 
@@ -24,17 +28,44 @@ export default function EventCreator() {
     init();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const validateForm = () => {
+    // this is a placeholder error handling with quick alert() feedback
+
+    // backend expects price in cents, adjusting it before sending
+    setFormEvent({
+      ...formEvent,
+      livestream: {
+        ...formEvent.livestream,
+        price: formEvent.livestream.price * 100,
+      },
+    });
+
+    return (
+      // simple/placeholder validation
+      formEvent.date !== "" &&
+      formEvent.eventType.id !== 0 &&
+      formEvent.venue.id !== ""
+    );
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(formEvent);
+    validateForm();
+    try {
+      await addEvent(formEvent);
+    } catch (error) {
+      console.log("Couldn't create the event: " + error);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<any>) => {
     e.preventDefault();
+
     switch (e.target.name) {
       case "date":
         setFormEvent({ ...formEvent, date: e.target.value });
         break;
+
       case "eventType":
         setFormEvent({
           ...formEvent,
@@ -44,6 +75,7 @@ export default function EventCreator() {
           },
         });
         break;
+
       case "membershipRequired":
         setFormEvent({
           ...formEvent,
@@ -53,6 +85,7 @@ export default function EventCreator() {
           },
         });
         break;
+
       case "venueName":
         setFormEvent({
           ...formEvent,
@@ -62,6 +95,7 @@ export default function EventCreator() {
           },
         });
         break;
+
       case "competitionType":
         setFormEvent({
           ...formEvent,
@@ -71,6 +105,81 @@ export default function EventCreator() {
           },
         });
         break;
+
+      case "price":
+        setFormEvent({
+          ...formEvent,
+          livestream: {
+            ...formEvent.livestream,
+            price: Number(e.target.value),
+          },
+        });
+        break;
+
+      case "url":
+        setFormEvent({
+          ...formEvent,
+          livestream: {
+            ...formEvent.livestream,
+            url: e.target.value,
+          },
+        });
+        break;
+
+      case "firstname1":
+        setFormEvent({
+          ...formEvent,
+          players: formEvent.players.map((p, i) =>
+            i === 0 ? { ...p, firstname: e.target.value } : p
+          ),
+        });
+        break;
+
+      case "lastname1":
+        setFormEvent({
+          ...formEvent,
+          players: formEvent.players.map((p, i) =>
+            i === 0 ? { ...p, lastname: e.target.value } : p
+          ),
+        });
+        break;
+
+      case "firstname2":
+        setFormEvent({
+          ...formEvent,
+          players: formEvent.players.map((p, i) =>
+            i === 1 ? { ...p, firstname: e.target.value } : p
+          ),
+        });
+        break;
+
+      case "lastname2":
+        setFormEvent({
+          ...formEvent,
+          players: formEvent.players.map((p, i) =>
+            i === 1 ? { ...p, lastname: e.target.value } : p
+          ),
+        });
+        break;
+
+      case "team1":
+        setFormEvent({
+          ...formEvent,
+          teams: formEvent.teams.map((p, i) =>
+            i === 0 ? { ...p, name: e.target.value } : p
+          ),
+        });
+        break;
+
+      case "team2":
+        setFormEvent({
+          ...formEvent,
+          teams: formEvent.teams.map((p, i) =>
+            i === 1 ? { ...p, name: e.target.value } : p
+          ),
+        });
+        break;
+
       default:
         break;
     }
@@ -104,6 +213,7 @@ export default function EventCreator() {
       >
         Add an event
       </h1>
+
       <label>
         Date:
         <input
@@ -115,7 +225,6 @@ export default function EventCreator() {
         />
       </label>
 
-      {/* Event Type */}
       <label>
         Event Type:
         <select name="eventType" onChange={handleChange}>
@@ -157,23 +266,60 @@ export default function EventCreator() {
             display: "flex",
             flexDirection: "column",
             alignItems: "end",
+            rowGap: "10px",
           }}
         >
           {formEvent.eventType.competitionType === "players" ? (
             <>
               Players:
-              <input type="text" placeholder="Firstname" />
-              <input type="text" placeholder="Lastname" />
+              <input
+                value={formEvent.players[0].firstname}
+                onChange={handleChange}
+                name="firstname1"
+                type="text"
+                placeholder="Player 1 Firstname"
+              />
+              <input
+                value={formEvent.players[0].lastname}
+                onChange={handleChange}
+                name="lastname1"
+                type="text"
+                placeholder="Player 1 Lastname"
+              />
               <span style={{ fontSize: "1.4rem" }}>vs</span> <br />
-              <input type="text" placeholder="Firstname" />
-              <input type="text" placeholder="Lastname" />
+              <input
+                value={formEvent.players[1].firstname}
+                onChange={handleChange}
+                name="firstname2"
+                type="text"
+                placeholder="Player 2 Firstname"
+              />
+              <input
+                value={formEvent.players[1].lastname}
+                onChange={handleChange}
+                name="lastname2"
+                type="text"
+                placeholder="Player 2 Lastname"
+              />
             </>
           ) : (
             <>
               Teams:
-              <input type="text" placeholder="Team name" />
+              <input
+                onChange={handleChange}
+                value={formEvent.teams[0].name}
+                type="text"
+                name="team1"
+                placeholder="Team 1 name"
+              />
               <span style={{ fontSize: "1.4rem" }}>vs</span> <br />
-              <input type="text" placeholder="Team name" />
+              <input
+                onChange={handleChange}
+                value={formEvent.teams[1].name}
+                type="text"
+                name="team2"
+                placeholder="Team 2 name"
+              />
             </>
           )}
           <br />
@@ -209,7 +355,8 @@ export default function EventCreator() {
             URL:
             <input
               type="url"
-              name="livestreamUrl"
+              name="url"
+              onChange={handleChange}
               value={formEvent.livestream.url}
             />
           </label>
@@ -230,7 +377,7 @@ export default function EventCreator() {
               type="number"
               name="price"
               min="0"
-              step="0.01"
+              step="1"
               value={formEvent.livestream.price}
               onChange={handleChange}
             />
@@ -238,18 +385,17 @@ export default function EventCreator() {
         </fieldset>
       )}
 
-      {/* Venue */}
       <label>
         Venue:
         <select
           name="venueName"
-          value={formEvent.venue.name}
+          value={formEvent.venue.id}
           onChange={handleChange}
           required
         >
           <option value="">Select venue</option>
           {venues.map((v) => (
-            <option key={v.name} value={v.id}>
+            <option key={v.id} value={v.id}>
               {v.name}
             </option>
           ))}

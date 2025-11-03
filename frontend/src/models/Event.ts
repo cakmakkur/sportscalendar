@@ -14,8 +14,8 @@ export const defaultEvent: EventType = {
   status: "",
   eventType: defaultEventType,
   description: "placeholder event description",
-  players: [defaultPlayer],
-  teams: [defaultTeam],
+  players: [defaultPlayer, defaultPlayer],
+  teams: [defaultTeam, defaultTeam],
   livestream: {
     url: "https://placeholder.com",
     membershipRequired: false,

@@ -194,6 +194,7 @@ flex: 1;
   border-radius:5px;
   background-color: rgba(0, 128, 0, 0.261);
   transition: 0.1s;
+  margin-top: 3vh;
   &:hover {
     cursor: pointer;
     filter: brightness(1.5);

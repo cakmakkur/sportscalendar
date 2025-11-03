@@ -5,6 +5,7 @@ import com.cakmak.enums.EventStatus;
 import com.cakmak.model.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -122,8 +123,8 @@ public class Mapper {
 
         return new EventDto(
                 e.getId(),
-                e.getDate(),
-                e.getCreatedAt(),
+                Date.from(e.getDate().toInstant()),
+                Date.from(e.getCreatedAt().toInstant()),
                 toEventCategoryDto(e.getEventType().getEventCategory()),
                 EventStatus.fromString(e.getStatus().toString()),
                 toEventTypeDto(e.getEventType()),

@@ -6,8 +6,8 @@ export type PlayerType = {
 };
 
 export const defaultPlayer: PlayerType = {
-  id: "default",
-  firstname: "placeholder",
-  lastname: "placeholder",
-  country: "placeholder",
+  id: "",
+  firstname: "",
+  lastname: "",
+  country: "",
 };
