@@ -10,10 +10,11 @@ import {
   defaultEventFilter,
   type EventFilterType,
 } from "../models/EventFilter";
+import type { EventType } from "../models/Event";
 
 interface EventFilterProps {
   date: Date;
-  updateEvents: (e: EventTypeType) => void;
+  updateEvents: (e: EventType[]) => void;
 }
 
 export default function EventFilter({ date, updateEvents }: EventFilterProps) {
@@ -40,7 +41,8 @@ export default function EventFilter({ date, updateEvents }: EventFilterProps) {
     }
   };
 
-  const submitFilter = async () => {
+  const submitFilter = async (e: React.FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     const finalFIlter: EventFilterType = {
       date: date.toISOString().slice(0, 10),
       eventType: filter.eventType,
@@ -62,16 +64,35 @@ export default function EventFilter({ date, updateEvents }: EventFilterProps) {
 
   return (
     <div>
-      <form action="">
+      <form
+        style={{
+          display: "flex",
+          columnGap: "3vw",
+          marginBottom: "3vh",
+          paddingBottom: "2vh",
+          borderBottom: "1px solid darkgray",
+        }}
+      >
+        <button className="apply-filter-btn" onClick={(e) => submitFilter(e)}>
+          <img width={20} src="/filter.svg" alt="apply filter button icon" />
+          Apply Filter
+        </button>
         <label>
-          Event Type:
           <select
+            style={{
+              background: "none",
+              color: "white",
+              fontSize: "1.2rem",
+              padding: "5px 10px",
+              border: "1px solid lightgray",
+              borderRadius: "5px",
+            }}
             name="eventType"
             value={filter.eventType}
             onChange={handleChange}
             required
           >
-            <option value="">Select event type</option>
+            <option value="0">All event types</option>
             {types.map((v) => (
               <option key={v.id} value={v.id}>
                 {v.name}
@@ -81,14 +102,21 @@ export default function EventFilter({ date, updateEvents }: EventFilterProps) {
         </label>
 
         <label>
-          Country:
           <select
+            style={{
+              background: "none",
+              color: "white",
+              fontSize: "1.2rem",
+              padding: "5px 10px",
+              border: "1px solid lightgray",
+              borderRadius: "5px",
+            }}
             name="country"
             value={filter.country}
             onChange={handleChange}
             required
           >
-            <option value="">Select country</option>
+            <option value="0">All countries</option>
             {countries.map((v) => (
               <option key={v.id} value={v.id}>
                 {v.name}
@@ -96,7 +124,6 @@ export default function EventFilter({ date, updateEvents }: EventFilterProps) {
             ))}
           </select>
         </label>
-        <button type="submit" onClick={submitFilter}></button>
       </form>
     </div>
   );

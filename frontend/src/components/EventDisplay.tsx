@@ -38,6 +38,20 @@ export default function EventDisply({ date }: { date: Date }) {
     init();
   }, [date]);
 
+  if (events.length === 0)
+    return (
+      <div className="event-display-main">
+        <EventFilter date={date} updateEvents={updateEvents} />
+        <div
+          style={{
+            fontSize: "1.2rem",
+          }}
+        >
+          No events found
+        </div>
+      </div>
+    );
+
   return (
     <div className="event-display-main">
       <EventFilter date={date} updateEvents={updateEvents} />

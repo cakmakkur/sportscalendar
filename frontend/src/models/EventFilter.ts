@@ -6,6 +6,6 @@ export type EventFilterType = {
 
 export const defaultEventFilter: EventFilterType = {
   date: new Date().toISOString().slice(0, 10),
-  eventType: 0, // football
-  country: 197, // 197 = online event
+  eventType: 0,
+  country: 0,
 };
