@@ -371,6 +371,7 @@ export default function EventCreator() {
               type="checkbox"
               name="membershipRequired"
               checked={formEvent.livestream.membershipRequired}
+              onChange={handleChange}
             />
           </label>
 

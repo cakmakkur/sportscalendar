@@ -71,6 +71,8 @@ export default function EventFilter({ date, updateEvents }: EventFilterProps) {
           marginBottom: "3vh",
           paddingBottom: "2vh",
           borderBottom: "1px solid darkgray",
+          flexWrap: "wrap",
+          rowGap: "3vh",
         }}
       >
         <button className="apply-filter-btn" onClick={(e) => submitFilter(e)}>
@@ -86,6 +88,7 @@ export default function EventFilter({ date, updateEvents }: EventFilterProps) {
               padding: "5px 10px",
               border: "1px solid lightgray",
               borderRadius: "5px",
+              maxWidth: "200px",
             }}
             name="eventType"
             value={filter.eventType}
@@ -110,6 +113,7 @@ export default function EventFilter({ date, updateEvents }: EventFilterProps) {
               padding: "5px 10px",
               border: "1px solid lightgray",
               borderRadius: "5px",
+              maxWidth: "200px",
             }}
             name="country"
             value={filter.country}

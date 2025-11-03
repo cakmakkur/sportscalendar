@@ -6,6 +6,7 @@ import EventFilter from "./EventFilter";
 
 // displays the events according to the filter
 export default function EventDisply({ date }: { date: Date }) {
+  const [loading, setLoading] = useState(true);
   const [events, setEvents] = useState<EventType[]>([]);
   const [detailsOpenIds, setDetailsOpenIds] = useState<string[]>([]);
 
@@ -27,16 +28,37 @@ export default function EventDisply({ date }: { date: Date }) {
   // then fetches the evens of the selected date
   useEffect(() => {
     const init = async () => {
+      setLoading(true);
       const filter: EventFilterType = {
         date: date.toISOString().slice(0, 10),
         eventType: 0, // 0 equals all in BE implementation
         country: 0, // 0 equals all in BE implementation
       };
-      const data = await fetchEvents(filter);
-      setEvents(data);
+      try {
+        const data = await fetchEvents(filter);
+        setEvents(data);
+      } catch (error) {
+        console.log("error : " + error);
+      } finally {
+        setLoading(false);
+      }
     };
     init();
   }, [date]);
+
+  if (loading)
+    return (
+      <div className="event-display-main">
+        <EventFilter date={date} updateEvents={updateEvents} />
+        <div
+          style={{
+            fontSize: "1.2rem",
+          }}
+        >
+          Loading events...
+        </div>
+      </div>
+    );
 
   if (events.length === 0)
     return (
@@ -75,7 +97,7 @@ export default function EventDisply({ date }: { date: Date }) {
           if (!nameA || !nameB) return null;
 
           return (
-            <>
+            <div key={e.id}>
               <li className="display-event-row" key={e.id}>
                 <div>
                   <span style={{ color: "lightgray" }}>
@@ -151,7 +173,7 @@ export default function EventDisply({ date }: { date: Date }) {
                   )}
                 </div>
               )}
-            </>
+            </div>
           );
         })}
       </ul>
