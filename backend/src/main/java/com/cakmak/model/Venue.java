@@ -2,6 +2,7 @@ package com.cakmak.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,7 +15,7 @@ public class Venue {
     private String name;
 
     @OneToMany(mappedBy = "venue", fetch = FetchType.LAZY)
-    private List<Event> events;
+    private List<Event> events = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "country")

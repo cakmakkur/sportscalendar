@@ -2,6 +2,7 @@ package com.cakmak.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -12,13 +13,13 @@ public class Team {
     private String id = UUID.randomUUID().toString();
 
     @OneToMany(mappedBy = "team", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<TeamPlayer> teamPlayers;
+    private List<TeamPlayer> teamPlayers = new ArrayList<>();
 
     @OneToMany(mappedBy = "team", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<EventTeam> eventTeams;
+    private List<EventTeam> eventTeams = new ArrayList<>();
 
     @OneToMany(mappedBy = "team", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Score> scores;
+    private List<Score> scores = new ArrayList<>();
 
     private String name;
 

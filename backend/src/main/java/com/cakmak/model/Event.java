@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -16,11 +18,11 @@ public class Event {
     @Id
     private String id = UUID.randomUUID().toString();
 
-    private OffsetDateTime date;
+    private Date date;
 
     @Column(name = "created_at")
     @CreationTimestamp
-    private OffsetDateTime createdAt;
+    private Date createdAt;
 
     @Enumerated(EnumType.STRING)
     private EventStatus status;
@@ -36,20 +38,20 @@ public class Event {
     private Venue venue;
 
     @OneToMany(mappedBy = "event", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Score> scores;
+    private List<Score> scores = new ArrayList<>();
 
     @OneToOne(mappedBy = "event", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Livestream livestream;
 
     @OneToMany(mappedBy = "event", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<EventPlayer> eventPlayers;
+    private List<EventPlayer> eventPlayers = new ArrayList<>();
 
     @OneToMany(mappedBy = "event", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<EventTeam> eventTeams;
+    private List<EventTeam> eventTeams = new ArrayList<>();
 
     public Event() {}
 
-    public Event (OffsetDateTime date,
+    public Event (Date date,
                   EventStatus status,
                   EventType eventType,
                   String description,
@@ -76,11 +78,11 @@ public class Event {
         this.id = id;
     }
 
-    public OffsetDateTime getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(OffsetDateTime date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -100,11 +102,11 @@ public class Event {
         this.eventType = eventType;
     }
 
-    public OffsetDateTime getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(OffsetDateTime createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 

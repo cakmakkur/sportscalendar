@@ -2,6 +2,7 @@ package com.cakmak.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -20,13 +21,13 @@ public class Player {
     private Country country;
 
     @OneToMany(mappedBy = "player", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<EventPlayer> eventPlayers;
+    private List<EventPlayer> eventPlayers = new ArrayList<>();
 
     @OneToMany(mappedBy = "player", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<TeamPlayer> teamPlayers;
+    private List<TeamPlayer> teamPlayers = new ArrayList<>();
 
     @OneToMany(mappedBy = "player", cascade = CascadeType.ALL)
-    private List<Score> scores;
+    private List<Score> scores = new ArrayList<>();
 
     public Player() {}
 

@@ -2,6 +2,7 @@ package com.cakmak.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,7 +16,7 @@ public class CompetitionType {
     private String type;
 
     @OneToMany(mappedBy = "competitionType", fetch = FetchType.LAZY)
-    private List<EventType> eventTypes;
+    private List<EventType> eventTypes = new ArrayList<>();
 
     public CompetitionType() {}
 

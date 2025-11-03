@@ -11,7 +11,7 @@ export const defaultEvent: EventType = {
   id: "",
   date: new Date().toISOString().slice(0, 10),
   createdAt: "",
-  status: "",
+  status: "FUTURE",
   eventType: defaultEventType,
   description: "placeholder event description",
   players: [defaultPlayer, defaultPlayer],

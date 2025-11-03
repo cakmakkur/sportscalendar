@@ -2,6 +2,7 @@ package com.cakmak.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,13 +21,13 @@ public class Country {
     }
 
     @OneToMany(mappedBy = "country", fetch = FetchType.LAZY)
-    private List<Team> teams;
+    private List<Team> teams = new ArrayList<>();
 
     @OneToMany(mappedBy = "country", fetch = FetchType.LAZY)
-    private List<Player> players;
+    private List<Player> players = new ArrayList<>();
 
     @OneToMany(mappedBy = "country", fetch = FetchType.LAZY)
-    private List<Venue> venues;
+    private List<Venue> venues = new ArrayList<>();
 
     public Long getId() {
         return id;

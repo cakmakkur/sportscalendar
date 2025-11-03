@@ -72,8 +72,8 @@ CREATE TABLE IF NOT EXISTS event_types (
 
 CREATE TABLE IF NOT EXISTS events (
     id TEXT PRIMARY KEY,
-    date TIMESTAMPTZ,
-    created_at TIMESTAMPTZ,
+    date DATE,
+    created_at TIMESTAMP,
     status VARCHAR(8),
     event_type BIGINT,
     description VARCHAR(255),

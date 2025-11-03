@@ -1,6 +1,7 @@
 package com.cakmak.service;
 
 import com.cakmak.dtos.*;
+import com.cakmak.enums.EventStatus;
 import com.cakmak.model.*;
 import com.cakmak.repository.*;
 import com.cakmak.util.Mapper;
@@ -22,18 +23,20 @@ public class EventService {
     private final PlayerRepository playerRepository;
     private final TeamRepository teamRepository;
     private final VenueRepository venueRepository;
+    private final CountryRepository countryRepository;
 
     public EventService(EventRepository eventRepository,
                         EventTypeRepository eventTypeRepository,
                         PlayerRepository playerRepository,
                         TeamRepository teamRepository,
-                        VenueRepository venueRepository) {
+                        VenueRepository venueRepository, CountryRepository countryRepository) {
 
         this.eventRepository = eventRepository;
         this.eventTypeRepository = eventTypeRepository;
         this.playerRepository = playerRepository;
         this.teamRepository = teamRepository;
         this.venueRepository = venueRepository;
+        this.countryRepository = countryRepository;
     }
 
     public EventDto get(String id) {
@@ -89,7 +92,14 @@ public class EventService {
         Event event = new Event();
 
         event.setDate(eventDto.date());
-        event.setStatus(eventDto.status());
+
+        if (eventDto.date().before(new Date())) {
+            event.setStatus(EventStatus.FINISHED);
+        } else if (eventDto.date().after(new Date())) {
+            event.setStatus(EventStatus.FUTURE);
+        } else {
+            event.setStatus(EventStatus.LIVE);
+        }
 
         EventType eventType = eventTypeRepository.findByEventId(eventDto.eventType().id());
         if (eventType == null) {
@@ -98,29 +108,56 @@ public class EventService {
         event.setEventType(eventType);
         event.setDescription(eventDto.description());
 
-        List<EventPlayer> eventPlayers = new ArrayList<>();
-        for(PlayerDto dto : eventDto.players()) {
-            Player p = playerRepository.findPlayerById(dto.id());
+        // setting placeholder "online" country for new players and new teams
+        // I didn't implement country selection in FE really...
+        Country country = countryRepository.getCountryById(197L);
 
-            EventPlayer eventPlayer = new EventPlayer();
-            eventPlayer.setEvent(event);
-            eventPlayer.setPlayer(p);
-            eventPlayers.add(eventPlayer);
-            p.addEventPlayer(eventPlayer);
+        if (!eventDto.players().get(0).lastname().isEmpty() && !eventDto.players().get(1).lastname().isEmpty()) {
+            List<EventPlayer> eventPlayers = new ArrayList<>();
+            for(PlayerDto dto : eventDto.players()) {
+                Player p = playerRepository.findPlayerByFirstAndLastname(dto.firstname(), dto.lastname());
+
+                if (p == null) {
+                    Player newPlayer = new Player();
+                    newPlayer.setFirstname(dto.firstname());
+                    newPlayer.setLastname(dto.lastname());
+                    newPlayer.setCountry(country);
+                    p = newPlayer;
+                    playerRepository.save(p);
+                }
+
+                EventPlayer eventPlayer = new EventPlayer();
+                eventPlayer.setEvent(event);
+                eventPlayer.setPlayer(p);
+                eventPlayers.add(eventPlayer);
+                p.addEventPlayer(eventPlayer);
+            }
+            event.setEventPlayers(eventPlayers);
         }
-        event.setEventPlayers(eventPlayers);
 
-        List<EventTeam> eventTeams = new ArrayList<>();
-        for(TeamDto dto : eventDto.teams()) {
-            Team t = teamRepository.findTeamById(dto.id());
+        if (!eventDto.teams().get(0).name().isEmpty() && !eventDto.teams().get(1).name().isEmpty()) {
 
-            EventTeam eventTeam = new EventTeam();
-            eventTeam.setEvent(event);
-            eventTeam.setTeam(teamRepository.findTeamById(dto.id()));
-            eventTeams.add(eventTeam);
-            t.addEventTeam(eventTeam);
+            List<EventTeam> eventTeams = new ArrayList<>();
+            for(TeamDto dto : eventDto.teams()) {
+
+                Team t = teamRepository.findByTeamName(dto.name());
+
+                if (t == null) {
+                    Team newTeam = new Team();
+                    newTeam.setName(dto.name());
+                    newTeam.setCountry(country);
+                    t = newTeam;
+                    teamRepository.save(t);
+                }
+
+                EventTeam eventTeam = new EventTeam();
+                eventTeam.setEvent(event);
+                eventTeam.setTeam(t);
+                eventTeams.add(eventTeam);
+                t.addEventTeam(eventTeam);
+            }
+            event.setEventTeams(eventTeams);
         }
-        event.setEventTeams(eventTeams);
 
         if (eventDto.livestream() != null) {
             Livestream livestream = new Livestream();
