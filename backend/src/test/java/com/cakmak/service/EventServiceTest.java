@@ -6,7 +6,6 @@ import com.cakmak.model.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-
 import com.cakmak.repository.EventRepository;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -88,5 +87,17 @@ class EventServiceTest {
         assertEquals(10, result.size());
         verify(eventRepository, times(1)).findAllEvents();
     }
+
+    @Test
+    void shouldReturnEventsByFilter() {
+
+    }
+
+    @Test
+    void shouldSaveEvent() {
+
+    }
+
+
 }
 

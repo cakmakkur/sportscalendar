@@ -5,7 +5,11 @@ import com.cakmak.enums.EventStatus;
 import com.cakmak.model.*;
 import com.cakmak.repository.*;
 import com.cakmak.util.Mapper;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import org.apache.coyote.BadRequestException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -100,6 +104,9 @@ public class EventService {
     public void create(EventDto eventDto) {
         Event event = new Event();
 
+        if (eventDto.date() == null) {
+            throw new IllegalArgumentException("Event date is required");
+        }
         event.setDate(eventDto.date());
 
         if (eventDto.date().before(new Date())) {
@@ -117,15 +124,22 @@ public class EventService {
         event.setEventType(eventType);
         event.setDescription(eventDto.description());
 
-        // setting placeholder "online" country for new players and new teams
-        // I didn't implement country selection in FE really...
+        // setting fixed "online" country for new players and new teams
+        // I didn't implement country selection in FE, since there is no create-player etc functionality required
         Country country = countryRepository.getCountryById(197L);
 
+        //  fails validation if neither team info nor player info is given,
+        if (eventDto.players() != null && eventDto.teams() != null) {
+            throw new IllegalArgumentException("Either player info or team info is required");
+        }
+
+        // if eventDto includes players (== CompetitionType.players
         if (!eventDto.players().get(0).lastname().isEmpty() && !eventDto.players().get(1).lastname().isEmpty()) {
             List<EventPlayer> eventPlayers = new ArrayList<>();
             for(PlayerDto dto : eventDto.players()) {
                 Player p = playerRepository.findPlayerByFirstAndLastname(dto.firstname(), dto.lastname());
 
+                // if the player doesn't exist in the db, create/save new player
                 if (p == null) {
                     Player newPlayer = new Player();
                     newPlayer.setFirstname(dto.firstname());
@@ -135,6 +149,7 @@ public class EventService {
                     playerRepository.save(p);
                 }
 
+                // register the player to the event
                 EventPlayer eventPlayer = new EventPlayer();
                 eventPlayer.setEvent(event);
                 eventPlayer.setPlayer(p);
@@ -144,6 +159,7 @@ public class EventService {
             event.setEventPlayers(eventPlayers);
         }
 
+        // if eventDto includes teams (== CompetitionType.teams
         if (!eventDto.teams().get(0).name().isEmpty() && !eventDto.teams().get(1).name().isEmpty()) {
 
             List<EventTeam> eventTeams = new ArrayList<>();
@@ -151,6 +167,7 @@ public class EventService {
 
                 Team t = teamRepository.findByTeamName(dto.name());
 
+                // if the team doesn't exist in the db, create/save new team
                 if (t == null) {
                     Team newTeam = new Team();
                     newTeam.setName(dto.name());
@@ -159,6 +176,7 @@ public class EventService {
                     teamRepository.save(t);
                 }
 
+                // register the team to the event
                 EventTeam eventTeam = new EventTeam();
                 eventTeam.setEvent(event);
                 eventTeam.setTeam(t);
@@ -177,6 +195,8 @@ public class EventService {
             event.setLivestream(livestream);
         }
 
+        // frontend doesn't implement the functionality to add scores to the event...
+        // this can however be used with curl or swagger
         List<Score> scores = new ArrayList<>();
         for(ScoreDto s : eventDto.scores()) {
             Score score = new Score();
@@ -189,6 +209,9 @@ public class EventService {
         event.setScores(scores);
 
         Venue venue = venueRepository.findVenueById(eventDto.venue().id());
+        if (venue == null) {
+            throw new EntityNotFoundException("Venue not found: " + eventDto.venue().id());
+        }
         venue.addEvent(event);
         event.setVenue(venue);
 
@@ -233,6 +256,9 @@ public class EventService {
         return dtos;
     }
 
+    /*
+    * returns dtos of all countries
+    * */
     public List<CountryDto> getCountries() {
         List<Country> countries = countryRepository.findAll();
         List<CountryDto> dtos = new ArrayList<>();
