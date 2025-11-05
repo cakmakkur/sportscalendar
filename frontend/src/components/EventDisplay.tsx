@@ -3,6 +3,7 @@ import { fetchEvents } from "../services/EventService";
 import type { EventFilterType } from "../models/EventFilter";
 import type { EventType } from "../models/Event";
 import EventFilter from "./EventFilter";
+import Flag from "./Flag";
 
 // displays the events according to the filter
 export default function EventDisply({ date }: { date: Date }) {
@@ -94,6 +95,7 @@ export default function EventDisply({ date }: { date: Date }) {
             ? e.players[1]?.lastname
             : e.teams?.[1]?.name;
 
+          // if there is neither player (lastname) nor team (name), doesnt render the event
           if (!nameA || !nameB) return null;
 
           return (
@@ -107,7 +109,7 @@ export default function EventDisply({ date }: { date: Date }) {
                   <span>{e.eventType?.name ?? ""}</span>
                   <span style={{ padding: "0px 8px" }}> &#183; </span>
                   <span style={{ color: "lightgray" }}>
-                    {e.venue.country ?? ""}
+                    <Flag name={e.venue.country} />
                   </span>
                 </div>
                 <button
