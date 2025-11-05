@@ -5,11 +5,7 @@ import com.cakmak.enums.EventStatus;
 import com.cakmak.model.*;
 import com.cakmak.repository.*;
 import com.cakmak.util.Mapper;
-import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
-import org.apache.coyote.BadRequestException;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -105,10 +101,11 @@ public class EventService {
         Event event = new Event();
 
         if (eventDto.date() == null) {
-            throw new IllegalArgumentException("Event date is required");
+            throw new IllegalArgumentException("Date is required");
         }
         event.setDate(eventDto.date());
 
+        // setting today's events to live
         if (eventDto.date().before(new Date())) {
             event.setStatus(EventStatus.FINISHED);
         } else if (eventDto.date().after(new Date())) {
@@ -119,7 +116,7 @@ public class EventService {
 
         EventType eventType = eventTypeRepository.findByEventId(eventDto.eventType().id());
         if (eventType == null) {
-            throw new IllegalArgumentException("Invalid event type");
+            throw new IllegalArgumentException("Event type not found");
         }
         event.setEventType(eventType);
         event.setDescription(eventDto.description());
@@ -135,7 +132,7 @@ public class EventService {
 
         eventRepository.saveAndFlush(event);
 
-        // if eventDto includes players (== CompetitionType.players)
+        // if eventDto includes players (CompetitionType.players)
         if (eventDto.players() != null
                 && !eventDto.players().get(0).lastname().isEmpty()
                 && !eventDto.players().get(1).lastname().isEmpty()) {
@@ -163,7 +160,7 @@ public class EventService {
             event.setEventPlayers(eventPlayers);
         }
 
-        // if eventDto includes teams (== CompetitionType.teams)
+        // if eventDto includes teams (CompetitionType.teams)
         if (eventDto.teams() != null
                 && !eventDto.teams().get(0).name().isEmpty()
                 && !eventDto.teams().get(1).name().isEmpty()) {
@@ -216,7 +213,7 @@ public class EventService {
 
         Venue venue = venueRepository.findVenueById(eventDto.venue().id());
         if (venue == null) {
-            throw new EntityNotFoundException("Venue not found: " + eventDto.venue().id());
+            throw new IllegalArgumentException("Venue not found");
         }
         venue.addEvent(event);
         event.setVenue(venue);
