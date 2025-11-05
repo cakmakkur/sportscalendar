@@ -11,12 +11,18 @@ import {
 import { defaultVenue } from "../models/Venue";
 import type { VenueType } from "../models/Venue";
 
+type DisplayStatus = "success" | "create";
+
 export default function EventCreator() {
+  const [displayStatus, setDisplayStatus] = useState<DisplayStatus>("create");
+
   const [types, setTypes] = useState<EventTypeType[]>([]);
   const [venues, setVenues] = useState<VenueType[]>([defaultVenue]);
   const [withLivestream, setWithLivestream] = useState<boolean>(true);
 
   const [formEvent, setFormEvent] = useState<EventType>(defaultEvent);
+
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   // fetching event types and venues on mounting the component
   useEffect(() => {
@@ -47,18 +53,20 @@ export default function EventCreator() {
     );
   };
 
+  const handleAddAnother = () => {
+    setFormEvent(defaultEvent);
+    setDisplayStatus("create");
+  };
+
   // submit function for post request
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     validateForm();
     try {
       await addEvent(formEvent);
-      // simulating/placeholding success message with the alert
-      // and refreshing back to calendar page
-      alert("Event created successfully");
-      window.location.reload();
+      setDisplayStatus("success");
     } catch (error) {
-      console.log("Couldn't create the event: " + error);
+      setErrorMessage("Couldn't create the event: " + error);
     }
   };
 
@@ -188,7 +196,23 @@ export default function EventCreator() {
       default:
         break;
     }
+
+    // making the error message disappear after user types into the form
+    setErrorMessage("");
   };
+
+  if (displayStatus === "success") {
+    return (
+      <div className="add-event-success">
+        <span style={{ color: "lightgray", fontSize: "2.6rem" }}>
+          Event created successfully :)
+        </span>
+        <button className="add-event-submit-btn" onClick={handleAddAnother}>
+          Create another
+        </button>
+      </div>
+    );
+  }
 
   // used AI to generate template html, then adjusted it to my needs
   return (
@@ -405,6 +429,10 @@ export default function EventCreator() {
           ))}
         </select>
       </label>
+
+      {errorMessage && (
+        <p style={{ color: "red" }}>{errorMessage} - Try again</p>
+      )}
 
       <button className="add-event-submit-btn" type="submit">
         Create Event
