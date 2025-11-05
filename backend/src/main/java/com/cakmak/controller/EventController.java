@@ -72,11 +72,18 @@ public class EventController {
     }
 
     /*
+     * returns available event types.
+     * */
+    @GetMapping("/types")
+    public ResponseEntity<List<EventTypeDto>> getTypes() {
+        return ResponseEntity.ok(eventService.getEventTypes());
+    }
+
+    /*
      * placeholder update endpoint. not needed in the requirements of the task
      * */
     @PutMapping("/update")
-    public ResponseEntity<Void> update (@PathVariable String id,
-                                        @RequestBody EventDto eventDto) {
+    public ResponseEntity<Void> update (@PathVariable String id, @RequestBody EventDto eventDto) {
         return null;
     }
 
@@ -87,30 +94,6 @@ public class EventController {
     public ResponseEntity<Void> delete (@PathVariable String id) {
         // placeholder. not needed in the requirements of the task
         return null;
-    }
-
-    /*
-     * returns available event types. in EventController instead of its own TypesController because the app is small-scale
-     * */
-    @GetMapping("/types")
-    public ResponseEntity<List<EventTypeDto>> getTypes() {
-        return ResponseEntity.ok(eventService.getEventTypes());
-    }
-
-    /*
-     * returns available venues. in EventController instead of its own VenueController because the app is small-scale
-     * */
-    @GetMapping("/venues")
-    public ResponseEntity<List<VenueDto>> getVenues() {
-        return ResponseEntity.ok(eventService.getVenues());
-    }
-
-    /*
-     * returns available venues. in EventController instead of its own CountryController because the app is small-scale
-     * */
-    @GetMapping("/countries")
-    public ResponseEntity<List<CountryDto>> getCountries() {
-        return ResponseEntity.ok(eventService.getCountries());
     }
 
 }

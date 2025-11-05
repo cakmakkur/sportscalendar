@@ -17,7 +17,7 @@ export const fetchEventTypes = async () => {
 
 export const fetchVenues = async () => {
   try {
-    const response = await fetch(`${BASE_URL}/event/venues`);
+    const response = await fetch(`${BASE_URL}/venue`);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -39,7 +39,7 @@ export const fetchEvents = async (ef: EventFilterType) => {
 
 export const fetchCountries = async () => {
   try {
-    const response = await fetch(`${BASE_URL}/event/countries`);
+    const response = await fetch(`${BASE_URL}/countries`);
     const data = await response.json();
     return data;
   } catch (error) {

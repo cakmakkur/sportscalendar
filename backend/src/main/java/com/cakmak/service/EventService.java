@@ -251,27 +251,5 @@ public class EventService {
         return dtos;
     }
 
-    /*
-    * returns dtos of available venues
-    * */
-    public List<VenueDto> getVenues() {
-        List<Venue> venues = venueRepository.findAll();
-        List<VenueDto> dtos = new ArrayList<>();
-        for(Venue v : venues) {
-            dtos.add(Mapper.toVenueDto(v));
-        }
-        return dtos;
-    }
 
-    /*
-    * returns dtos of all countries
-    * */
-    public List<CountryDto> getCountries() {
-        List<Country> countries = countryRepository.findAll();
-        List<CountryDto> dtos = new ArrayList<>();
-        for(Country c : countries) {
-            dtos.add(Mapper.toCountryDto(c));
-        }
-        return dtos;
-    }
 }
