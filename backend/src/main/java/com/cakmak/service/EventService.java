@@ -129,12 +129,16 @@ public class EventService {
         Country country = countryRepository.getCountryById(197L);
 
         //  fails validation if neither team info nor player info is given,
-        if (eventDto.players() != null && eventDto.teams() != null) {
+        if (eventDto.players() == null && eventDto.teams() == null) {
             throw new IllegalArgumentException("Either player info or team info is required");
         }
 
-        // if eventDto includes players (== CompetitionType.players
-        if (!eventDto.players().get(0).lastname().isEmpty() && !eventDto.players().get(1).lastname().isEmpty()) {
+        eventRepository.saveAndFlush(event);
+
+        // if eventDto includes players (== CompetitionType.players)
+        if (eventDto.players() != null
+                && !eventDto.players().get(0).lastname().isEmpty()
+                && !eventDto.players().get(1).lastname().isEmpty()) {
             List<EventPlayer> eventPlayers = new ArrayList<>();
             for(PlayerDto dto : eventDto.players()) {
                 Player p = playerRepository.findPlayerByFirstAndLastname(dto.firstname(), dto.lastname());
@@ -159,8 +163,10 @@ public class EventService {
             event.setEventPlayers(eventPlayers);
         }
 
-        // if eventDto includes teams (== CompetitionType.teams
-        if (!eventDto.teams().get(0).name().isEmpty() && !eventDto.teams().get(1).name().isEmpty()) {
+        // if eventDto includes teams (== CompetitionType.teams)
+        if (eventDto.teams() != null
+                && !eventDto.teams().get(0).name().isEmpty()
+                && !eventDto.teams().get(1).name().isEmpty()) {
 
             List<EventTeam> eventTeams = new ArrayList<>();
             for(TeamDto dto : eventDto.teams()) {
@@ -216,6 +222,7 @@ public class EventService {
         event.setVenue(venue);
 
         eventRepository.save(event);
+        System.out.println("saved event: " + event);
     }
 
     /*

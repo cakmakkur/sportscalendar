@@ -14,7 +14,7 @@ public class EventType {
 
     private String name;
 
-    @OneToMany(mappedBy = "eventType", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "eventType", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Event> events = new ArrayList<>();
 
     @ManyToOne

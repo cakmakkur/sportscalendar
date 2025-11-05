@@ -15,7 +15,7 @@ public class CompetitionType {
 
     private String type;
 
-    @OneToMany(mappedBy = "competitionType", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "competitionType", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<EventType> eventTypes = new ArrayList<>();
 
     public CompetitionType() {}
