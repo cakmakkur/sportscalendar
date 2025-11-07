@@ -8,6 +8,7 @@ import com.cakmak.util.Mapper;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.net.MalformedURLException;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
@@ -138,13 +139,18 @@ public class EventService {
                 && !eventDto.players().get(1).lastname().isEmpty()) {
             List<EventPlayer> eventPlayers = new ArrayList<>();
             for(PlayerDto dto : eventDto.players()) {
-                Player p = playerRepository.findPlayerByFirstAndLastname(dto.firstname(), dto.lastname());
+
+                // sanitizing the string before db-operation
+                String fn = basicInputSanitizer(dto.firstname());
+                String ln = basicInputSanitizer(dto.lastname());
+
+                Player p = playerRepository.findPlayerByFirstAndLastname(fn, ln);
 
                 // if the player doesn't exist in the db, create/save new player
                 if (p == null) {
                     Player newPlayer = new Player();
-                    newPlayer.setFirstname(dto.firstname());
-                    newPlayer.setLastname(dto.lastname());
+                    newPlayer.setFirstname(fn);
+                    newPlayer.setLastname(ln);
                     newPlayer.setCountry(country);
                     p = newPlayer;
                     playerRepository.save(p);
@@ -168,12 +174,14 @@ public class EventService {
             List<EventTeam> eventTeams = new ArrayList<>();
             for(TeamDto dto : eventDto.teams()) {
 
-                Team t = teamRepository.findByTeamName(dto.name());
+                String n = basicInputSanitizer(dto.name());
+
+                Team t = teamRepository.findByTeamName(n);
 
                 // if the team doesn't exist in the db, create/save new team
                 if (t == null) {
                     Team newTeam = new Team();
-                    newTeam.setName(dto.name());
+                    newTeam.setName(n);
                     newTeam.setCountry(country);
                     t = newTeam;
                     teamRepository.save(t);
@@ -194,7 +202,15 @@ public class EventService {
             livestream.setEvent(event);
             livestream.setMembershipRequired(eventDto.livestream().membershipRequired());
             livestream.setPrice(eventDto.livestream().price());
-            livestream.setUrl(eventDto.livestream().url());
+
+            // validate url structure. asked AI for it
+            try {
+                new java.net.URL(eventDto.livestream().url());
+                livestream.setUrl(eventDto.livestream().url());
+            } catch (MalformedURLException e) {
+                throw new IllegalArgumentException("Invalid URL");
+            }
+
             event.setLivestream(livestream);
         }
 
@@ -248,5 +264,9 @@ public class EventService {
         return dtos;
     }
 
+    public static String basicInputSanitizer(String input) {
+        if (input == null) return null;
+        return input.replaceAll("[<>\"'%;)(&+]", "").trim();
+    }
 
 }
