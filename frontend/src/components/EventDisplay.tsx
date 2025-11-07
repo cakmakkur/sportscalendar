@@ -99,7 +99,7 @@ export default function EventDisply({ date }: { date: Date }) {
           if (!nameA || !nameB) return null;
 
           return (
-            <div key={e.id}>
+            <section key={e.id}>
               <li className="display-event-row" key={e.id}>
                 <div>
                   <span style={{ color: "lightgray" }}>
@@ -175,7 +175,7 @@ export default function EventDisply({ date }: { date: Date }) {
                   )}
                 </div>
               )}
-            </div>
+            </section>
           );
         })}
       </ul>

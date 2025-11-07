@@ -63,7 +63,7 @@ export default function EventFilter({ date, updateEvents }: EventFilterProps) {
   }, []);
 
   return (
-    <div>
+    <section>
       <form
         style={{
           display: "flex",
@@ -129,6 +129,6 @@ export default function EventFilter({ date, updateEvents }: EventFilterProps) {
           </select>
         </label>
       </form>
-    </div>
+    </section>
   );
 }

@@ -8,7 +8,7 @@ export default function Home() {
         src="/homepage-bg.jpg"
         alt="homepage background image"
       />
-      <div
+      <article
         style={{
           marginRight: "10vw",
           display: "flex",
@@ -16,16 +16,16 @@ export default function Home() {
           alignItems: "end",
         }}
       >
-        <h1 style={{ fontSize: "4rem", color: "lightgray" }}>
+        <p style={{ fontSize: "4rem", color: "lightgray" }}>
           Live Your Passion
-        </h1>
+        </p>
         <h1 style={{ color: "lightgray", marginBottom: "5vh" }}>
           Livestreams. Events. Sports.
         </h1>
         <Link className="homepage-link" to="/calendar">
           BROWSE EVENTS
         </Link>
-      </div>
+      </article>
     </div>
   );
 }

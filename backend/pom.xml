@@ -89,7 +89,7 @@
         <plugins>
             <!-- Builds the frontend -->
             <!-- I transferred this piece of configuration from an earlier project -->
-            <!-- The adjusted it to this project -->
+            <!-- Then adjusted it to this project -->
             <plugin>
                 <groupId>com.github.eirslett</groupId>
                 <artifactId>frontend-maven-plugin</artifactId>
