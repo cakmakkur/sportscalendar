@@ -11,6 +11,7 @@ import {
   type EventFilterType,
 } from "../models/EventFilter";
 import type { EventType } from "../models/Event";
+import { useErrorContext } from "../context/ErrorContext";
 
 interface EventFilterProps {
   date: Date;
@@ -22,6 +23,8 @@ export default function EventFilter({ date, updateEvents }: EventFilterProps) {
   const [countries, setCountries] = useState<CountryType[]>([]);
 
   const [filter, setFilter] = useState(defaultEventFilter);
+
+  const { setErrorMessage } = useErrorContext();
 
   const handleChange = (e: React.ChangeEvent<any>) => {
     e.preventDefault();
@@ -48,16 +51,28 @@ export default function EventFilter({ date, updateEvents }: EventFilterProps) {
       eventType: filter.eventType,
       country: filter.country,
     };
-    const data = await fetchEvents(finalFIlter);
-    updateEvents(data);
+    try {
+      const data = await fetchEvents(finalFIlter);
+      updateEvents(data);
+
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error) {
+      setErrorMessage("Couldn't fetch events");
+    }
   };
 
   useEffect(() => {
     const init = async () => {
-      const types = await fetchEventTypes();
-      setTypes(types);
-      const countries = await fetchCountries();
-      setCountries(countries);
+      try {
+        const countries = await fetchCountries();
+        setCountries(countries);
+        const types = await fetchEventTypes();
+        setTypes(types);
+
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      } catch (error) {
+        setErrorMessage("Something went wrong while initiating the page");
+      }
     };
     init();
   }, []);

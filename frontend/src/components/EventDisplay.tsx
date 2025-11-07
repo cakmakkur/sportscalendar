@@ -4,12 +4,15 @@ import type { EventFilterType } from "../models/EventFilter";
 import type { EventType } from "../models/Event";
 import EventFilter from "./EventFilter";
 import Flag from "./Flag";
+import { useErrorContext } from "../context/ErrorContext";
 
 // displays the events according to the filter
 export default function EventDisply({ date }: { date: Date }) {
   const [loading, setLoading] = useState(true);
   const [events, setEvents] = useState<EventType[]>([]);
   const [detailsOpenIds, setDetailsOpenIds] = useState<string[]>([]);
+
+  const { setErrorMessage } = useErrorContext();
 
   // toggles the details of an event
   const toggleDetails = (id: string) => {
@@ -38,8 +41,9 @@ export default function EventDisply({ date }: { date: Date }) {
       try {
         const data = await fetchEvents(filter);
         setEvents(data);
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (error) {
-        console.log("error : " + error);
+        setErrorMessage("Couldn't fetch events");
       } finally {
         setLoading(false);
       }

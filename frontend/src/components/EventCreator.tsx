@@ -27,10 +27,16 @@ export default function EventCreator() {
   // fetching event types and venues on mounting the component
   useEffect(() => {
     const init = async () => {
-      const types = await fetchEventTypes();
-      setTypes(types);
-      const venues = await fetchVenues();
-      setVenues(venues);
+      try {
+        const types = await fetchEventTypes();
+        setTypes(types);
+        const venues = await fetchVenues();
+        setVenues(venues);
+
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      } catch (error) {
+        setErrorMessage("Something went wrong while initiating the page");
+      }
     };
     init();
   }, []);
@@ -66,7 +72,7 @@ export default function EventCreator() {
       await addEvent(formEvent);
       setDisplayStatus("success");
     } catch (error) {
-      setErrorMessage("Couldn't create the event: " + error);
+      setErrorMessage("Couldn't create the event");
     }
   };
 
