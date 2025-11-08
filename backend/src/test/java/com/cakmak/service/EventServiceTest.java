@@ -11,6 +11,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -36,21 +38,21 @@ class EventServiceTest {
 
     @BeforeAll
     static void setup() {
-        EventCategory eventCategory = new EventCategory();
-        EventType eventType = new EventType();
+        EventType eventType1 = new EventType(1L, "event1", new CompetitionType(), new EventCategory());
+        EventType eventType2 = new EventType(2L, "event2", new CompetitionType(), new EventCategory());
+
         Venue venue = new Venue();
         Country country = new Country();
-        CompetitionType competitionType = new CompetitionType();
         venue.setCountry(country);
-        eventType.setCompetitionType(competitionType);
-        eventType.setEventCategory(eventCategory);
+
         mockEvents = new ArrayList<>();
+
         for (int i = 1; i <= 10; i++) {
             Event e = new Event();
             e.setId(String.valueOf(i));
             e.setDescription("Mock Event " + i);
             e.setDate(new Date());
-            e.setEventType(eventType);
+            e.setEventType(i < 5 ? eventType1 : eventType2);
             e.setCreatedAt(new Date());
             e.setStatus(EventStatus.FUTURE);
             e.setVenue(venue);
@@ -85,11 +87,23 @@ class EventServiceTest {
         List<EventDto> result = eventService.getAll();
 
         assertEquals(10, result.size());
+
         verify(eventRepository, times(1)).findAllEvents();
     }
 
     @Test
     void shouldReturnEventsByFilter() {
+
+
+        OffsetDateTime start = OffsetDateTime.of(
+                2025, 11, 7, 14, 30, 0, 0, ZoneOffset.UTC
+        );
+        OffsetDateTime end = OffsetDateTime.of(
+                2025, 11, 7, 14, 30, 0, 0, ZoneOffset.UTC
+        );
+
+        when(eventRepository.getEventsByFilter(start, end, 1L, 1L)).thenReturn(mockEvents);
+
 
     }
 

@@ -82,6 +82,7 @@ public class EventService {
 
         List<EventDto> dtos = new ArrayList<>();
 
+        // turning localDate into offsetdatetime
         OffsetDateTime start = date.atStartOfDay().atOffset(ZoneOffset.UTC);
         OffsetDateTime end = start.plusDays(1);
 

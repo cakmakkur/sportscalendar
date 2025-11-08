@@ -3,7 +3,6 @@ import type { EventFilterType } from "../models/EventFilter";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
-// HTTP Request functions
 export const fetchEventTypes = async () => {
   const response = await fetch(`${BASE_URL}/event/types`);
 

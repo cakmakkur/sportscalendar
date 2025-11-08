@@ -71,12 +71,14 @@ export default function EventCreator() {
     try {
       await addEvent(formEvent);
       setDisplayStatus("success");
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       setErrorMessage("Couldn't create the event");
     }
   };
 
   // user input change handler
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleChange = (e: React.ChangeEvent<any>) => {
     e.preventDefault();
 

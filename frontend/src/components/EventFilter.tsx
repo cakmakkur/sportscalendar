@@ -26,6 +26,7 @@ export default function EventFilter({ date, updateEvents }: EventFilterProps) {
 
   const { setErrorMessage } = useErrorContext();
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleChange = (e: React.ChangeEvent<any>) => {
     e.preventDefault();
 
