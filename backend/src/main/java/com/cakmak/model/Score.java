@@ -2,7 +2,7 @@ package com.cakmak.model;
 
 import jakarta.persistence.*;
 
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -18,7 +18,7 @@ public class Score {
     private String score;
 
     @Column(name = "scored_at")
-    private OffsetDateTime scoredAt;
+    private LocalDateTime scoredAt;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     @JoinColumn(name = "player")
@@ -32,7 +32,7 @@ public class Score {
 
     public Score(Event event,
                  String score,
-                 OffsetDateTime scoredAt,
+                 LocalDateTime scoredAt,
                  Player player,
                  Team team) {
         this.event = event;
@@ -62,11 +62,11 @@ public class Score {
         this.score = score;
     }
 
-    public OffsetDateTime getScoredAt() {
+    public LocalDateTime getScoredAt() {
         return scoredAt;
     }
 
-    public void setScoredAt(OffsetDateTime scoredAt) {
+    public void setScoredAt(LocalDateTime scoredAt) {
         this.scoredAt = scoredAt;
     }
 

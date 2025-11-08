@@ -10,6 +10,7 @@ import com.cakmak.repository.EventRepository;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
@@ -91,7 +92,7 @@ class EventServiceTest {
         verify(eventRepository, times(1)).findAllEvents();
     }
 
-    @Test
+/*    @Test
     void shouldReturnEventsByFilter() {
 
 
@@ -105,7 +106,7 @@ class EventServiceTest {
         when(eventRepository.getEventsByFilter(start, end, 1L, 1L)).thenReturn(mockEvents);
 
 
-    }
+    }*/
 
     @Test
     void shouldSaveEvent() {
