@@ -338,9 +338,9 @@ INSERT INTO event_categories (name, description) VALUES
      ('Precision and Target Sports', 'Require accuracy and fine motor control'),
      ('Adventure and Extreme Sports', 'High-risk or outdoor endurance activities');
 
-INSERT INTO competition_types (event_type, type) VALUES
-     (1, 'players'),  -- Individual sports
-     (2, 'teams');    -- Team sports
+INSERT INTO competition_types (type) VALUES
+     ( 'players'),  -- Individual sports
+     ( 'teams');    -- Team sports
 
 
 

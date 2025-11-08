@@ -15,15 +15,10 @@ public class CompetitionType {
 
     private String type;
 
-    @OneToMany(mappedBy = "competitionType", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<EventType> eventTypes = new ArrayList<>();
-
     public CompetitionType() {}
 
-    public CompetitionType(String type,
-                           List<EventType> eventTypes) {
+    public CompetitionType(String type) {
         this.type = type;
-        this.eventTypes = eventTypes;
     }
 
     public Long getId() {
@@ -38,11 +33,4 @@ public class CompetitionType {
         this.type = type;
     }
 
-    public List<EventType> getEventTypes() {
-        return eventTypes;
-    }
-
-    public void setEventTypes(List<EventType> eventTypes) {
-        this.eventTypes = eventTypes;
-    }
 }

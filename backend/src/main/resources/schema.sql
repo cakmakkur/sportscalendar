@@ -21,43 +21,47 @@ CREATE TABLE IF NOT EXISTS countries (
 
 CREATE TABLE IF NOT EXISTS players (
     id TEXT PRIMARY KEY,
-    firstname VARCHAR(256),
-    lastname VARCHAR(256),
-    country BIGINT,
+    firstname VARCHAR(256) NOT NULL ,
+    lastname VARCHAR(256) NOT NULL ,
+    country BIGINT NOT NULL ,
     CONSTRAINT _p_country FOREIGN KEY (country) REFERENCES countries(id)
 );
 
+CREATE INDEX idx_players_firstname ON players(firstname);
+CREATE INDEX idx_players_lastname ON players(lastname);
+
 CREATE TABLE IF NOT EXISTS teams (
     id TEXT PRIMARY KEY,
-    name VARCHAR(255),
-    country BIGINT,
+    name VARCHAR(255) NOT NULL,
+    country BIGINT NOT NULL,
     CONSTRAINT _t_country_id FOREIGN KEY (country) REFERENCES countries(id)
 );
 
+CREATE INDEX idx_teams_name ON teams(name);
+
 CREATE TABLE IF NOT EXISTS teams_player (
     id BIGSERIAL PRIMARY KEY,
-    player TEXT,
-    team TEXT,
+    player TEXT NOT NULL,
+    team TEXT NOT NULL,
     CONSTRAINT _tp_player_id FOREIGN KEY (player) REFERENCES players(id),
     CONSTRAINT _tp_team_id FOREIGN KEY (team) REFERENCES teams(id)
 );
 
 CREATE TABLE IF NOT EXISTS venues (
     id TEXT PRIMARY KEY,
-    name VARCHAR(255),
-    country BIGINT,
+    name VARCHAR(255) NOT NULL ,
+    country BIGINT NOT NULL ,
     CONSTRAINT _v_country_id FOREIGN KEY (country) REFERENCES countries(id)
 );
 
 CREATE TABLE IF NOT EXISTS event_categories (
     id BIGSERIAL PRIMARY KEY,
-    name VARCHAR(64),
+    name VARCHAR(64) NOT NULL ,
     description VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS competition_types (
      id BIGSERIAL PRIMARY KEY,
-     event_type BIGINT,
      type VARCHAR(64)
     );
 
@@ -81,6 +85,10 @@ CREATE TABLE IF NOT EXISTS events (
     CONSTRAINT _e_event_type_id FOREIGN KEY (event_type) REFERENCES event_types(id),
     CONSTRAINT _e_venue_id FOREIGN KEY (venue) REFERENCES venues(id)
 );
+
+CREATE INDEX idx_events_date ON events(date);
+CREATE INDEX idx_events_event_type ON events(event_type);
+CREATE INDEX idx_venues_country ON venues(country);
 
 CREATE TABLE IF NOT EXISTS event_player (
       id BIGSERIAL PRIMARY KEY,
