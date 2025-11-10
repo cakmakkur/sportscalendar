@@ -18,7 +18,7 @@ public class Event {
 
     private Date date;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at", updatable = false, nullable = false)
     @CreationTimestamp
     private Date createdAt;
 

@@ -40,13 +40,13 @@ Executing following at `/backend`:
 mvn clean package
 ```
 
-will create a jar file of the full app at `/backend/target`, which can be run by executing:
+will create sport-calendar-backend-1.0-SNAPSHOT.jar at `/backend/target`, which can be run by executing:
 
 ```bash
 java -jar <jar-path>
 ```
 
-Upon successful start, the databank will be populated. The app can be viewed directly on http://localhost:8080
+Upon successful start, the databank will be populated. The app can be viewed on http://localhost:8080
 
 ### 2) To run it directly from the source code
 
@@ -70,7 +70,7 @@ npm install
 npm run dev
 ```
 
-will install frontend dependencies and start it on http://localhost:5173
+will install frontend dependencies and start it on http://localhost:5173/
 
 ——————————————————————————————————————————————————————————————————————————————————————
 

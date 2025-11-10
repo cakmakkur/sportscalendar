@@ -30,6 +30,10 @@ export default function EventCreator() {
       try {
         const types = await fetchEventTypes();
         setTypes(types);
+        setFormEvent({
+          ...formEvent,
+          eventType: types[0],
+        });
         const venues = await fetchVenues();
         setVenues(venues);
 
@@ -41,24 +45,6 @@ export default function EventCreator() {
     init();
   }, []);
 
-  // simple placeholder validation function
-  const validateForm = () => {
-    // converts price to cents
-    setFormEvent({
-      ...formEvent,
-      livestream: {
-        ...formEvent.livestream,
-        price: formEvent.livestream.price * 100,
-      },
-    });
-
-    return (
-      formEvent.date !== "" &&
-      formEvent.eventType.id !== 0 &&
-      formEvent.venue.id !== ""
-    );
-  };
-
   const handleAddAnother = () => {
     setFormEvent(defaultEvent);
     setDisplayStatus("create");
@@ -67,9 +53,30 @@ export default function EventCreator() {
   // submit function for post request
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    validateForm();
+
+    const updatedEvent = {
+      ...formEvent,
+      livestream: {
+        ...formEvent.livestream,
+        price: withLivestream ? formEvent.livestream.price * 100 : 0,
+        url: withLivestream ? formEvent.livestream.url : "",
+        membershipRequired: withLivestream
+          ? formEvent.livestream.membershipRequired
+          : false,
+      },
+    };
+
+    if (
+      updatedEvent.date === "" ||
+      updatedEvent.eventType.id === 0 ||
+      updatedEvent.venue.id === ""
+    ) {
+      setErrorMessage("Missing required fields");
+      return;
+    }
+
     try {
-      await addEvent(formEvent);
+      await addEvent(updatedEvent);
       setDisplayStatus("success");
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
@@ -80,125 +87,120 @@ export default function EventCreator() {
   // user input change handler
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleChange = (e: React.ChangeEvent<any>) => {
-    e.preventDefault();
-
     switch (e.target.name) {
       case "date":
-        setFormEvent({ ...formEvent, date: e.target.value });
+        setFormEvent((prev) => ({ ...prev, date: e.target.value }));
         break;
 
       case "eventType":
-        setFormEvent({
-          ...formEvent,
-          eventType: {
-            ...formEvent.eventType,
-            id: Number(e.target.value),
-          },
-        });
+        setFormEvent((prev) => ({
+          ...prev,
+          eventType: types.filter((t) => t.id === Number(e.target.value))[0],
+        }));
         break;
 
       case "membershipRequired":
-        setFormEvent({
-          ...formEvent,
+        setFormEvent((prev) => ({
+          ...prev,
           livestream: {
-            ...formEvent.livestream,
+            ...prev.livestream,
             membershipRequired: e.target.checked,
           },
-        });
+        }));
         break;
 
       case "venueName":
-        setFormEvent({
-          ...formEvent,
+        setFormEvent((prev) => ({
+          ...prev,
           venue: {
-            ...formEvent.venue,
+            ...prev.venue,
             id: e.target.value,
           },
-        });
+        }));
         break;
 
       case "competitionType":
-        setFormEvent({
-          ...formEvent,
+        setFormEvent((prev) => ({
+          ...prev,
           eventType: {
-            ...formEvent.eventType,
+            ...prev.eventType,
             competitionType: e.target.value,
           },
-        });
+        }));
         break;
 
       case "price":
-        setFormEvent({
-          ...formEvent,
+        setFormEvent((prev) => ({
+          ...prev,
           livestream: {
-            ...formEvent.livestream,
+            ...prev.livestream,
             price: Number(e.target.value),
           },
-        });
+        }));
         break;
 
       case "url":
-        setFormEvent({
-          ...formEvent,
+        setFormEvent((prev) => ({
+          ...prev,
           livestream: {
-            ...formEvent.livestream,
+            ...prev.livestream,
             url: e.target.value,
           },
-        });
+        }));
         break;
 
       case "firstname1":
-        setFormEvent({
-          ...formEvent,
-          players: formEvent.players.map((p, i) =>
+        setFormEvent((prev) => ({
+          ...prev,
+          players: prev.players.map((p, i) =>
             i === 0 ? { ...p, firstname: e.target.value } : p
           ),
-        });
+        }));
         break;
 
       case "lastname1":
-        setFormEvent({
-          ...formEvent,
-          players: formEvent.players.map((p, i) =>
+        setFormEvent((prev) => ({
+          ...prev,
+          players: prev.players.map((p, i) =>
             i === 0 ? { ...p, lastname: e.target.value } : p
           ),
-        });
+        }));
         break;
 
       case "firstname2":
-        setFormEvent({
-          ...formEvent,
-          players: formEvent.players.map((p, i) =>
+        setFormEvent((prev) => ({
+          ...prev,
+          players: prev.players.map((p, i) =>
             i === 1 ? { ...p, firstname: e.target.value } : p
           ),
-        });
+        }));
         break;
 
       case "lastname2":
-        setFormEvent({
-          ...formEvent,
-          players: formEvent.players.map((p, i) =>
+        setFormEvent((prev) => ({
+          ...prev,
+          players: prev.players.map((p, i) =>
             i === 1 ? { ...p, lastname: e.target.value } : p
           ),
-        });
+        }));
         break;
 
       case "team1":
-        setFormEvent({
-          ...formEvent,
-          teams: formEvent.teams.map((p, i) =>
+        setFormEvent((prev) => ({
+          ...prev,
+          teams: prev.teams.map((p, i) =>
             i === 0 ? { ...p, name: e.target.value } : p
           ),
-        });
+        }));
         break;
 
       case "team2":
-        setFormEvent({
-          ...formEvent,
-          teams: formEvent.teams.map((p, i) =>
+        setFormEvent((prev) => ({
+          ...prev,
+          teams: prev.teams.map((p, i) =>
             i === 1 ? { ...p, name: e.target.value } : p
           ),
-        });
+        }));
         break;
 
       default:
@@ -283,18 +285,6 @@ export default function EventCreator() {
         }}
       >
         <legend>Competition</legend>
-
-        <label>
-          Competition Type:
-          <select
-            value={formEvent.eventType.competitionType}
-            name="competitionType"
-            onChange={handleChange}
-          >
-            <option value={"players"}>Player vs player</option>
-            <option value={"teams"}>Teams vs teams</option>
-          </select>
-        </label>
 
         <label
           style={{
@@ -391,6 +381,7 @@ export default function EventCreator() {
             <input
               type="url"
               name="url"
+              placeholder="Url"
               onChange={handleChange}
               value={formEvent.livestream.url}
             />

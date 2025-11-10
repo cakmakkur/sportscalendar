@@ -17,7 +17,7 @@ export const defaultEvent: EventType = {
   players: [defaultPlayer, defaultPlayer],
   teams: [defaultTeam, defaultTeam],
   livestream: {
-    url: "https://placeholder.com",
+    url: "",
     membershipRequired: false,
     price: 0,
   },
