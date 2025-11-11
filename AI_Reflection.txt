@@ -1,0 +1,35 @@
+I have used AI as always with my custom instructions, some of them being: ‘be factual, scientific and quotable’, ‘admit if you can’t solve a problem with reasonable precision’, ’attribute opinions to sources’ and ‘remove meta-chat and be concise’
+
+Throughout the development, I used for the following main purposes and examples:
+
+Creating, structuring and categorising resources and dummy data. Ex: development database, creating ‘sport types’ for my DB table…
+Fasten up time-consuming manual work without any complex logic. Ex: Mapper functions…
+For quick lookups of certain language and framework-specific syntax that I haven’t memorised before. Ex: Vite’s syntax to read from .env files, Java global exception handler annotations…
+Quick lookup for structure and attributes in different configuration files. Ex: dev DB initiation in application.properties, configuration to eliminate CORS problems in development…
+Creating code templates/boilerplates to fine-tune later and adapt to the project. Ex: html-forms…
+Researching necessary dependencies. Ex: dependency for Swagger…
+Brainstorming design, performance, security and scalability-related ideas, approaches.
+Researching industry standards and best practices for certain topics.
+Debugging
+
+In detail:
+
+After I worked out which entities I want to use and how I structure the relations in this task, I created my ER diagram, I wrote my DDL and DML that are needed for dev-db initiation and populating. After this manual work, I used AI to create bulk insert statements by prompting it with my example insert statements for each table and instructions on creating and randomising dummy data of each column.
+
+At the beginning of development, I had questions about some concepts. Ex. I used AI to research what would be the best approach to fetch/cache event data in the frontend for my app design which displays events on date-basis primarily. I brainstormed different scenarios like user switching quickly back and forth between event dates, triggering fetch request each time and how to deal with this at best. Different approaches like either fetching the data for each request, or fetching data with the same filter parameters only in certain intervals. Or even using web-socket for live event update, instead of explicitly fetching.
+
+Another example would be researching how much of a storage/performance upgrade I would gain if I keep my data types as small as possible (VARCHAR(8) vs VARCHAR(255)) or pros/cons of denormalising certain db tables to reduce joins. Also researched generally on denormalising tables in order to boost performance at different app-sizes.
+
+I have brainstormed with AI to find out the cons and pros of indexing certain table columns, that I use often in DB queries. 
+
+I have used AI to format my manual text into a well-structured README file. I also used it to generate certain html templates like forms that were then manually adapted to the project. I created mapper functions like for the country flags quickly with AI, which would otherwise be a lengthy unnecessary manual work. JavaDocs in my controller classes a re also AI-Generated to nail down a unified structure and save time on manually writing them.
+
+I have used AI to recap syntax for implementation of global exception handling, correct syntax for configuration files like pom.xml and application.properties, methods for converting different ‘date’ types to each other in Java. For such tasks I occasionally looked into my prior projects or used google instead of AI.
+
+In form of simple line completion, I have also used AI (indirectly) to speed up coding by auto-completing fields declarations, getter/setter methods, dependency injections in constructors…  
+
+Other than above-mentioned tasks, I have developed the rest of my app with my own knowledge and skills and I didn’t need to learn anything completely new since I had already used this tech-stack for similar projects multiple times already. 
+
+While it is not vital for a demo project, I still decided carefully how much and what parts of my code I am willing to expose to AI, especially while dealing with security configurations. If I needed it to debug a piece of code, I narrowed down the problem on certain methods/functions. If there was any part in the code, that I didn’t understand immediately, I often used a parallel AI-Chat to understand that single method/function in isolation without context before I came back to the bigger picture and grasp its role in there. While debugging, I occasionally gave the full method/function to AI to quickly scan if there is anything obvious that I missed accidentally (ex: wrong key name in json). Only after eliminating those mini-mistakes, I looked into the algorithm more in detail.
+
+If I had more time, I would like to implement testing to my project. I would create a test databank by dumping/cloning my development databank and create unit tests for my backend. I would need AI to quickly research dump/populate syntax for DBMS of choice, since I only do task rarely and forget the exact syntax. I would also integrate frontend unit tests. I would need AI to research different test frameworks for frontend to choose from, their cons and pros. For backend I would almost certainly go with Junit Test, with which I am already familiar. I would use AI to recap certain test syntax, for example to create mocks or to nail down ‘before each’ and ‘after each’ blocks. After I wrote the tests and tested them, I might need to use AI again to debug certain bugs, caused by framework-specific features or unforeseeable logic mishaps.
